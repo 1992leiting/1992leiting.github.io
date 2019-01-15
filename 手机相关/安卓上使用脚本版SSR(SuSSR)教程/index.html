@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>安卓上使用脚本版SSR(SuSSR)教程 | 雷霆的博客 | 扬帆，启航！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn 写在前面 SUSSR是安卓手机上通过将SSR模块和一系列脚本、工具放入系统的system目录下、执行脚本调用模块，来实现SSR代理；主要用途是用来科学上网或者免流；比起粉色纸飞机SSR客户端，脚本版要更省电一些，而且状态栏没有VPN图标，可以设置开机自启等。  注意 使用SUSSR的前提是安卓手机必须获得完整root权">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安卓上使用脚本版SSR(SuSSR)教程">
+<meta property="og:url" content="http://yoursite.com/手机相关/安卓上使用脚本版SSR(SuSSR)教程/index.html">
+<meta property="og:site_name" content="雷霆的博客">
+<meta property="og:description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn 写在前面 SUSSR是安卓手机上通过将SSR模块和一系列脚本、工具放入系统的system目录下、执行脚本调用模块，来实现SSR代理；主要用途是用来科学上网或者免流；比起粉色纸飞机SSR客户端，脚本版要更省电一些，而且状态栏没有VPN图标，可以设置开机自启等。  注意 使用SUSSR的前提是安卓手机必须获得完整root权">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6767874-21c63857a332e2e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6767874-1d4fad383d7c5537.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6767874-e4e591f875f109d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6767874-530cafa1e283f03b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6767874-3feb23a9341e5766.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6767874-3a23d4f8a1314d1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6767874-e8906cab7cbba872.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6767874-3d72c48843163abe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-01-02T12:01:26.793Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="安卓上使用脚本版SSR(SuSSR)教程">
+<meta name="twitter:description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn 写在前面 SUSSR是安卓手机上通过将SSR模块和一系列脚本、工具放入系统的system目录下、执行脚本调用模块，来实现SSR代理；主要用途是用来科学上网或者免流；比起粉色纸飞机SSR客户端，脚本版要更省电一些，而且状态栏没有VPN图标，可以设置开机自启等。  注意 使用SUSSR的前提是安卓手机必须获得完整root权">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/6767874-21c63857a332e2e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Ting Lei</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank">
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom">
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">安卓上使用脚本版SSR(SuSSR)教程</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">安卓上使用脚本版SSR(SuSSR)教程</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-02T13:05:30.016Z" itemprop="datePublished" class="page-time">
+  2019-01-02
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#写在前面"><span class="post-toc-number">1.</span> <span class="post-toc-text">写在前面</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注意"><span class="post-toc-number">2.</span> <span class="post-toc-text">注意</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装教程"><span class="post-toc-number">3.</span> <span class="post-toc-text">安装教程</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-手机相关/安卓上使用脚本版SSR(SuSSR)教程" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">安卓上使用脚本版SSR(SuSSR)教程</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-02 21:05:30" datetime="2019-01-02T13:05:30.016Z" itemprop="datePublished">2019-01-02</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>获取更多文章和更新，请关注我的个人主页：<a href="https://leiting6.cn/" target="_blank" rel="noopener">https://leiting6.cn</a></p>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>SUSSR是安卓手机上通过将SSR模块和一系列脚本、工具放入系统的system目录下、执行脚本调用模块，来实现SSR代理；主要用途是用来科学上网或者免流；比起粉色纸飞机SSR客户端，脚本版要更省电一些，而且状态栏没有VPN图标，可以设置开机自启等。</li>
+</ul>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
+<li><strong>使用SUSSR的前提是安卓手机必须获得完整root权限（MIUI之类的ROM需要解锁system分区，具体细节这里不展开）</strong></li>
+<li><strong>教程中使用的文件管理器为RE文件管理器，百度一下即可下载，注意安装后要给与root权限</strong></li>
+<li><strong>能顺利连接ssr的前提是你有可用的ssr服务器配置，并且手机安装有粉色纸飞机SSR客户端</strong></li>
+<li><strong>所有技术、软件均来自于妖火网（yaohuo.me）</strong></li>
+</ul>
+<h2 id="安装教程"><a href="#安装教程" class="headerlink" title="安装教程"></a>安装教程</h2><ul>
+<li>下载SUSSR v5.5，<a href="https://kod.leiting6.cn/index.php?share/file&amp;user=1&amp;sid=gQ8dqIB9" title="点击下载" target="_blank" rel="noopener">点击下载</a></li>
+<li>下载之后解压，将解压出来是SUSSR文件夹放到系统system/xbin目录下，最终文件夹路劲及效果如截图<br>注意顶部位置红色框内的路径<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/6767874-21c63857a332e2e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure></li>
+<li>回到上一层目录/system/xbin，长按SUSSR文件夹，点击右上角3个点呼出更多菜单，点选权限设定<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/6767874-1d4fad383d7c5537.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure></li>
+<li>按图中所示勾选，一定不要选错<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/6767874-e4e591f875f109d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure></li>
+<li>打开粉色纸飞机SSR客户端，选择一个可用的服务器配置，生成一个SSR URL（以SSR://开头）<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/6767874-530cafa1e283f03b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure></li>
+<li>进入/system/xbin/sussr/vps目录，这个目录是存放ssr服务器配置的目录，默认情况下没有配置，需要自己生成<br>在vps目录下新建一个文件，名字随意，比如我这个叫“hk-ssr”，长按选择以文本方式编辑，粘贴刚才复制的ssr://链接<br>然后保存并退出<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/6767874-3feb23a9341e5766.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure></li>
+<li>再次回到/system/xbin/sussr/vps目录，点击SSR链接转换.sh，再点击执行<br>接着会提示转换完成，按返回键之后可以看到，多了一个hs-ss.bak文件，我们不用关心<br>这时候长按hk-ssr文件，选择文本方式编辑，可以看到SSR://链接已经转换成SSR配置格式了<br><strong>玩免流的朋友，记得去掉host前面的井号，要不然混淆被注释掉可就不能免流了</strong><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/6767874-3a23d4f8a1314d1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure></li>
+<li>回到/system/xbin/sussr文件夹，以文本方式编辑setting.ini文件<br>这里只需要将框框中的vpnsconf后面单引号内的参数改为你刚才新建的SSR配置文件的名字即可，这里我用的是hk-ssr<br>保存并退出<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/6767874-e8906cab7cbba872.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure></li>
+<li>好了，配置到这里已经完成，依旧在/system/xbin/sussr目录下，点击start.sh，再点击执行<br>稍等一下，可以看到你的蜂窝数据信号会断开又重连一次，然后屏幕出现提示，都是√的话就说明正常启动了<br>想要停止的话，就执行stop.sh，忘记自己有没有执行的话，就执行check.sh<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/6767874-3d72c48843163abe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure></li>
+<li>这时候可以百度查一下IP，是不是变成代理服务器的IP了呢<strong>（SUSSR只能全局代理）</strong></li>
+<li><strong>其他功能大家可以看压缩包里的说明文档自己研究</strong></li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-01-02T12:01:26.793Z" itemprop="dateUpdated">2019-01-02 20:01:26</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/手机相关/安卓上使用脚本版SSR(SuSSR)教程/" target="_blank" rel="external">http://yoursite.com/手机相关/安卓上使用脚本版SSR(SuSSR)教程/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Ting Lei">
+            Ting Lei
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/手机相关/安卓上使用脚本版SSR(SuSSR)教程/&title=《安卓上使用脚本版SSR(SuSSR)教程》 — 雷霆的博客&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/手机相关/安卓上使用脚本版SSR(SuSSR)教程/&title=《安卓上使用脚本版SSR(SuSSR)教程》 — 雷霆的博客&source=Python小学生，爱折腾，电子产品爱好者" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/手机相关/安卓上使用脚本版SSR(SuSSR)教程/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《安卓上使用脚本版SSR(SuSSR)教程》 — 雷霆的博客&url=http://yoursite.com/手机相关/安卓上使用脚本版SSR(SuSSR)教程/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/手机相关/安卓上使用脚本版SSR(SuSSR)教程/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/硬件相关/家庭宽带组网&个人服务器搭建系列1：本系列博文框架/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">家庭宽带组网&amp;个人服务器搭建系列1：本系列博文框架</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/应用相关/Mac上的免费开源鼠标平滑滚动神器-----Mos/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Mac上的免费开源鼠标平滑滚动神器-----Mos</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Ting Lei &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/手机相关/安卓上使用脚本版SSR(SuSSR)教程/&title=《安卓上使用脚本版SSR(SuSSR)教程》 — 雷霆的博客&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/手机相关/安卓上使用脚本版SSR(SuSSR)教程/&title=《安卓上使用脚本版SSR(SuSSR)教程》 — 雷霆的博客&source=Python小学生，爱折腾，电子产品爱好者" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/手机相关/安卓上使用脚本版SSR(SuSSR)教程/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《安卓上使用脚本版SSR(SuSSR)教程》 — 雷霆的博客&url=http://yoursite.com/手机相关/安卓上使用脚本版SSR(SuSSR)教程/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/手机相关/安卓上使用脚本版SSR(SuSSR)教程/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/手机相关/安卓上使用脚本版SSR(SuSSR)教程/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

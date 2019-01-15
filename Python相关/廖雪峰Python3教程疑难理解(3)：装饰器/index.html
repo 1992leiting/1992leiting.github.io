@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>廖雪峰Python3教程疑难理解(3)：装饰器 | 雷霆的博客 | 扬帆，启航！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn 1 对函数添加装饰器的理解以廖老师这一节教程后面多层嵌套的代码做例子，中间添加了一些print打印信息帮助理解代码走向，最后today()调用的地方先注释起来：123456789101112131415161718def logger(text):    print(&quot;--- 进入logger() ---&quot;)    d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="廖雪峰Python3教程疑难理解(3)：装饰器">
+<meta property="og:url" content="http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(3)：装饰器/index.html">
+<meta property="og:site_name" content="雷霆的博客">
+<meta property="og:description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn 1 对函数添加装饰器的理解以廖老师这一节教程后面多层嵌套的代码做例子，中间添加了一些print打印信息帮助理解代码走向，最后today()调用的地方先注释起来：123456789101112131415161718def logger(text):    print(&quot;--- 进入logger() ---&quot;)    d">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-02T11:59:55.464Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="廖雪峰Python3教程疑难理解(3)：装饰器">
+<meta name="twitter:description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn 1 对函数添加装饰器的理解以廖老师这一节教程后面多层嵌套的代码做例子，中间添加了一些print打印信息帮助理解代码走向，最后today()调用的地方先注释起来：123456789101112131415161718def logger(text):    print(&quot;--- 进入logger() ---&quot;)    d">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Ting Lei</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank">
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom">
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">廖雪峰Python3教程疑难理解(3)：装饰器</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">廖雪峰Python3教程疑难理解(3)：装饰器</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-02T13:05:29.795Z" itemprop="datePublished" class="page-time">
+  2019-01-02
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-对函数添加装饰器的理解"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 对函数添加装饰器的理解</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-name属性改变"><span class="post-toc-number">2.</span> <span class="post-toc-text">2 name属性改变</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Python相关/廖雪峰Python3教程疑难理解(3)：装饰器" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">廖雪峰Python3教程疑难理解(3)：装饰器</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-02 21:05:29" datetime="2019-01-02T13:05:29.795Z" itemprop="datePublished">2019-01-02</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>获取更多文章和更新，请关注我的个人主页：<a href="https://leiting6.cn" target="_blank" rel="noopener">https://leiting6.cn</a></p>
+<h2 id="1-对函数添加装饰器的理解"><a href="#1-对函数添加装饰器的理解" class="headerlink" title="1 对函数添加装饰器的理解"></a>1 对函数添加装饰器的理解</h2><p>以廖老师这一节教程后面多层嵌套的代码做例子，中间添加了一些print打印信息帮助理解代码走向，<strong>最后today()调用的地方先注释起来</strong>：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">logger</span><span class="params">(text)</span>:</span></span><br><span class="line">    print(<span class="string">"--- 进入logger() ---"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(func)</span>:</span></span><br><span class="line">        print(<span class="string">"--- 进入decorator() ---"</span>)</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kw)</span>:</span></span><br><span class="line">            print(<span class="string">"--- 进入wrapper() ---"</span>)</span><br><span class="line">            print(<span class="string">'%s %s()'</span> % (text, func.__name__))</span><br><span class="line">            <span class="keyword">return</span> func(*args, **kw)</span><br><span class="line">        <span class="keyword">return</span> wrapper</span><br><span class="line">    <span class="keyword">return</span> decorator</span><br><span class="line"></span><br><span class="line"><span class="meta">@logger('下面执行: ')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">today</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"--- 进入today() ---"</span>)</span><br><span class="line">    print(<span class="string">'&gt;&gt; 2015-3-25'</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"today()函数的名字是: "</span> + today.__name__)</span><br><span class="line"><span class="comment">#today()</span></span><br></pre></td></tr></table></figure></p>
+<p>保存上述代码为.py文件并在命令行中执行它，可以看到结果为：<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">D:</span><span class="string">\Python\test&gt;python</span> <span class="number">7.</span><span class="string">py</span></span><br><span class="line"><span class="bullet">-</span><span class="bullet">--</span> <span class="string">进入logger()</span> <span class="meta">---</span></span><br><span class="line"><span class="bullet">-</span><span class="bullet">--</span> <span class="string">进入decorator()</span> <span class="meta">---</span></span><br><span class="line"><span class="string">today()函数的名字是:</span> <span class="string">wrapper</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>稍作分析一下：</strong></p>
+<ul>
+<li><p>装饰器@logger放在today()定义处，即相当于执行了：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">today = logger(<span class="string">'下面执行: '</span>)(today)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>首先执行（但不完全等价于执行）</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">logger</span><span class="params">(<span class="string">'下面执行: '</span>)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>对照代码和打印信息，可以看到，程序进入logger()函数，传入字符串”下面执行: “，并在函数末尾返回decorator()函数。</p>
+<ul>
+<li>然后执行（但不完全等价于执行）<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">today</span> = decorator(<span class="built_in">today</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>依旧对照代码和打印信息可以看到，程序进入decorator()函数，传入上面的字符串以及today()函数共同作为参数，最后返回wrapper()函数赋值给today，此时，today函数已经改变，因为today的<strong>name</strong>属性值已经变成了wrapper了。</p>
+<p><strong>接下来去掉代码最后一样的注释，执行一下，结果为：</strong><br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">D:</span><span class="string">\Python\test&gt;python</span> <span class="number">7.</span><span class="string">py</span></span><br><span class="line"><span class="bullet">-</span><span class="bullet">--</span> <span class="string">进入logger()</span> <span class="meta">---</span></span><br><span class="line"><span class="bullet">-</span><span class="bullet">--</span> <span class="string">进入decorator()</span> <span class="meta">---</span></span><br><span class="line"><span class="string">today()函数的名字是:</span> <span class="string">wrapper</span></span><br><span class="line"><span class="bullet">-</span><span class="bullet">--</span> <span class="string">进入wrapper()</span> <span class="meta">---</span></span><br><span class="line"><span class="string">下面执行:</span>  <span class="string">today()</span></span><br><span class="line"><span class="bullet">-</span><span class="bullet">--</span> <span class="string">进入today()</span> <span class="meta">---</span></span><br><span class="line"><span class="string">&gt;&gt;</span> <span class="number">2015</span><span class="bullet">-3</span><span class="bullet">-25</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>再来分析一下…</strong></p>
+<ul>
+<li><p>之前学习过返回函数我们知道，只将wrapper()函数赋值到today，wrapper()函数是不会执行的，只有调用了赋值后的today()函数，它才会执行；</p>
+</li>
+<li><p>比起加了注释，这一次更进一步，程序进入到wrapper()函数，先执行wrapper()函数本身的内容，就是现实下面即将执行的函数的名字，需要注意的是，这里直接调用形参func的.<strong>name</strong>属性值，而func还是最初传入的today()函数，所以它的函数名还是today；</p>
+</li>
+<li><p><strong>执行完了wrapper()函数本身的功能之后，再执行原始函数，即today()函数</strong>（看了很多遍廖老师的教程，其实也没找到代码中有调用原始函数的痕迹，暂且这么理解了，应该没错，当然这也是教程中的原话），打印出当前的日期，程序结束。</p>
+</li>
+</ul>
+<h2 id="2-name属性改变"><a href="#2-name属性改变" class="headerlink" title="2 name属性改变"></a>2 <strong>name</strong>属性改变</h2><p>从打印信息看得出来，today()函数添加装饰器之后，其<strong>name</strong>属性已经发生变化，从today变成了wrapper，怎么让他变回去呢？其实也很简单，手动改变一下重新赋值就好，这里需要引入functools模块。稍改一下代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> functools</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">logger</span><span class="params">(text)</span>:</span></span><br><span class="line">    print(<span class="string">"--- 进入logger() ---"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(func)</span>:</span></span><br><span class="line">        print(<span class="string">"--- 进入decorator() ---"</span>)</span><br><span class="line"><span class="meta">        @functools.wraps(func)</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kw)</span>:</span></span><br><span class="line">            print(<span class="string">"--- 进入wrapper() ---"</span>)</span><br><span class="line">            print(<span class="string">'%s %s()'</span> % (text, func.__name__))</span><br><span class="line">            <span class="keyword">return</span> func(*args, **kw)</span><br><span class="line">        <span class="keyword">return</span> wrapper</span><br><span class="line">    <span class="keyword">return</span> decorator</span><br><span class="line"></span><br><span class="line"><span class="meta">@logger('下面执行: ')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">today</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"--- 进入today() ---"</span>)</span><br><span class="line">    print(<span class="string">'&gt;&gt; 2015-3-25'</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"today()函数的名字是: "</span> + today.__name__)</span><br><span class="line">today()</span><br></pre></td></tr></table></figure></p>
+<p>执行之后看结果：<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">D:</span><span class="string">\Python\test&gt;python</span> <span class="number">7.</span><span class="string">py</span></span><br><span class="line"><span class="bullet">-</span><span class="bullet">--</span> <span class="string">进入logger()</span> <span class="meta">---</span></span><br><span class="line"><span class="bullet">-</span><span class="bullet">--</span> <span class="string">进入decorator()</span> <span class="meta">---</span></span><br><span class="line"><span class="string">today()函数的名字是:</span> <span class="string">today</span></span><br><span class="line"><span class="bullet">-</span><span class="bullet">--</span> <span class="string">进入wrapper()</span> <span class="meta">---</span></span><br><span class="line"><span class="string">下面执行:</span>  <span class="string">today()</span></span><br><span class="line"><span class="bullet">-</span><span class="bullet">--</span> <span class="string">进入today()</span> <span class="meta">---</span></span><br><span class="line"><span class="string">&gt;&gt;</span> <span class="number">2015</span><span class="bullet">-3</span><span class="bullet">-25</span></span><br></pre></td></tr></table></figure></p>
+<p>today()函数的名字已经不会改变了，这样如果程序有其他地方需要依赖其函数签名来做其他事情的时候就不会出错。其实wraps本身也是一个装饰器，这里在wrapper()函数定义时调用，目的是将原函数对象的指定属性复制给包装函数对象, 默认有module，name，doc,或者通过参数选择。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-01-02T11:59:55.464Z" itemprop="dateUpdated">2019-01-02 19:59:55</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/Python相关/廖雪峰Python3教程疑难理解(3)：装饰器/" target="_blank" rel="external">http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(3)：装饰器/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Ting Lei">
+            Ting Lei
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(3)：装饰器/&title=《廖雪峰Python3教程疑难理解(3)：装饰器》 — 雷霆的博客&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(3)：装饰器/&title=《廖雪峰Python3教程疑难理解(3)：装饰器》 — 雷霆的博客&source=Python小学生，爱折腾，电子产品爱好者" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(3)：装饰器/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《廖雪峰Python3教程疑难理解(3)：装饰器》 — 雷霆的博客&url=http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(3)：装饰器/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(3)：装饰器/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/Python相关/廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/Python相关/廖雪峰Python3教程疑难理解(2)：返回函数、闭包/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">廖雪峰Python3教程疑难理解(2)：返回函数、闭包</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Ting Lei &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(3)：装饰器/&title=《廖雪峰Python3教程疑难理解(3)：装饰器》 — 雷霆的博客&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(3)：装饰器/&title=《廖雪峰Python3教程疑难理解(3)：装饰器》 — 雷霆的博客&source=Python小学生，爱折腾，电子产品爱好者" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(3)：装饰器/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《廖雪峰Python3教程疑难理解(3)：装饰器》 — 雷霆的博客&url=http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(3)：装饰器/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(3)：装饰器/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(3)：装饰器/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
