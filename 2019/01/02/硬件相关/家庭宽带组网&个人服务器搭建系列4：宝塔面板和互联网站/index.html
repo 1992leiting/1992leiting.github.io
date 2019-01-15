@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>家庭宽带组网&amp;个人服务器搭建系列4：宝塔面板和互联网站 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这个系列鸽的有点久了，最近简书上关注迷之多，所以打算把第四篇写完，给同样想折腾的朋友一个参考吧。  主机系统Server主机的操作系统选择的是Windows10专业版。之所以没有选择Windows server或者Linux，主要是出于以下考虑：  对Windows系统的特性和操作比较熟悉 作为Nas，本地操作文件的时候在Windows上比较方便，开启SMB简单 非常重要的一点：Windows自">
+<meta property="og:type" content="article">
+<meta property="og:title" content="家庭宽带组网&amp;个人服务器搭建系列4：宝塔面板和互联网站">
+<meta property="og:url" content="http://yoursite.com/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列4：宝塔面板和互联网站/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="这个系列鸽的有点久了，最近简书上关注迷之多，所以打算把第四篇写完，给同样想折腾的朋友一个参考吧。  主机系统Server主机的操作系统选择的是Windows10专业版。之所以没有选择Windows server或者Linux，主要是出于以下考虑：  对Windows系统的特性和操作比较熟悉 作为Nas，本地操作文件的时候在Windows上比较方便，开启SMB简单 非常重要的一点：Windows自">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-5ac8436a2bb39f46.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-157976f37390bc0a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-01-02T12:05:22.843Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="家庭宽带组网&amp;个人服务器搭建系列4：宝塔面板和互联网站">
+<meta name="twitter:description" content="这个系列鸽的有点久了，最近简书上关注迷之多，所以打算把第四篇写完，给同样想折腾的朋友一个参考吧。  主机系统Server主机的操作系统选择的是Windows10专业版。之所以没有选择Windows server或者Linux，主要是出于以下考虑：  对Windows系统的特性和操作比较熟悉 作为Nas，本地操作文件的时候在Windows上比较方便，开启SMB简单 非常重要的一点：Windows自">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/6767874-5ac8436a2bb39f46.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-硬件相关/家庭宽带组网&amp;个人服务器搭建系列4：宝塔面板和互联网站" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列4：宝塔面板和互联网站/" class="article-date">
+  <time datetime="2019-01-02T13:05:30.080Z" itemprop="datePublished">2019-01-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      家庭宽带组网&amp;个人服务器搭建系列4：宝塔面板和互联网站
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>这个系列鸽的有点久了，最近简书上关注迷之多，所以打算把第四篇写完，给同样想折腾的朋友一个参考吧。</p>
+</blockquote>
+<h2 id="主机系统"><a href="#主机系统" class="headerlink" title="主机系统"></a>主机系统</h2><p>Server主机的操作系统选择的是Windows10专业版。之所以没有选择Windows server或者Linux，主要是出于以下考虑：</p>
+<ul>
+<li>对Windows系统的特性和操作比较熟悉</li>
+<li>作为Nas，本地操作文件的时候在Windows上比较方便，开启SMB简单</li>
+<li>非常重要的一点：Windows自带软Raid！<br><img src="https://upload-images.jianshu.io/upload_images/6767874-5ac8436a2bb39f46.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>当然，Windows系统作为Server也有缺点：</li>
+<li>宝塔面板、wordpress都是在Linux上运行的更好，宝塔面板在Windows上基本已经停止更新了，老版本基本够用的状态；wordpress在Windows上部分插件工作会不正常，比如jetpack</li>
+<li>Windows系统占用硬件资源比Linux大</li>
+</ul>
+<h2 id="宝塔面板"><a href="#宝塔面板" class="headerlink" title="宝塔面板"></a>宝塔面板</h2><p>宝塔面板是一款非常优秀的国产web服务器管理面板，当然现在宝塔面板已经迭代了诸多版本，除了web管理也还有很多其他功能，在Linux平台上有付费版提供更为强大的技术支持，点击跳转<a href="www.bt.cn">宝塔官方网站</a>。</p>
+<p>在Windows上安装宝塔面板就不详细展开了，比在Linux上安装简单的多，也更快，和安装其他Windows软件没有什么区别。随后安装各种必须的环境组件，开启web面板并设置好后台管理账号和密码。由于宝塔面板官方网站的介绍十分详细并有官方论坛可以供大家参考，此处只做简单介绍。<br><img src="https://upload-images.jianshu.io/upload_images/6767874-157976f37390bc0a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h2 id="Windows防火墙"><a href="#Windows防火墙" class="headerlink" title="Windows防火墙"></a>Windows防火墙</h2><p>根据前面博文讲到的，想要在自家宽带上搭建个人web站点，必须得有公网IP地址，即能从外网访问的IP地址。按照上述的步骤安装Windows版宝塔面板之后，可以通过以下方式在浏览器上进入web管理面板：</p>
+<ul>
+<li><p>本地IP：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- Server所在的局域网IP：```192.168.x.x:888</span><br></pre></td></tr></table></figure></p>
+</li>
+<li><p>公网IP：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Windows版宝塔面板的web后台管理页使用的888端口（Linux版一般使用8888端口），FTP需要使用21端口，Mysql需要使用3306端口，后续搭建web站点还要用到443端口等，这些都需要在Windows上设置放行。我使用的办法比较简单粗暴，那就是直接关闭Windows10 的防火墙...</span><br><span class="line">![image.png](https://upload-images.jianshu.io/upload_images/6767874-d2638acbb1b4c3f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line"></span><br><span class="line">当然肯定有朋友觉得这样做不保险，但是可以装个360卫士/杀毒，然后我的梅林路由上也有防火墙，所以应该还比较稳。</span><br><span class="line"></span><br><span class="line">防火墙打开了，就不会屏蔽网络端口了，就和网络服务器商的控制面板上放行所有安全组的效果一样。</span><br><span class="line"></span><br><span class="line">## wordpress</span><br><span class="line"></span><br><span class="line">wordpress早已声名在外，是全网使用人数最多、功能最强大的博客框架。关于在宝塔面板上建立wordpress站点，请食用：[如何运用宝塔面板搭建WordPress全过程](https://zhangjia.tv/503.html)。</span><br><span class="line"></span><br><span class="line">建站你可能还需要知道：</span><br><span class="line">- 申请一个有个人特色的域名，这个可以找域名商购买，阿里云、腾讯云等等，冷门的一级域名很便宜</span><br><span class="line">- 建站的时候端口选择80，虽然电信宽带的80端口不开放</span><br><span class="line">- 如果你不在乎你的站点域名的端口很奇怪，可以选择其他端口，比如1234，1000,6666等等，这样搭建完成后马上就可以访问你的网站：```yourblog.cn:1234</span><br></pre></td></tr></table></figure></p>
+</li>
+<li><p>站点目录尽量不要放在C盘，可能会遇到访问权限问题，比如我是放在D盘的</p>
+</li>
+</ul>
+<h2 id="启用https"><a href="#启用https" class="headerlink" title="启用https"></a>启用https</h2><p>根据工信部规定，个人不允许使用非固定公网IP搭建网页站点，这里的网页站点指的是80端口的站点，所以就算你的电信宽带给你分配了公网IP，80端口也是开不了的。庆幸的是，虽然80端口没有开放，但是https站点使用的443端口是开启的。</p>
+<p>上面说过，搭建wordpress的时候，端口选择80，虽然80端口是用不了的，直接通过80端口访问你的站点也访问不通。如果你能接受奇葩端口，也可以使用一个非特殊端口作为网站域名的一部分，如果有洁癖，那还是乖乖开启https。</p>
+<p>宝塔面板开启https的教程网上也很多，这里也不做冗余的解释了，具体操作请食用：<a href="https://jingyan.baidu.com/article/e52e3615145fd940c60c51bf.html" target="_blank" rel="noopener">宝塔面板给wordpress全站启用HTTPS</a>。</p>
+<p>关于https站点的SSL证书来源：</p>
+<ul>
+<li>因为Windows版的宝塔面板版本还停留在5.4，功能比较少，Linux版的宝塔web面板上提供宝塔SSL和Lei’s Encrypt，这2个比较方便</li>
+<li>我选择的为每个站点单独申请SSL证书，存在文本里，这样站点换了管理面板、换了服务器也能轻松继续使用</li>
+</ul>
+<h2 id="可道云"><a href="#可道云" class="headerlink" title="可道云"></a>可道云</h2><p>可道云也是我一番搜寻之后选择的web文件管理系统，它就像一个私人网盘一样，可以分享文件让别人下载；除了网盘的功能，可道云还可以在线对文件进行编辑，包括office文件预览、文本文件编辑、PDF文件预览、视频文件在线播放等等，十分强大。</p>
+<p>可道云同样可以通过宝塔面板的建站工具进行搭建，搭建之后开启https访问并填入SSL，这样更为安全。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列4：宝塔面板和互联网站/" data-id="cjqf72ykf000jvsuu84wed0ac" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/01/02/硬件相关/（PDF合集）高速先生-----DDR技术解读/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          （PDF合集）高速先生-----DDR技术解读
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列3：硬件组成和局域网络/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">家庭宽带组网&amp;个人服务器搭建系列3：硬件组成和局域网络</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/（PDF合集）高速先生-----围殴阻抗/">（PDF合集）高速先生-----围殴阻抗</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/（PDF合集）高速先生-----DDR技术解读/">（PDF合集）高速先生-----DDR技术解读</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列4：宝塔面板和互联网站/">家庭宽带组网&amp;个人服务器搭建系列4：宝塔面板和互联网站</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列3：硬件组成和局域网络/">家庭宽带组网&amp;个人服务器搭建系列3：硬件组成和局域网络</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列2：搭建目标和效果预览/">家庭宽带组网&amp;个人服务器搭建系列2：搭建目标和效果预览</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

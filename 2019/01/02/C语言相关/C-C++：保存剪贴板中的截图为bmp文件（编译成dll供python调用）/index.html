@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>C-C++：保存剪贴板中的截图为bmp文件（编译成dll供python调用） | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn  最近在研究windows API，仿佛发现新大陆一般 — 想在windows系统下面玩的更溜一些，还是得了解系统本身的API函数才行。其实python下通过安装pywin32也可以调用win32API，但是总觉得是瞎折腾；而且，毕竟C语言是学生时期的启蒙语言，直接利用VC编写动态链接库（dll）也不是难事。刚好这些天">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C-C++：保存剪贴板中的截图为bmp文件（编译成dll供python调用）">
+<meta property="og:url" content="http://yoursite.com/2019/01/02/C语言相关/C-C++：保存剪贴板中的截图为bmp文件（编译成dll供python调用）/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn  最近在研究windows API，仿佛发现新大陆一般 — 想在windows系统下面玩的更溜一些，还是得了解系统本身的API函数才行。其实python下通过安装pywin32也可以调用win32API，但是总觉得是瞎折腾；而且，毕竟C语言是学生时期的启蒙语言，直接利用VC编写动态链接库（dll）也不是难事。刚好这些天">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-02T06:22:39.469Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C-C++：保存剪贴板中的截图为bmp文件（编译成dll供python调用）">
+<meta name="twitter:description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn  最近在研究windows API，仿佛发现新大陆一般 — 想在windows系统下面玩的更溜一些，还是得了解系统本身的API函数才行。其实python下通过安装pywin32也可以调用win32API，但是总觉得是瞎折腾；而且，毕竟C语言是学生时期的启蒙语言，直接利用VC编写动态链接库（dll）也不是难事。刚好这些天">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-C语言相关/C-C++：保存剪贴板中的截图为bmp文件（编译成dll供python调用）" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/02/C语言相关/C-C++：保存剪贴板中的截图为bmp文件（编译成dll供python调用）/" class="article-date">
+  <time datetime="2019-01-02T13:05:29.511Z" itemprop="datePublished">2019-01-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      C-C++：保存剪贴板中的截图为bmp文件（编译成dll供python调用）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>获取更多文章和更新，请关注我的个人主页：<a href="https://leiting6.cn" target="_blank" rel="noopener">https://leiting6.cn</a></p>
+<blockquote>
+<p>最近在研究windows API，仿佛发现新大陆一般 — 想在windows系统下面玩的更溜一些，还是得了解系统本身的API函数才行。其实python下通过安装pywin32也可以调用win32API，但是总觉得是瞎折腾；而且，毕竟C语言是学生时期的启蒙语言，直接利用VC编写动态链接库（dll）也不是难事。刚好这些天想写一个自动保存截图的小工具，经过一番搜索和自己的修改完善，目前已经完成了核心部分。</p>
+</blockquote>
+<h4 id="2018-10-21更新"><a href="#2018-10-21更新" class="headerlink" title="2018/10/21更新"></a>2018/10/21更新</h4><p>除了生成dll，也稍微修改一下代码生成了exe版本，方便更多语言调用，比如最近一直在研究的autohotkey，毕竟在ahk中调用exe更简单直接。<br>dll和exe下载链接：<a href="https://kod.leiting6.cn/index.php?share/folder&amp;user=1&amp;sid=rGiXqIwf#%2F%E5%85%B6%E4%BB%96%2FSaveBmpFile%2F" target="_blank" rel="noopener">点击跳转</a></p>
+<h2 id="C-C-部分"><a href="#C-C-部分" class="headerlink" title="C/C++部分"></a>C/C++部分</h2><p>这部分只有一个函数，详情如下：</p>
+<ul>
+<li>函数名：SaveBmpFileFromClipboard()</li>
+<li>参数: char *file_name （BMP文件的文件名，可以带上完整路径）</li>
+<li>功能：从剪贴板保存图片为BMP格式到本地</li>
+<li>返回值： 成功保存则返回0， 遇到错误则返回1</li>
+</ul>
+<p>需要注意的是，想要保存一个BMP文件，还是要先了解BMP文件的构成的，<a href="https://baike.baidu.com/item/BMP/35116?fr=aladdin" title="点击查看" target="_blank" rel="noopener">点击查看</a>。</p>
+<p>简单的说：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BMP文件=文件头（14字节）+信息头（40字节，全部默认，实测可不写入）+调色板（可选，不写入）+图片数据</span><br></pre></td></tr></table></figure></p>
+<p>而我这里生成的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BMP文件=文件头（14字节）+图片数据</span><br></pre></td></tr></table></figure></p>
+<p><strong>因此BMP文件的数据构成为</strong></p>
+<ol>
+<li>写入事先手动设置好的文件头（占用14字节）</li>
+<li>写入从剪贴板得到的图片数据</li>
+</ol>
+<p><strong>return值说明</strong></p>
+<p>0：保存bmp文成功<br>1：剪贴板中内容不是DIB格式<br>2：打开剪贴板失败<br>3：路径无法访问/没有操作权限</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SaveBmpFileFromClipboard.cpp : 定义 DLL 应用程序的导出函数。</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//返回值：</span></span><br><span class="line"><span class="comment">//0 - 存储bmp文件成功</span></span><br><span class="line"><span class="comment">//1 - 剪贴板内容非DIB格式</span></span><br><span class="line"><span class="comment">//2 - 打开剪贴板失败</span></span><br><span class="line"><span class="comment">//3 - 存储bmp文件失败</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdafx.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;io.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> EXPORT extern <span class="meta-string">"C"</span> _declspec(dllexport)</span></span><br><span class="line"></span><br><span class="line"><span class="function">EXPORT <span class="keyword">int</span> <span class="title">SaveBmpFileFromClipboard</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *file_name = <span class="string">"capture.bmp"</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!OpenClipboard(<span class="literal">NULL</span>))   <span class="comment">//尝试打开剪贴板</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%s"</span>, <span class="string">"Open clipboard fail!\n"</span>);</span><br><span class="line">        CloseClipboard(); <span class="comment">//关闭剪贴板</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    HANDLE hDib;</span><br><span class="line">    LPVOID lpDib;</span><br><span class="line">    BITMAPFILEHEADER bfBuf;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (IsClipboardFormatAvailable(CF_DIB)) <span class="comment">//检查剪贴板内容是否为DIB类型的数据</span></span><br><span class="line">    &#123;</span><br><span class="line">        hDib = GetClipboardData(CF_DIB);    <span class="comment">//获取剪贴板内容并存入hDib句柄</span></span><br><span class="line">        lpDib = GlobalLock(hDib);           <span class="comment">//利用GlobalLock锁住hDib占用的内存，并返回内存块的首字节指针</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%s"</span>, <span class="string">"Getting data...\n"</span>);</span><br><span class="line">        <span class="keyword">int</span> iData = GlobalSize(lpDib);      <span class="comment">//利用GlobalSize获取上述锁住的内存块的大小</span></span><br><span class="line">                                            <span class="comment">//bfBuf是BITMAPFILEHEADER结构体类型，下面手动指定BMP文件头参数</span></span><br><span class="line">        bfBuf.bfType = <span class="number">0x4d42</span>;              <span class="comment">//"BM"的ASCII码的hex值</span></span><br><span class="line">        bfBuf.bfSize = iData + <span class="keyword">sizeof</span>(BITMAPFILEHEADER);    <span class="comment">//BMP文件大小=数据大小+文件头大小</span></span><br><span class="line">        bfBuf.bfReserved1 = <span class="number">0</span>;  <span class="comment">//固定值</span></span><br><span class="line">        bfBuf.bfReserved2 = <span class="number">0</span>;  <span class="comment">//固定值</span></span><br><span class="line">        bfBuf.bfOffBits = <span class="keyword">sizeof</span>(BITMAPFILEHEADER) + <span class="keyword">sizeof</span>(BITMAPINFOHEADER);  <span class="comment">//文件数据写入时的偏移量=文件头大小+信息头大小</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%s"</span>, <span class="string">"Writing files...\n"</span>);</span><br><span class="line">        <span class="comment">//下面是创建文件并写入文件头和写入文件数据，即生成了BMP文件</span></span><br><span class="line">        DWORD dwWriten;</span><br><span class="line">        HANDLE hf = CreateFileA(file_name, GENERIC_WRITE, <span class="number">0</span>, <span class="literal">NULL</span>, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, <span class="literal">NULL</span>);</span><br><span class="line">        WriteFile(hf, &amp;bfBuf, <span class="keyword">sizeof</span>(BITMAPFILEHEADER), &amp;dwWriten, <span class="literal">NULL</span>);                       <span class="comment">//写入文件头</span></span><br><span class="line">        WriteFile(hf, lpDib, iData, &amp;dwWriten, <span class="literal">NULL</span>);   <span class="comment">//写入图片数据</span></span><br><span class="line">        CloseHandle(hf);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!_access(file_name, <span class="number">0</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%s"</span>, <span class="string">"Bmp file saved!\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%s"</span>, <span class="string">"Bmp file not saved!\n"</span>);</span><br><span class="line">            CloseClipboard(); <span class="comment">//关闭剪贴板</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        GlobalUnlock(hDib); <span class="comment">//解锁被锁住的内存块</span></span><br><span class="line">        GlobalFree(hDib);   <span class="comment">//彻底释放hDib</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%s"</span>, <span class="string">"Not DIB format!\n"</span>);</span><br><span class="line">        CloseClipboard(); <span class="comment">//关闭剪贴板</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    CloseClipboard(); <span class="comment">//关闭剪贴板</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Python部分"><a href="#Python部分" class="headerlink" title="Python部分"></a>Python部分</h2><p>接下来python部分的代码就很简单了，导入ctypes模块，利用ctypes.cdll加载上述dll，传入代表文件路径和文件名的字符串：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ctypes</span><br><span class="line"></span><br><span class="line">file_name = <span class="string">r'D:\\clip.bmp'</span></span><br><span class="line"></span><br><span class="line">dll = ctypes.cdll.LoadLibrary(<span class="string">'SaveBmpFileFromClipboard.dll'</span>)</span><br><span class="line">dll.SaveBmpFileFromClipboard(file_name.encode(<span class="string">'gbk'</span>))</span><br></pre></td></tr></table></figure></p>
+<h2 id="exe版本"><a href="#exe版本" class="headerlink" title="exe版本"></a>exe版本</h2><p>在dll上小修了一下，用main函数把代码包裹起来，这样就可以生成一个更方便调用和使用的exe格式可执行文件。需要注意的是，报错时的return值重新编排了，是为了适应autohotkey中RunWait函数调用exe文件的返回值，觉得不习惯的可以自行修改重新编译，问题不大。</p>
+<p><strong>return值说明</strong></p>
+<p>0：保存bmp文成功<br>11：剪贴板中内容不是DIB格式<br>12：打开剪贴板失败<br>13：路径无法访问/没有操作权限<br>14：没有传入参数（至少得有一个参数，即截图文件的完整路径）</p>
+<p>完整代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SaveBmpFile.cpp: 定义控制台应用程序的入口点。</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//返回值：</span></span><br><span class="line"><span class="comment">//0 - 存储bmp文件成功</span></span><br><span class="line"><span class="comment">//11 - 剪贴板内容非DIB格式</span></span><br><span class="line"><span class="comment">//12 - 打开剪贴板失败</span></span><br><span class="line"><span class="comment">//13 - 存储bmp文件失败</span></span><br><span class="line"><span class="comment">//14 - 没有传入参数</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdafx.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;io.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span>* file_name;</span><br><span class="line">	<span class="keyword">if</span> (argc &lt; <span class="number">2</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"No file name given!"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">14</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> file_name = argv[<span class="number">1</span>];</span><br><span class="line">		</span><br><span class="line">	<span class="keyword">if</span> (!OpenClipboard(<span class="literal">NULL</span>))   <span class="comment">//尝试打开剪贴板</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%s"</span>, <span class="string">"Open clipboard fail!\n"</span>);</span><br><span class="line">		CloseClipboard(); <span class="comment">//关闭剪贴板</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">12</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	HANDLE hDib;</span><br><span class="line">	LPVOID lpDib;</span><br><span class="line">	BITMAPFILEHEADER bfBuf;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (IsClipboardFormatAvailable(CF_DIB)) <span class="comment">//检查剪贴板内容是否为DIB类型的数据</span></span><br><span class="line">	&#123;</span><br><span class="line">		hDib = GetClipboardData(CF_DIB);    <span class="comment">//获取剪贴板内容并存入hDib句柄</span></span><br><span class="line">		lpDib = GlobalLock(hDib);           <span class="comment">//利用GlobalLock锁住hDib占用的内存，并返回内存块的首字节指针</span></span><br><span class="line"></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%s"</span>, <span class="string">"Getting data...\n"</span>);</span><br><span class="line">		<span class="keyword">int</span> iData = GlobalSize(lpDib);      <span class="comment">//利用GlobalSize获取上述锁住的内存块的大小</span></span><br><span class="line">											<span class="comment">//bfBuf是BITMAPFILEHEADER结构体类型，下面手动指定BMP文件头参数</span></span><br><span class="line">		bfBuf.bfType = <span class="number">0x4d42</span>;              <span class="comment">//"BM"的ASCII码的hex值</span></span><br><span class="line">		bfBuf.bfSize = iData + <span class="keyword">sizeof</span>(BITMAPFILEHEADER);    <span class="comment">//BMP文件大小=数据大小+文件头大小</span></span><br><span class="line">		bfBuf.bfReserved1 = <span class="number">0</span>;  <span class="comment">//固定值</span></span><br><span class="line">		bfBuf.bfReserved2 = <span class="number">0</span>;  <span class="comment">//固定值</span></span><br><span class="line">		bfBuf.bfOffBits = <span class="keyword">sizeof</span>(BITMAPFILEHEADER) + <span class="keyword">sizeof</span>(BITMAPINFOHEADER);  <span class="comment">//文件数据写入时的偏移量=文件头大小+信息头大小</span></span><br><span class="line"></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%s"</span>, <span class="string">"Writing files...\n"</span>);</span><br><span class="line">		<span class="comment">//下面是创建文件并写入文件头和写入文件数据，即生成了BMP文件</span></span><br><span class="line">		DWORD dwWriten;</span><br><span class="line">		HANDLE hf;</span><br><span class="line">		hf = CreateFileA(file_name, GENERIC_WRITE, <span class="number">0</span>, <span class="literal">NULL</span>, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, <span class="literal">NULL</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%s"</span>, <span class="string">"Start writing...\n"</span>);</span><br><span class="line">		WriteFile(hf, &amp;bfBuf, <span class="keyword">sizeof</span>(BITMAPFILEHEADER), &amp;dwWriten, <span class="literal">NULL</span>);                       <span class="comment">//写入文件头</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%s"</span>, <span class="string">"File head writen!\n"</span>);</span><br><span class="line">		WriteFile(hf, lpDib, iData, &amp;dwWriten, <span class="literal">NULL</span>);   <span class="comment">//写入图片数据</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%s"</span>, <span class="string">"Pic data writen!\n"</span>);</span><br><span class="line">		CloseHandle(hf);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%s"</span>, <span class="string">"Close handle!\n"</span>);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (!_access(file_name, <span class="number">0</span>))</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%s"</span>, <span class="string">"Bmp file saved!\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%s"</span>, <span class="string">"Bmp file not saved!\n"</span>);</span><br><span class="line">			CloseClipboard(); <span class="comment">//关闭剪贴板</span></span><br><span class="line">			<span class="keyword">return</span> <span class="number">13</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		GlobalUnlock(hDib); <span class="comment">//解锁被锁住的内存块</span></span><br><span class="line">		GlobalFree(hDib);   <span class="comment">//彻底释放hDib</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%s"</span>, <span class="string">"Not DIB format!\n"</span>);</span><br><span class="line">		CloseClipboard(); <span class="comment">//关闭剪贴板</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">11</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	CloseClipboard(); <span class="comment">//关闭剪贴板</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/02/C语言相关/C-C++：保存剪贴板中的截图为bmp文件（编译成dll供python调用）/" data-id="cjqf72ykm000mvsuuvqjt0bwc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/01/02/Linux相关/CentOS6安装使用httpd/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CentOS6安装使用httpd
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/（PDF合集）高速先生-----围殴阻抗/">（PDF合集）高速先生-----围殴阻抗</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/（PDF合集）高速先生-----DDR技术解读/">（PDF合集）高速先生-----DDR技术解读</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列4：宝塔面板和互联网站/">家庭宽带组网&amp;个人服务器搭建系列4：宝塔面板和互联网站</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列3：硬件组成和局域网络/">家庭宽带组网&amp;个人服务器搭建系列3：硬件组成和局域网络</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列2：搭建目标和效果预览/">家庭宽带组网&amp;个人服务器搭建系列2：搭建目标和效果预览</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

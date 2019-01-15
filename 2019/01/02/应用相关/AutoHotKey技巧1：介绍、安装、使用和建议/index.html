@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>AutoHotKey技巧1：介绍、安装、使用和建议 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="介绍AutoHotKey是一款免费的、Windows平台下开放源代码的热键脚本语言，是为游戏操纵杆和鼠标创建的热键，是自动按键。也可以通过命令调用系统接口及程序，并创建基于简单语言的图形化界面的执行程序。以上是百度百科说的。。。点击跳转 安装AutoHotKey下载页目前稳定发布的版本是v1.1，我建议先安装这个版本。安装过程就不赘述了，简单明了。 其他资源：AutoHotKey官方文坛中文板块这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AutoHotKey技巧1：介绍、安装、使用和建议">
+<meta property="og:url" content="http://yoursite.com/2019/01/02/应用相关/AutoHotKey技巧1：介绍、安装、使用和建议/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="介绍AutoHotKey是一款免费的、Windows平台下开放源代码的热键脚本语言，是为游戏操纵杆和鼠标创建的热键，是自动按键。也可以通过命令调用系统接口及程序，并创建基于简单语言的图形化界面的执行程序。以上是百度百科说的。。。点击跳转 安装AutoHotKey下载页目前稳定发布的版本是v1.1，我建议先安装这个版本。安装过程就不赘述了，简单明了。 其他资源：AutoHotKey官方文坛中文板块这">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-02T12:01:51.594Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AutoHotKey技巧1：介绍、安装、使用和建议">
+<meta name="twitter:description" content="介绍AutoHotKey是一款免费的、Windows平台下开放源代码的热键脚本语言，是为游戏操纵杆和鼠标创建的热键，是自动按键。也可以通过命令调用系统接口及程序，并创建基于简单语言的图形化界面的执行程序。以上是百度百科说的。。。点击跳转 安装AutoHotKey下载页目前稳定发布的版本是v1.1，我建议先安装这个版本。安装过程就不赘述了，简单明了。 其他资源：AutoHotKey官方文坛中文板块这">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-应用相关/AutoHotKey技巧1：介绍、安装、使用和建议" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/02/应用相关/AutoHotKey技巧1：介绍、安装、使用和建议/" class="article-date">
+  <time datetime="2019-01-02T13:05:29.881Z" itemprop="datePublished">2019-01-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      AutoHotKey技巧1：介绍、安装、使用和建议
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>AutoHotKey是一款免费的、Windows平台下开放源代码的<a href="https://baike.baidu.com/item/%E7%83%AD%E9%94%AE/2128392" target="_blank" rel="noopener">热键</a><a href="https://baike.baidu.com/item/%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80/1379708" target="_blank" rel="noopener">脚本语言</a>，是为游戏操纵杆和鼠标创建的热键，是自动按键。也可以通过命令调用系统接口及程序，并创建基于简单语言的图形化界面的执行程序。<br>以上是百度百科说的。。。<a href="https://baike.baidu.com/item/autohotkey/6339153?fr=aladdin" target="_blank" rel="noopener">点击跳转</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><a href="https://www.autohotkey.com/download/" target="_blank" rel="noopener">AutoHotKey下载页</a><br>目前稳定发布的版本是v1.1，我建议先安装这个版本。安装过程就不赘述了，简单明了。</p>
+<p><strong>其他资源：</strong><br><a href="https://autohotkey.com/boards/viewforum.php?f=26" target="_blank" rel="noopener">AutoHotKey官方文坛中文板块</a><br>这是官方论坛的中文板块页面，活跃度还可以，提问的比较多，多少还是可以学习一些东西。</p>
+<p><a href="https://ahkcn.github.io/docs/AutoHotkey.htm" target="_blank" rel="noopener">AutoHotKey帮助中文版</a><br>作为一款脚本语言，官方的帮助文档是少不了的，这里给出的是中文帮助页面，翻译详尽，可以说非常方便了。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>如shell脚本、python脚本、批处理脚本一样，脚本语言的迷人之处就在于纯文本编辑，不需要特别的IDE等开发环境。桌面新建一个文本，重命名为<strong>.ahk</strong>后缀，建议使用<a href="https://www.baidu.com/link?url=KNGwETB5nm1-qRwtaN81SPI4uMA5Wi_atVPmNtCG1L3_baXDE-0KtttlOQ-Bztzr&amp;wd=&amp;eqid=e05de63f0002b19d000000065bc74350" target="_blank" rel="noopener">Notepad++</a>打开，键入语句，保存。如果你已经成功安装了AutoHotKey程序，.ahk文件会自动关联并且显示图标，双击打开，你会发现右下角托盘区域也多了一个“H”图标的后台程序，这就说明AutoHotKey已经在运行了。<br>更为具体的适用方式，可以直接看后面的文章，更为直白、好理解。</p>
+<h3 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h3><p>AutoHotKey的基本语法在上述中文帮助页面已经介绍的非常好了，我也没有打算写什么入门教程了，本来就是个脚本语言+后台程序，构造和用途都比较单纯，并不是python、C、Java。<br>不过既然是一门变成语言，还是希望使用者有一定的其他语言的使用经验、会调用语言的API、会编写函数并怀揣创意，这样才能让使用AutoHotKey成为一件愉快的事情。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/02/应用相关/AutoHotKey技巧1：介绍、安装、使用和建议/" data-id="cjqf72yjx0008vsuun1vbv6wy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/01/02/应用相关/AutoHotKey技巧2：窗口三分屏快捷键/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          AutoHotKey技巧2：窗口三分屏快捷键
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/01/02/Python相关/艾巴索iBasso-DX80播放列表生成器使用教程/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">艾巴索iBasso-DX80播放列表生成器使用教程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/（PDF合集）高速先生-----围殴阻抗/">（PDF合集）高速先生-----围殴阻抗</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/（PDF合集）高速先生-----DDR技术解读/">（PDF合集）高速先生-----DDR技术解读</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列4：宝塔面板和互联网站/">家庭宽带组网&amp;个人服务器搭建系列4：宝塔面板和互联网站</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列3：硬件组成和局域网络/">家庭宽带组网&amp;个人服务器搭建系列3：硬件组成和局域网络</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列2：搭建目标和效果预览/">家庭宽带组网&amp;个人服务器搭建系列2：搭建目标和效果预览</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

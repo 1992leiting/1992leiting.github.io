@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-应用相关/AutoHotKey技巧4：分屏GUI版出炉！Windows下的分屏软件---WinSpliter" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/02/应用相关/AutoHotKey技巧4：分屏GUI版出炉！Windows下的分屏软件---WinSpliter/" class="article-date">
+  <time datetime="2019-01-02T13:05:29.912Z" itemprop="datePublished">2019-01-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/02/应用相关/AutoHotKey技巧4：分屏GUI版出炉！Windows下的分屏软件---WinSpliter/">AutoHotKey技巧4：分屏GUI版出炉！Windows下的分屏软件---WinSpliter</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>上上一篇文章中，介绍了用autohotkey脚本配合快捷键在Windows下给窗口分屏，但是没有做出界面总是有点不开心，经过几天研究，终于成功了！<br>exe软件和ahk脚本下载地址：<a href="https://kod.leiting6.cn/index.php?share/folder&amp;user=1&amp;sid=rGiXqIwf#%2F%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E5%8C%85%2FWindows%E8%BD%AF%E4%BB%B6%2FWinSpliter%2F" target="_blank" rel="noopener">点击跳转</a></p>
+<h3 id="脚本源码"><a href="#脚本源码" class="headerlink" title="脚本源码"></a>脚本源码</h3><p>自认为注释已经很充分了，配合<a href="https://ahkcn.github.io/docs/AutoHotkey.htm" target="_blank" rel="noopener">autohotkey中文帮助</a>应该不难理解：<br><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br></pre></td><td class="code"><pre><span class="line">global _WinTitle                <span class="comment">;要分屏的窗口名称</span></span><br><span class="line">global _MousePosx, _MousePosy   <span class="comment">;鼠标坐标</span></span><br><span class="line">global EditBs, EditDfa          <span class="comment">;Block Size和Distance from edge的编辑框</span></span><br><span class="line">                                <span class="comment">;Bs:分屏窗口的大小 Dfa:分屏窗口到屏幕底边的距离</span></span><br><span class="line">global _ReadBs, _ReadDfa        <span class="comment">;从ini文件中读出来的Bs和Dfa值</span></span><br><span class="line"></span><br><span class="line">#Persistent                     <span class="comment">;让脚本持久运行（即直到用户关闭或遇到 ExitApp）。</span></span><br><span class="line">#SingleInstance,force</span><br><span class="line"><span class="built_in">Menu,</span> Tray, NoStandard</span><br><span class="line">programName := <span class="string">"WinSpliter"</span></span><br><span class="line"><span class="built_in">Menu,</span> Tray, Click, <span class="number">1</span>			        <span class="comment">;单击执行OnClick</span></span><br><span class="line"><span class="built_in">Menu,</span> Tray, Add, 设置(config), OnClick    <span class="comment">;增加右键菜单</span></span><br><span class="line"><span class="built_in">Menu,</span> Tray, Add, 退出(Quit),<span class="keyword">OnExit</span></span><br><span class="line"><span class="built_in">Menu,</span> Tray, Default, 设置(config)</span><br><span class="line"><span class="built_in">Menu,</span> Tray, Tip, %programName%          <span class="comment">;鼠标悬停</span></span><br><span class="line"><span class="comment">;return</span></span><br><span class="line"></span><br><span class="line">while <span class="literal">True</span>          <span class="comment">;主程序从这里开始，无限循环检测是否有拖拽窗口行为</span></span><br><span class="line">&#123;   </span><br><span class="line">    DetectWinDrag()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="symbol">OnExit:</span>         <span class="comment">;右键托盘点击退出则关闭app</span></span><br><span class="line">	<span class="keyword">ExitApp</span></span><br><span class="line"><span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">OnClick:</span>        <span class="comment">;点击托盘图标或者右键点击设置，检测是否存在设置窗口</span></span><br><span class="line">	IFWinNotExist WinSpliter Config <span class="comment">;如果设置窗口没打开，则打开设置界面</span></span><br><span class="line">		ShowWinConfig()</span><br><span class="line"><span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">ShowWinConfig() <span class="comment">;显示设置窗口</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">	IniRead,</span> _ReadBs, config.ini, config, Bs, <span class="number">60</span>    <span class="comment">;从ini中读取Bs值，如果没有，则置为60</span></span><br><span class="line"><span class="built_in">	IniRead,</span> _ReadDfa, config.ini, config, Dfa, <span class="number">60</span>  <span class="comment">;从ini中读取Dfa值，如果没有，则置为60</span></span><br><span class="line">    </span><br><span class="line">	if (_ReadBs=<span class="built_in">A_space</span>) <span class="literal">OR</span> (_ReadBs&lt;<span class="number">0</span>) <span class="literal">OR</span> (_ReadFfa=<span class="built_in">A_space</span>) <span class="literal">OR</span> (_ReadDfa&lt;<span class="number">0</span>)   <span class="comment">;增加容错率，当Bs/Dfa等于空或者小于0时不执行动作 </span></span><br><span class="line">	&#123;</span><br><span class="line">		MsgBox Ini value error, set default!    <span class="comment">;如果数值异常，则报错，并重置为60</span></span><br><span class="line">		_ReadBs := <span class="number">60</span></span><br><span class="line">		_ReadDfa := <span class="number">60</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">	WinSet,</span> TransColor, Off                         <span class="comment">;设置窗口不需要透明，分屏窗口是透明的，这里需要关闭</span></span><br><span class="line"><span class="built_in">	Gui,</span> Font, S15 CDefault, Verdana                <span class="comment">;添加窗口控件</span></span><br><span class="line"><span class="built_in">	Gui,</span> Add, Text, x22 y29 w200 h30 , 方块大小</span><br><span class="line"><span class="built_in">	Gui,</span> Add, Text, x22 y119 w200 h30 , 底边距离</span><br><span class="line"><span class="built_in">	Gui,</span> Font, S12 CDefault, Verdana</span><br><span class="line"><span class="built_in">	Gui,</span> Add, Text, x22 y59 w200 h20 , Block size</span><br><span class="line"><span class="built_in">	Gui,</span> Add, Text, x22 y149 w200 h20 , Distance from edge</span><br><span class="line"><span class="built_in">	Gui,</span> Add, Edit, x242 y39 w60 h30 vEditBs, %_ReadBs%</span><br><span class="line"><span class="built_in">	Gui,</span> Add, Edit, x242 y129 w60 h30 vEditDfa, %_ReadDfa%</span><br><span class="line">	<span class="comment">; Generated using SmartGUI Creator 4.0</span></span><br><span class="line"><span class="built_in">	Gui,</span> Show, x285 y202 h189 w326, WinSpliter Config</span><br><span class="line">	<span class="keyword">Return</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">	GuiClose:</span>                                           </span><br><span class="line"><span class="built_in">		GuiControlGet,</span> _VarBs,, EditBs                  <span class="comment">;从设置窗口获取Bs/Dfa数值</span></span><br><span class="line"><span class="built_in">		GuiControlGet,</span> _VarDfa,, EditDfa</span><br><span class="line"><span class="built_in">		IniWrite,</span> %_VarBs%, config.ini, config, Bs      <span class="comment">;关闭时保存Bs/Dfa数值到ini文件</span></span><br><span class="line"><span class="built_in">		IniWrite,</span> %_VarDfa%, config.ini, config, Dfa</span><br><span class="line">		IfWinExist WinSpliter Config    <span class="comment">;增加容错率，如果有设置窗口则销毁当前GUI</span></span><br><span class="line"><span class="built_in">			Gui,</span> Destroy</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;	</span><br><span class="line"></span><br><span class="line">ShowWinSplit()</span><br><span class="line">&#123;	</span><br><span class="line">	<span class="comment">;从ini文件中读出来的Bs和Dfa值</span></span><br><span class="line"><span class="built_in">	IniRead,</span> _ReadBs, config.ini, config, Bs, <span class="number">60</span></span><br><span class="line"><span class="built_in">	IniRead,</span> _ReadDfa, config.ini, config, Dfa, <span class="number">60</span></span><br><span class="line">	</span><br><span class="line">	BtW = %_ReadBs%		<span class="comment">;按钮宽度	</span></span><br><span class="line">	BtH := BtW*<span class="number">2</span>	<span class="comment">;按钮高度</span></span><br><span class="line">	BtW2 := BtW*<span class="number">2</span>	<span class="comment">;2倍按钮宽度</span></span><br><span class="line">	BtW3 := BtW*<span class="number">3</span></span><br><span class="line">	BtW4 := BtW*<span class="number">4</span></span><br><span class="line">	BtW5 := BtW*<span class="number">5</span></span><br><span class="line">	BtW6 := BtW*<span class="number">6</span></span><br><span class="line">	BtW7 := BtW*<span class="number">7</span></span><br><span class="line">	BtW8 := BtW*<span class="number">8</span></span><br><span class="line">	BtW9 := BtW*<span class="number">9</span></span><br><span class="line">	BtW10 := BtW*<span class="number">10</span></span><br><span class="line">	BtW11 := BtW*<span class="number">11</span></span><br><span class="line">	BtW12 := BtW*<span class="number">12</span></span><br><span class="line">	TextPosx := BtW*<span class="number">7</span>-<span class="number">100</span></span><br><span class="line">	TextPosy := BtH+<span class="number">10</span></span><br><span class="line">	CustomColor = EEAA99  <span class="comment">; 可以为任意 RGB 颜色 (在下面会被设置为透明).</span></span><br><span class="line">	Gui +LastFound +AlwaysOnTop -Caption +ToolWindow  <span class="comment">; +ToolWindow 避免显示任务栏按钮和 alt-tab 菜单项.</span></span><br><span class="line"><span class="built_in">	Gui,</span> Color, %CustomColor%</span><br><span class="line">	<span class="comment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;		</span></span><br><span class="line"><span class="built_in">	Gui,</span> Add, Button, x0		y0		w%BtW% h%BtH%  gTest1, <span class="number">1</span>#   <span class="comment">;点击不同的分屏按钮会连接到各自的子程序</span></span><br><span class="line"><span class="built_in">	Gui,</span> Add, Button, x%BtW%	y0		w%BtW% h%BtH%  gTest2, <span class="number">2</span>#</span><br><span class="line"><span class="built_in">	Gui,</span> Add, Button, x%BtW2%	y0		w%BtW% h%BtH%  gTest3, <span class="number">3</span>#</span><br><span class="line">	</span><br><span class="line"><span class="built_in">	Gui,</span> Add, Button, x%BtW4%	y0		w%BtW% h%BtW%  gTest4, <span class="number">4</span>#</span><br><span class="line"><span class="built_in">	Gui,</span> Add, Button, x%BtW5%	y0		w%BtW% h%BtW%  gTest5, <span class="number">5</span>#</span><br><span class="line"><span class="built_in">	Gui,</span> Add, Button, x%BtW4%	y%BtW%	w%BtW% h%BtW%  gTest6, <span class="number">6</span>#</span><br><span class="line"><span class="built_in">	Gui,</span> Add, Button, x%BtW5%	y%BtW%	w%BtW% h%BtW%  gTest7, <span class="number">7</span>#</span><br><span class="line">	</span><br><span class="line"><span class="built_in">	Gui,</span> Add, Button, x%BtW4%	y%BtW%	w%BtW% h%BtW%  gTest6, <span class="number">6</span>#</span><br><span class="line"><span class="built_in">	Gui,</span> Add, Button, x%BtW5%	y%BtW%	w%BtW% h%BtW%  gTest7, <span class="number">7</span>#</span><br><span class="line">	 </span><br><span class="line"><span class="built_in">	Gui,</span> Add, Button, x%BtW7%	y0		w%BtW2% h%BtH% gTest8, <span class="number">8</span>#</span><br><span class="line"><span class="built_in">	Gui,</span> Add, Button, x%BtW9%	y0		w%BtW%  h%BtH% 		 ,</span><br><span class="line"></span><br><span class="line"><span class="built_in">	Gui,</span> Add, Button, x%BtW11%	y0		w%BtW%  h%BtH% 		 ,</span><br><span class="line"><span class="built_in">	Gui,</span> Add, Button, x%BtW12%	y0		w%BtW2% h%BtH% gTest9, <span class="number">9</span>#</span><br><span class="line">	</span><br><span class="line"><span class="built_in">	Gui,</span> Add, Text,   x%TextPosx% y%TextPosy% w200 h20 +Center, Select Split Option</span><br><span class="line">		</span><br><span class="line">	<span class="comment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span></span><br><span class="line">	<span class="comment">; 让此颜色的所有像素透明且让文本显示为半透明 (150):	</span></span><br><span class="line"><span class="built_in">	WinSet,</span> TransColor, %CustomColor% <span class="number">150</span></span><br><span class="line">	</span><br><span class="line">	_GuiPosy := <span class="built_in">A_ScreenHeight</span> - BtH - _ReadDfa <span class="comment">;控制分屏窗口距离屏幕底边的距离</span></span><br><span class="line"><span class="built_in">	Gui,</span> Show, xCenter y%_GuiPosy% NoActivate  <span class="comment">; NoActivate 让当前活动窗口继续保持活动状态.</span></span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">	</span><br><span class="line"><span class="symbol">	Test1:</span>      <span class="comment">;通过各自的子程序传递参数对当前窗口进行分屏</span></span><br><span class="line">	Split(<span class="number">1</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">	</span><br><span class="line"><span class="symbol">	Test2:</span></span><br><span class="line">	Split(<span class="number">2</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">	</span><br><span class="line"><span class="symbol">	Test3:</span></span><br><span class="line">	Split(<span class="number">3</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">	</span><br><span class="line"><span class="symbol">	Test4:</span></span><br><span class="line">	Split(<span class="number">4</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">	</span><br><span class="line"><span class="symbol">	Test5:</span></span><br><span class="line">	Split(<span class="number">5</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">	</span><br><span class="line"><span class="symbol">	Test6:</span></span><br><span class="line">	Split(<span class="number">6</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">	</span><br><span class="line"><span class="symbol">	Test7:</span></span><br><span class="line">	Split(<span class="number">7</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">	</span><br><span class="line"><span class="symbol">	Test8:</span></span><br><span class="line">	Split(<span class="number">8</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">	</span><br><span class="line"><span class="symbol">	Test9:</span></span><br><span class="line">	Split(<span class="number">9</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">DetectWinDrag() <span class="comment">;检测是否有窗口拖拽行为</span></span><br><span class="line">&#123;	            <span class="comment">;基本原理：当按键按下时记录当前窗口位置，延时一段时间，鼠标抬起时窗口位置变化则发生拖拽</span></span><br><span class="line">	static DragFlag = <span class="number">0</span> </span><br><span class="line"><span class="built_in">	CoordMode,</span> Mouse    <span class="comment">;获取的坐标是相对于整个屏幕的</span></span><br><span class="line"><span class="built_in">	MouseGetPos,</span> _MousePosx, _MousePosy, _MouseWin  <span class="comment">;获取当前鼠标的坐标和鼠标下的窗口</span></span><br><span class="line"><span class="built_in">	GetKeyState,</span> _LButtonState, LButton, P</span><br><span class="line">	if _LButtonState = D    <span class="comment">;如果鼠标是按下状态</span></span><br><span class="line">	&#123;   	</span><br><span class="line">        if DragFlag = <span class="number">0</span>     <span class="comment">;且拖拽标志位为0</span></span><br><span class="line">        &#123;</span><br><span class="line">            DragFlag := <span class="number">1</span></span><br><span class="line"><span class="built_in">            WinGetPos,</span> _WinPosx, _WinPosy,,, <span class="keyword">ahk_id</span> %_MouseWin%     <span class="comment">;将鼠标坐标暂存变量1和2都设置为当前坐标值</span></span><br><span class="line"><span class="built_in">			WinGetPos,</span> _WinPosx2, _WinPosy2,,, <span class="keyword">ahk_id</span> %_MouseWin%</span><br><span class="line"><span class="built_in">			WinGetTitle,</span> _WinTitle, <span class="literal">A</span>   <span class="comment">;获取当前窗口的标题</span></span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	else if _LButtonState = U   <span class="comment">;当鼠标抬起</span></span><br><span class="line">	&#123;</span><br><span class="line">		if DragFlag = <span class="number">1</span></span><br><span class="line">		&#123;</span><br><span class="line">			DragFlag = <span class="number">0</span></span><br><span class="line">			Sleep <span class="number">500</span></span><br><span class="line"><span class="built_in">			IfWinExist ,</span>,Select Split Option    <span class="comment">;增加容错率，如果有分屏窗口，在摧毁当前GUI</span></span><br><span class="line"><span class="built_in">				Gui,</span> Destroy</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	Sleep <span class="number">50</span></span><br><span class="line">	if DragFlag = <span class="number">1</span></span><br><span class="line">	&#123;</span><br><span class="line"><span class="built_in">		WinGetPos,</span> _WinPosx2, _WinPosy2,,, <span class="keyword">ahk_id</span> %_MouseWin%	    <span class="comment">;将此时的窗口坐标存到暂存变量2中	</span></span><br><span class="line">		if (_WinPosx &gt; <span class="number">0</span>) <span class="literal">AND</span> (_WinPosy &gt; <span class="number">0</span>) <span class="literal">AND</span> (_WinPosx2 &gt; <span class="number">0</span>) <span class="literal">AND</span> (_WinPosy2 &gt; <span class="number">0</span>)    <span class="comment">;增加容错率，拖拽前后的坐标都大于0才进行下面动作</span></span><br><span class="line">		&#123;	</span><br><span class="line">			if (_WinPosx != _WinPosx2) <span class="literal">OR</span> (_WinPosy != _WinPosy2)   <span class="comment">;当前后坐标不相等的时候，显示分屏窗口</span></span><br><span class="line">			&#123;</span><br><span class="line">				ShowWinsplit()</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Split(num)                        <span class="comment">;当前窗口三分屏函数</span></span><br><span class="line">&#123;</span><br><span class="line">    w := <span class="built_in">A_ScreenWidth</span>/<span class="number">3</span>+<span class="number">15</span>         <span class="comment">;窗口宽度=屏幕横像素/3+15，直接除以3，3个窗口排不满，原因未知</span></span><br><span class="line">    h := <span class="built_in">A_ScreenHeight</span>             <span class="comment">;窗口高度=屏幕纵像素</span></span><br><span class="line">	pox_x = <span class="number">0</span></span><br><span class="line">    pox_y = <span class="number">0</span>                       <span class="comment">;窗口位置纵坐标=0，即窗口放到最顶部</span></span><br><span class="line"></span><br><span class="line">    if (num=<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">        pos_x := <span class="number">0</span>                   <span class="comment">;如果1，则窗口横坐标位置=0，即窗口放到屏幕左上角，宽度为1/3屏幕，高度为屏幕高度</span></span><br><span class="line">		pos_y := <span class="number">0</span></span><br><span class="line">		w := <span class="built_in">A_ScreenWidth</span>/<span class="number">3</span>+<span class="number">15</span></span><br><span class="line">		h := <span class="built_in">A_ScreenHeight</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    else if(num=<span class="number">2</span>)</span><br><span class="line">	&#123;</span><br><span class="line">        pos_x := <span class="built_in">A_ScreenWidth</span>/<span class="number">3</span></span><br><span class="line">		pos_y := <span class="number">0</span></span><br><span class="line">		w := <span class="built_in">A_ScreenWidth</span>/<span class="number">3</span>+<span class="number">15</span></span><br><span class="line">		h := <span class="built_in">A_ScreenHeight</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    else if(num=<span class="number">3</span>)</span><br><span class="line">	&#123;</span><br><span class="line">        pos_x := <span class="built_in">A_ScreenWidth</span>/<span class="number">3</span>*<span class="number">2</span></span><br><span class="line">		pos_y := <span class="number">0</span></span><br><span class="line">		w := <span class="built_in">A_ScreenWidth</span>/<span class="number">3</span>+<span class="number">15</span></span><br><span class="line">		h := <span class="built_in">A_ScreenHeight</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    else if(num=<span class="number">4</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        pos_x := <span class="number">0</span></span><br><span class="line">		pos_y := <span class="number">0</span></span><br><span class="line">		w := <span class="built_in">A_ScreenWidth</span>/<span class="number">2</span>+<span class="number">15</span></span><br><span class="line">        h := <span class="built_in">A_ScreenHeight</span>/<span class="number">2</span>+<span class="number">15</span></span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	else if(num=<span class="number">5</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        pos_x := <span class="built_in">A_ScreenWidth</span>/<span class="number">2</span></span><br><span class="line">		pos_y := <span class="number">0</span></span><br><span class="line">		w := <span class="built_in">A_ScreenWidth</span>/<span class="number">2</span>+<span class="number">15</span></span><br><span class="line">        h := <span class="built_in">A_ScreenHeight</span>/<span class="number">2</span>+<span class="number">15</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    else if(num=<span class="number">6</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        pos_x := <span class="number">0</span></span><br><span class="line">		pos_y := <span class="built_in">A_ScreenHeight</span>/<span class="number">2</span></span><br><span class="line">		w := <span class="built_in">A_ScreenWidth</span>/<span class="number">2</span>+<span class="number">15</span></span><br><span class="line">        h := <span class="built_in">A_ScreenHeight</span>/<span class="number">2</span>+<span class="number">15</span></span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	else if(num=<span class="number">7</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        pos_x := <span class="built_in">A_ScreenWidth</span>/<span class="number">2</span></span><br><span class="line">		pos_y := <span class="built_in">A_ScreenHeight</span>/<span class="number">2</span></span><br><span class="line">		w := <span class="built_in">A_ScreenWidth</span>/<span class="number">2</span>+<span class="number">15</span></span><br><span class="line">        h := <span class="built_in">A_ScreenHeight</span>/<span class="number">2</span>+<span class="number">15</span></span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	else if(num=<span class="number">8</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        pos_x := <span class="number">0</span></span><br><span class="line">		pos_y := <span class="number">0</span></span><br><span class="line">		w := <span class="built_in">A_ScreenWidth</span>/<span class="number">3</span>*<span class="number">2</span>+<span class="number">15</span></span><br><span class="line">        h := <span class="built_in">A_ScreenHeight</span></span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	else if(num=<span class="number">9</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        pos_x := <span class="built_in">A_ScreenWidth</span>/<span class="number">3</span></span><br><span class="line">		pos_y := <span class="number">0</span></span><br><span class="line">		w := <span class="built_in">A_ScreenWidth</span>/<span class="number">3</span>*<span class="number">2</span>+<span class="number">15</span></span><br><span class="line">        h := <span class="built_in">A_ScreenHeight</span></span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    else   </span><br><span class="line">        <span class="keyword">return</span>                      <span class="comment">;如果函数传入其他数字，则return退出函数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">;WinRestore %_WinTitle%          ;如果当前窗口为最大化或者最小化状态，直接使用WinMove函数是不能移动和改变其大小的</span></span><br><span class="line">                                    <span class="comment">;所以先使用WinRestore取消其最大化或者最小化状态，A表示当前窗口</span></span><br><span class="line"><span class="built_in">    WinMove,</span> %_WinTitle%,, pos_x, pox_y, w, h <span class="comment">;调用WinMove函数，按照设定值改变窗口位置和大小</span></span><br><span class="line">	<span class="comment">;WinMove, %_WinTitle%,, pos_x,pos_y, w, h</span></span><br><span class="line"><span class="built_in">	IfWinExist ,</span>,Select Split Option    <span class="comment">;增加容错率，如果有分屏窗口，在摧毁当前GUI</span></span><br><span class="line">		Gui Destroy</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="软件效果"><a href="#软件效果" class="headerlink" title="软件效果"></a>软件效果</h3><p><img src="https://upload-images.jianshu.io/upload_images/6767874-89258ca3787eaaba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"> </p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6767874-c623c2255c3f405a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6767874-1df8352e36fca468.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6767874-43a9c392a88a96a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><ul>
+<li>双击WinSpliter.exe，软件会常驻后台，屏幕右下角托盘区会出现图标</li>
+<li>鼠标右键点击托盘图标，会出现菜单，设置进入软件设置界面，退出则关闭软件进程</li>
+<li>鼠标左键点击图片图标，则直接进入设置界面，方块大小决定了分屏窗口的图形大小，数值越大图形越大；底边距离决定了分屏窗口离屏幕底边的距离，数值越大离底边越远</li>
+<li>鼠标左键按下拖动任意窗口（经测试大部分窗口都有效，少部分app窗口拖动不会触发，待后续优化），按下状态稍作保持（正常情况下几百毫秒），屏幕上会出现分屏窗口；鼠标按下状态下移动到1#~9#分屏按钮上，在分屏窗口消失前迅速点击某一个分屏按钮，分屏动作立即完成</li>
+</ul>
+<h3 id="不足和限制"><a href="#不足和限制" class="headerlink" title="不足和限制"></a>不足和限制</h3><p>由于完成时间很短，现在功能还停留在初级阶段，还存在一些问题。</p>
+<ul>
+<li>分屏窗口触发有不灵敏和迟滞现象，甚至有时候不会触发分屏</li>
+<li>部分app窗口拖拽不会触发分屏窗口</li>
+<li>出于容错率考虑，只有当窗口的左上角顶点（实际上，窗口左上角顶点为窗口的坐标点）在屏幕内才时拖拽窗口才会触发分屏；也就是说，如果窗口拖拽前是最大化或者左上角顶点在屏幕外，拖拽则不会触发分屏，需要先脱回屏内再进行后续操作</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/02/应用相关/AutoHotKey技巧4：分屏GUI版出炉！Windows下的分屏软件---WinSpliter/" data-id="cjqf72ykp000pvsuuews0v92l" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-应用相关/AutoHotKey技巧3：保存截图为bmp文件" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/02/应用相关/AutoHotKey技巧3：保存截图为bmp文件/" class="article-date">
+  <time datetime="2019-01-02T13:05:29.891Z" itemprop="datePublished">2019-01-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/02/应用相关/AutoHotKey技巧3：保存截图为bmp文件/">AutoHotKey技巧3：保存截图为bmp文件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在我的另外一篇文章<a href="https://leiting6.cn/c-c%EF%BC%9A%E4%BF%9D%E5%AD%98%E5%89%AA%E8%B4%B4%E6%9D%BF%E6%88%AA%E5%9B%BE%E4%B8%BAbmp%E6%96%87%E4%BB%B6%EF%BC%88%E7%BC%96%E8%AF%91%E6%88%90dll%E4%BE%9Bpython%E8%B0%83%E7%94%A8%EF%BC%89/" target="_blank" rel="noopener">《C/C++：保存剪贴板截图为bmp文件（编译成dll供python调用）》</a>中，讲到了怎么利用windows API来读取剪贴板中的内容并保存成bmp文件（如果剪贴板中是图片）。这里还是借用这篇文章中生成的exe文件，配合autohotkey脚本，来便捷地将剪贴板中的图片保存为bmp文件。</p>
+<p>exe文件下载链接：<a href="https://kod.leiting6.cn/index.php?share/folder&amp;user=1&amp;sid=rGiXqIwf#%2F%E5%85%B6%E4%BB%96%2FSaveBmpFile%2F" target="_blank" rel="noopener">点击跳转</a></p>
+<h3 id="脚本内容"><a href="#脚本内容" class="headerlink" title="脚本内容"></a>脚本内容</h3><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">SaveBmp()</span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">    InputBox,</span> file_name, 输入, 请输入图片完整路径例,,,,,,,, D:\%<span class="built_in">A_now</span>%.bmp  <span class="comment">;利用inputbox弹出对话框</span></span><br><span class="line">                                                                            <span class="comment">;指引用户指定bmp文件完整存储路径</span></span><br><span class="line">                                                                            <span class="comment">;A_now为当前时间</span></span><br><span class="line">    if <span class="built_in">ErrorLevel</span> = <span class="number">1</span>       <span class="comment">;根据inputbox的errorlevel来判断</span></span><br><span class="line">    &#123;                       <span class="comment">;用户是点了确定还是点了取消（关闭），有或者是操作超时</span></span><br><span class="line">        MsgBox 取消保存！</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    if <span class="built_in">ErrorLevel</span> = <span class="number">2</span></span><br><span class="line">    &#123;</span><br><span class="line">        MsgBox 操作超时！</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    if <span class="built_in">ErrorLevel</span> = <span class="number">0</span>       <span class="comment">;如果点了确定，则进行保存截图操作</span></span><br><span class="line">    &#123;</span><br><span class="line">        RunWait SaveBmpFile <span class="string">"%file_name%"</span>,, Hide    <span class="comment">;利用runwait执行SaveBmpFile.exe</span></span><br><span class="line">        if <span class="built_in">ErrorLevel</span> = ERROR                       <span class="comment">;runwait会自动设置errorlevel，如果是ERROR，则说明exe出现异常错误</span></span><br><span class="line">            MsgBox 执行SaveBmpFile时发生未知错误！</span><br><span class="line">        else if <span class="built_in">ErrorLevel</span> = <span class="number">0</span>                      <span class="comment">;如果exe执行完成，会有返回值，根据返回值弹出提示</span></span><br><span class="line">            MsgBox %file_name%保存成功！</span><br><span class="line">        else if <span class="built_in">ErrorLevel</span> = <span class="number">11</span></span><br><span class="line">            MsgBox 保存出错，剪贴板内容不是图片！</span><br><span class="line">        else if <span class="built_in">ErrorLevel</span> = <span class="number">12</span></span><br><span class="line">            MsgBox 保存出错，打开剪贴板失败！</span><br><span class="line">        else if <span class="built_in">ErrorLevel</span> = <span class="number">13</span></span><br><span class="line">            MsgBox 保存出错，请检查文件夹权限等！</span><br><span class="line">        else if <span class="built_in">ErrorLevel</span> = <span class="number">14</span></span><br><span class="line">            MsgBox 保存出错，文件路径非法！</span><br><span class="line">        else</span><br><span class="line">            MsgBox 未知错误！</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="symbol">^!c::</span> SaveBmp()  <span class="comment">;Ctrl+Alt+C快捷键进行截图</span></span><br></pre></td></tr></table></figure>
+<p>注释已经对关键语句进行了解释，希望刚接触ahk的同学通过<a href="https://ahkcn.github.io/docs/AutoHotkey.htm" target="_blank" rel="noopener">autohotkey中文论坛</a>了解一下其中用到的函数，这里主要有<strong>InputBox</strong>和<strong>RunWait</strong>，重点是理解<strong>这2个函数的ErrorLevel设定</strong>，这样才能根据执行结果让程序顺利流入各个分支，增强健壮性。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>安装AutoHotKey，新建文本贴入上述代码并保存成xxx.ahk，将SaveBmpFile.exe和ahk脚本放在同一文件夹，双击脚本文件，这样就已经在后台运行了。</p>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p>按下组合键，会弹出输入框，提示输入图片存储的完整路径，默认为D盘更目录下以当前时间命名，需要其他位置或者命名格式可以自行更改。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6767874-ae76b0a27535f796.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h3><p>可能使用过程中，大家也能发现，想要保存文件需要先手动截图。但是这都不是事儿啊！可以在弹出InputBox之前模拟按下PrtSC按键（截全屏）或者Alt+PrtSc（截当前活动窗口），这就需要大家发挥想象力了，我这里只提供核心功能。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/02/应用相关/AutoHotKey技巧3：保存截图为bmp文件/" data-id="cjqf72yk2000bvsuuft025m5x" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-应用相关/AutoHotKey技巧2：窗口三分屏快捷键" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/02/应用相关/AutoHotKey技巧2：窗口三分屏快捷键/" class="article-date">
+  <time datetime="2019-01-02T13:05:29.888Z" itemprop="datePublished">2019-01-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/02/应用相关/AutoHotKey技巧2：窗口三分屏快捷键/">AutoHotKey技巧2：窗口三分屏快捷键</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h3><p>因为自己使用的是21:9的超宽带鱼屏，写文档的时候利用Windows自身左右分屏功能就显得有点浪费，而同时并列3个窗口刚刚好，所以利用AutoHotKey写出了一个脚本，可以通过快捷键来快速实现当前窗口3分屏。</p>
+<h3 id="脚本内容"><a href="#脚本内容" class="headerlink" title="脚本内容"></a>脚本内容</h3><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">Split3(num)                        <span class="comment">;当前窗口三分屏函数</span></span><br><span class="line">&#123;</span><br><span class="line">    w := <span class="built_in">A_ScreenWidth</span>/<span class="number">3</span>+<span class="number">15</span>         <span class="comment">;窗口宽度=屏幕横像素/3+15，直接除以3，3个窗口排不满，原因未知</span></span><br><span class="line">    h := <span class="built_in">A_ScreenHeight</span>             <span class="comment">;窗口高度=屏幕纵像素</span></span><br><span class="line">    pox_y = <span class="number">0</span>                       <span class="comment">;窗口位置纵坐标=0，即窗口放到最顶部</span></span><br><span class="line"></span><br><span class="line">    if (num=<span class="number">1</span>)</span><br><span class="line">        pos_x = <span class="number">0</span>                   <span class="comment">;如果1，则窗口横坐标位置=0，即窗口放到屏幕左上角，宽度为1/3屏幕，高度为屏幕高度</span></span><br><span class="line">        </span><br><span class="line">    else if(num=<span class="number">2</span>)</span><br><span class="line">        pos_x := <span class="built_in">A_ScreenWidth</span>/<span class="number">3</span></span><br><span class="line">        </span><br><span class="line">    else if(num=<span class="number">3</span>)</span><br><span class="line">        pos_x := <span class="built_in">A_ScreenWidth</span>/<span class="number">3</span>*<span class="number">2</span></span><br><span class="line">        </span><br><span class="line">    else if(num=<span class="number">4</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        pos_x := <span class="number">0</span></span><br><span class="line">        w := <span class="built_in">A_ScreenWidth</span>/<span class="number">3</span>*<span class="number">2</span>+<span class="number">15</span></span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    else if(num=<span class="number">6</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        pos_x := <span class="built_in">A_ScreenWidth</span>/<span class="number">3</span></span><br><span class="line">        w := <span class="built_in">A_ScreenWidth</span>/<span class="number">3</span>*<span class="number">2</span>+<span class="number">15</span>    <span class="comment">;其他的同理</span></span><br><span class="line">    &#125;</span><br><span class="line">    else   </span><br><span class="line">        <span class="keyword">return</span>                      <span class="comment">;如果函数传入其他数字，则return退出函数</span></span><br><span class="line">    </span><br><span class="line">    WinRestore <span class="literal">A</span>                    <span class="comment">;如果当前窗口为最大化或者最小化状态，直接使用WinMove函数是不能移动和改变其大小的</span></span><br><span class="line">                                    <span class="comment">;所以先使用WinRestore取消其最大化或者最小化状态，A表示当前窗口</span></span><br><span class="line"><span class="built_in">    WinMove,</span> <span class="literal">A</span>,, pos_x, pox_y, w, h <span class="comment">;调用WinMove函数，按照设定值改变窗口位置和大小</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="symbol">^!Numpad1::</span> Split3(<span class="number">1</span>)</span><br><span class="line"><span class="symbol">^!Numpad2::</span> Split3(<span class="number">2</span>)</span><br><span class="line"><span class="symbol">^!Numpad3::</span> Split3(<span class="number">3</span>)</span><br><span class="line"><span class="symbol">^!Numpad4::</span> Split3(<span class="number">4</span>)</span><br><span class="line"><span class="symbol">^!Numpad6::</span> Split3(<span class="number">6</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>安装AutoHotKey，新建文本贴入上述代码并保存成xxx.ahk，双击脚本文件，这样就已经在后台运行了。</p>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p>ctrl+alt+数字键盘1：1/3窗口靠屏幕左边<br>ctrl+alt+数字键盘2：1/3窗口靠屏幕中间<br>ctrl+alt+数字键盘3：1/3窗口靠屏幕右边<br>ctrl+alt+数字键盘4：2/3窗口靠屏幕左边<br>ctrl+alt+数字键盘6：2/3窗口靠屏幕右边<br><img src="https://upload-images.jianshu.io/upload_images/6767874-095ffd09d95ddbaf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="三分屏.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/02/应用相关/AutoHotKey技巧2：窗口三分屏快捷键/" data-id="cjqf72yk0000avsuugvgf7e41" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-应用相关/AutoHotKey技巧1：介绍、安装、使用和建议" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/02/应用相关/AutoHotKey技巧1：介绍、安装、使用和建议/" class="article-date">
+  <time datetime="2019-01-02T13:05:29.881Z" itemprop="datePublished">2019-01-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/02/应用相关/AutoHotKey技巧1：介绍、安装、使用和建议/">AutoHotKey技巧1：介绍、安装、使用和建议</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>AutoHotKey是一款免费的、Windows平台下开放源代码的<a href="https://baike.baidu.com/item/%E7%83%AD%E9%94%AE/2128392" target="_blank" rel="noopener">热键</a><a href="https://baike.baidu.com/item/%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80/1379708" target="_blank" rel="noopener">脚本语言</a>，是为游戏操纵杆和鼠标创建的热键，是自动按键。也可以通过命令调用系统接口及程序，并创建基于简单语言的图形化界面的执行程序。<br>以上是百度百科说的。。。<a href="https://baike.baidu.com/item/autohotkey/6339153?fr=aladdin" target="_blank" rel="noopener">点击跳转</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><a href="https://www.autohotkey.com/download/" target="_blank" rel="noopener">AutoHotKey下载页</a><br>目前稳定发布的版本是v1.1，我建议先安装这个版本。安装过程就不赘述了，简单明了。</p>
+<p><strong>其他资源：</strong><br><a href="https://autohotkey.com/boards/viewforum.php?f=26" target="_blank" rel="noopener">AutoHotKey官方文坛中文板块</a><br>这是官方论坛的中文板块页面，活跃度还可以，提问的比较多，多少还是可以学习一些东西。</p>
+<p><a href="https://ahkcn.github.io/docs/AutoHotkey.htm" target="_blank" rel="noopener">AutoHotKey帮助中文版</a><br>作为一款脚本语言，官方的帮助文档是少不了的，这里给出的是中文帮助页面，翻译详尽，可以说非常方便了。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>如shell脚本、python脚本、批处理脚本一样，脚本语言的迷人之处就在于纯文本编辑，不需要特别的IDE等开发环境。桌面新建一个文本，重命名为<strong>.ahk</strong>后缀，建议使用<a href="https://www.baidu.com/link?url=KNGwETB5nm1-qRwtaN81SPI4uMA5Wi_atVPmNtCG1L3_baXDE-0KtttlOQ-Bztzr&amp;wd=&amp;eqid=e05de63f0002b19d000000065bc74350" target="_blank" rel="noopener">Notepad++</a>打开，键入语句，保存。如果你已经成功安装了AutoHotKey程序，.ahk文件会自动关联并且显示图标，双击打开，你会发现右下角托盘区域也多了一个“H”图标的后台程序，这就说明AutoHotKey已经在运行了。<br>更为具体的适用方式，可以直接看后面的文章，更为直白、好理解。</p>
+<h3 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h3><p>AutoHotKey的基本语法在上述中文帮助页面已经介绍的非常好了，我也没有打算写什么入门教程了，本来就是个脚本语言+后台程序，构造和用途都比较单纯，并不是python、C、Java。<br>不过既然是一门变成语言，还是希望使用者有一定的其他语言的使用经验、会调用语言的API、会编写函数并怀揣创意，这样才能让使用AutoHotKey成为一件愉快的事情。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/02/应用相关/AutoHotKey技巧1：介绍、安装、使用和建议/" data-id="cjqf72yjx0008vsuun1vbv6wy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Python相关/艾巴索iBasso-DX80播放列表生成器使用教程" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/02/Python相关/艾巴索iBasso-DX80播放列表生成器使用教程/" class="article-date">
+  <time datetime="2019-01-02T13:05:29.873Z" itemprop="datePublished">2019-01-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/02/Python相关/艾巴索iBasso-DX80播放列表生成器使用教程/">艾巴索iBasso-DX80播放列表生成器使用教程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>获取更多文章和更新，请关注我的个人主页：<a href="https://leiting6.cn" target="_blank" rel="noopener">https://leiting6.cn</a></p>
+<p>脚本下载：<br><a href="https://kod.leiting6.cn/index.php?share/file&amp;user=1&amp;sid=72jAzshb" target="_blank" rel="noopener">dx80_playlist_generator_v1.0.py</a>  提取密码:qn8qu</p>
+<blockquote>
+<p>这段时间淘了台艾巴索DX80，配合IE80，效果还是可以。无奈这播放器使用播放列表还是有点麻烦，官方群倒是有个教程，得用2个软件来生成、修改、导入，挺麻烦的。作为一名非专业程序猿，这哪能忍？果断写个脚本，一步搞定！</p>
+</blockquote>
+<h2 id="为啥要用播放列表？"><a href="#为啥要用播放列表？" class="headerlink" title="为啥要用播放列表？"></a>为啥要用播放列表？</h2><p>可能不是每个人都有创建播放列表的习惯，但是对于像我一样习惯用歌手名字来整理歌曲的，总不能进入一个目录之后就总听这一个人的歌吧？可能在路上就想听动感一点的歌，在家安静的时候就像听一些情歌，等等等等，这时候，一个播放列表就很实用了。<br><img src="http://upload-images.jianshu.io/upload_images/6767874-c3cb2b3dcc549447.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<h2 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h2><p><strong>使用教程很简单，简单来说分下面几步:</strong></p>
+<ul>
+<li>电脑上安装python3.6</li>
+<li>将脚本放到DX80存储卡根目录</li>
+<li>将想列入播放列表的歌曲拖入脚本生成列表文件</li>
+<li>拔掉USB在DX80上导入列表</li>
+</ul>
+<p><strong>下面详细讲一下…</strong></p>
+<p>首先电脑上要安装Python3.6版本，<a href="https://www.python.org/ftp/python/3.6.3/python-3.6.3-amd64.exe" title="点击下载" target="_blank" rel="noopener">点击下载</a>。<br>注意安装的时候勾选“add to path”，其他地方一直下一步就好了。</p>
+<p>然后将后缀为py的脚本文件放到DX80存储卡的根目录，注意要打开2个窗口，如截图。<br><img src="http://upload-images.jianshu.io/upload_images/6767874-97aa59f9af6b0448.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>接着，在右边窗口中选中你想要加入播放列表的歌曲，按住鼠标左键，拖拽到左边窗口的.py脚本文件上，操作如截图。<br><img src="http://upload-images.jianshu.io/upload_images/6767874-7dc5bd53fc22ec8f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"><br>不出意外，系统会弹出窗口，提示一些信息，表示已经生成了列表并打印出列表内容，按任意键退出。<br><img src="http://upload-images.jianshu.io/upload_images/6767874-9f84b087127928ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"><br>这时候，可以看到DX80存储卡根目录已经生成了一个list.m3u8文件，我们重命名一下，比如叫“中国风.m3u8”，然后拔下USB，在DX80上操作进入SD卡根目录，导入“中国风.m3u8”，这样播放列表就创建成功了。</p>
+<h2 id="常见问题Q-amp-A"><a href="#常见问题Q-amp-A" class="headerlink" title="常见问题Q&amp;A"></a>常见问题Q&amp;A</h2><ul>
+<li><strong>脚本文件放置的目录有要求吗？</strong><br>没错，.py文件必须放到DX80存储卡根目录下。</li>
+<li><strong>list.m3u8的创建机制是怎样的？</strong><br>创建机制是：如果根目录下没有list.m3u8文件，则创建list.m3u8文件；如果已经存在，则在原来的基础上追加内容。比如说，如果你跟我一样喜欢以歌手名字来整理歌曲，出了周杰伦，还有董贞、胡彦斌等其他人都有中国风歌曲，不用着急，一个个目录里面选中你想要的歌曲，分3次拖到.py脚本文件上，第2次、第3次的内容会自动追加上去。</li>
+<li><strong>想要创建新的播放列表怎么办？</strong><br>将list.m3u8重命名就好，下一次脚本将新建一个全新的list.m3u8文件</li>
+<li><strong>是否支持多SD卡？</strong><br>暂时不支持多SD卡操作，感觉用到的人不多，不是刚需，v1.0版本的是基于你的DX80只插了一张SD的情景下编写的。</li>
+</ul>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>我试用了几次，效果还不错，欢迎反馈bug和提出建议。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/02/Python相关/艾巴索iBasso-DX80播放列表生成器使用教程/" data-id="cjqf72yjz0009vsuu84obbv4a" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Python相关/廖雪峰Python3教程疑难理解(5)：使用@property装饰器" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/02/Python相关/廖雪峰Python3教程疑难理解(5)：使用@property装饰器/" class="article-date">
+  <time datetime="2019-01-02T13:05:29.867Z" itemprop="datePublished">2019-01-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/02/Python相关/廖雪峰Python3教程疑难理解(5)：使用@property装饰器/">廖雪峰Python3教程疑难理解(5)：使用@property装饰器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>获取更多文章和更新，请关注我的个人主页：<a href="https://leiting6.cn" target="_blank" rel="noopener">https://leiting6.cn</a></p>
+<blockquote>
+<p>看了很多遍廖雪峰老师的教程，网上也查了很多文章，最终发现，@property的作用就是：把类的方法转化为类的属性（只读）、取代传统的get/set/del方法 — 起码到现在为止我的理解是这样的。具体细节，下面一一道来。</p>
+</blockquote>
+<h2 id="1-转化类方法为类只读属性"><a href="#1-转化类方法为类只读属性" class="headerlink" title="1 转化类方法为类只读属性"></a>1 转化类方法为类只读属性</h2><p>废话不多说，首先上代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Computer</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    电脑的使用时间，一般我们不愿意外部程序可以直接更改这个参数，</span></span><br><span class="line"><span class="string">    因为我们需要根据这个参数来得知电脑的新旧状况，</span></span><br><span class="line"><span class="string">    当然，随着电脑的继续使用，内部程序是会更新这个参数的，这里先忽略这种情况，</span></span><br><span class="line"><span class="string">    假设电脑已经没有在使用了。</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hours_of_use</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">213</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Bob_thinkPad = Computer()</span><br><span class="line">print(<span class="string">"\nBob's thinkpad has been used for %d hours!"</span> % Bob_thinkPad.hours_of_use)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"Can I change the use time of Bob's thinkPad?"</span>)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    Bob_thinkPad.hours_of_use = <span class="number">20</span></span><br><span class="line"><span class="keyword">except</span> AttributeError <span class="keyword">as</span> e:</span><br><span class="line">    print(<span class="string">'Use time of a computer cannot be set to another value!'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>执行结果为：(环境为Pycharm Mac， python-3.6)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/Library/Frameworks/Python.framework/Versions/3.6/bin/python3.6 /Volumes/文档/Python/test/4.py</span><br><span class="line"></span><br><span class="line">Bob&apos;s thinkpad has been used for 213 hours!</span><br><span class="line">Can I change the use time of Bob&apos;s thinkPad?</span><br><span class="line">Use time of a computer cannot be set to another value!</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure></p>
+<p><strong>照旧分析一下：</strong></p>
+<p>按照之前学习的节奏来看，想要给Computer类增加一个属性hours_of_use，需要构造init方法，然后添加这个属性；但是这里并没有这么做，而是直接构造了一个hours_of_use方法，需要注意的是这个方法前面使用了@property，这就让hours_of_use从一个方法变成了Computer类的属性，而且固定返回213这个数值；外部程序可以很自如地读取这个属性的数值；但如果外部程序想要改动它的数值，结果是不会成功的，也就是说，hours_of_use这个属性到这时为止，是个只读属性。</p>
+<h2 id="2-取代get-set-del方法"><a href="#2-取代get-set-del方法" class="headerlink" title="2 取代get/set/del方法"></a>2 取代get/set/del方法</h2><p><strong>这里引用<a href="http://python.jobbole.com/80955/上的例子" target="_blank" rel="noopener">http://python.jobbole.com/80955/上的例子</a></strong></p>
+<p>让我们假设我们有一些遗留代码，它们是由一些对Python理解得不够好的人写的。如果你像我一样，你之前已经看到过这类的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> decimal <span class="keyword">import</span> Decimal</span><br><span class="line"> </span><br><span class="line"><span class="comment">########################################################################</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fees</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">""""""</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">#----------------------------------------------------------------------</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""Constructor"""</span></span><br><span class="line">        self._fee = <span class="keyword">None</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">#----------------------------------------------------------------------</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_fee</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Return the current fee</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> self._fee</span><br><span class="line"> </span><br><span class="line">    <span class="comment">#----------------------------------------------------------------------</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_fee</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Set the fee</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> isinstance(value, str):</span><br><span class="line">            self._fee = Decimal(value)</span><br><span class="line">        <span class="keyword">elif</span> isinstance(value, Decimal):</span><br><span class="line">            self._fee = value</span><br></pre></td></tr></table></figure>
+<p>要使用这个类，我们必须要使用定义的getter和setter方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f = Fees()</span><br><span class="line">&gt;&gt;&gt; f.set_fee(&quot;1&quot;)</span><br><span class="line">&gt;&gt;&gt; f.get_fee()</span><br><span class="line">Decimal(&apos;1&apos;)</span><br></pre></td></tr></table></figure>
+<p>如果你想添加可以使用正常点符号访问的属性，而不破坏所有依赖于这段代码的应用程序，你可以通过添加一个属性函数非常简单地改变它：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> decimal <span class="keyword">import</span> Decimal</span><br><span class="line"> </span><br><span class="line"><span class="comment">########################################################################</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fees</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">""""""</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">#----------------------------------------------------------------------</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""Constructor"""</span></span><br><span class="line">        self._fee = <span class="keyword">None</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">#----------------------------------------------------------------------</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_fee</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Return the current fee</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> self._fee</span><br><span class="line"> </span><br><span class="line">    <span class="comment">#----------------------------------------------------------------------</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_fee</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Set the fee</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> isinstance(value, str):</span><br><span class="line">            self._fee = Decimal(value)</span><br><span class="line">        <span class="keyword">elif</span> isinstance(value, Decimal):</span><br><span class="line">            self._fee = value</span><br><span class="line"> </span><br><span class="line">    fee = property(get_fee, set_fee)</span><br></pre></td></tr></table></figure>
+<p>我们在这段代码的末尾添加了一行。现在我们可以这样做：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f = Fees()</span><br><span class="line">&gt;&gt;&gt; f.set_fee(&quot;1&quot;)</span><br><span class="line">&gt;&gt;&gt; f.fee</span><br><span class="line">Decimal(&apos;1&apos;)</span><br><span class="line">&gt;&gt;&gt; f.fee = &quot;2&quot;</span><br><span class="line">&gt;&gt;&gt; f.get_fee()</span><br><span class="line">Decimal(&apos;2&apos;)</span><br></pre></td></tr></table></figure>
+<p>正如你所看到的，当我们以这种方式使用属性函数时，它允许fee属性设置并获取值本身而不破坏原有代码。让我们使用属性装饰器来重写这段代码，看看我们是否能得到一个允许设置的属性值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> decimal <span class="keyword">import</span> Decimal</span><br><span class="line"> </span><br><span class="line"><span class="comment">########################################################################</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fees</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">""""""</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">#----------------------------------------------------------------------</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""Constructor"""</span></span><br><span class="line">        self._fee = <span class="keyword">None</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">#----------------------------------------------------------------------</span></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fee</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        The fee property - the getter</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> self._fee</span><br><span class="line"> </span><br><span class="line">    <span class="comment">#----------------------------------------------------------------------</span></span><br><span class="line"><span class="meta">    @fee.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fee</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        The setter of the fee property</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> isinstance(value, str):</span><br><span class="line">            self._fee = Decimal(value)</span><br><span class="line">        <span class="keyword">elif</span> isinstance(value, Decimal):</span><br><span class="line">            self._fee = value</span><br><span class="line"> </span><br><span class="line"><span class="comment">#----------------------------------------------------------------------</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    f = Fees()</span><br></pre></td></tr></table></figure>
+<p>上面的代码演示了如何为fee属性创建一个setter方法。你可以用一个名为@fee.setter的装饰器装饰第二个方法名也为fee的方法来实现这个。当你如下所做时，setter被调用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f = Fees()</span><br><span class="line">&gt;&gt;&gt; f.fee = &quot;1&quot;</span><br></pre></td></tr></table></figure>
+<p>如果你看属性函数的说明，它有fget, fset, fdel和doc几个参数。如果你想对属性使用del命令，你可以使用@fee.deleter创建另一个装饰器来装饰相同名字的函数从而实现删除的同样效果。</p>
+<p>除此之外，还有一篇帖子对于@property装饰器的解释也比较透彻：<br><a href="http://www.jb51.net/article/86970.htm" target="_blank" rel="noopener">http://www.jb51.net/article/86970.htm</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/02/Python相关/廖雪峰Python3教程疑难理解(5)：使用@property装饰器/" data-id="cjqf72yjt0005vsuuu1t7kb61" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Python相关/廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/02/Python相关/廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()/" class="article-date">
+  <time datetime="2019-01-02T13:05:29.833Z" itemprop="datePublished">2019-01-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/02/Python相关/廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()/">廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>获取更多文章和更新，请关注我的个人主页：<a href="https://leiting6.cn" target="_blank" rel="noopener">https://leiting6.cn</a></p>
+<blockquote>
+<p>很多跟我一样只有一点C语言基础的朋友，在学习如Python、Java这样的面向对象的语言的时候，走到继承这一步总会觉得非常生涩难懂。其实廖老师这一节将的非常生动详细，结合网上一些博客文章，也能有一个不错的理解。</p>
+</blockquote>
+<p>面向对象语言的典型特征就是可以创建一个类，并且其他的类可以作为子类继承父类的内容。网上好多例子都是以Person、Father、Student、Animal为素材来讲的，甚至于有一些丧心病狂的直接用class A、class B，类里面的一些方法比如学生走路啊、小狗奔跑之类，太过于简单导致抽象，看起来枯燥难懂。</p>
+<p>小小吐槽一下。我自己举的例子，也还是以Animal作为素材，不过尽量在内部方法上把内容做丰富一些，让其实现的功能和参数关联程度高一点，不至于太抽象。代码如下（对代码就不做多少分析了，注释写的比较详细，实际结构很简单）:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    Animal类初始化方法，创建2个基本属性，name和age</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age)</span>:</span>  <span class="comment"># self参数自动传入，name和age需要手动传入</span></span><br><span class="line">        self.name = name            <span class="comment"># 带有self.表明是Animal类自己的参数</span></span><br><span class="line">        self.age = age              <span class="comment"># 赋值操作，将外部传入的数值赋值给Animal类的参数</span></span><br><span class="line">        </span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    Animal类中的一个功能方法：打招呼</span></span><br><span class="line"><span class="string">    该功能函数用到了上面初始化过程中创建的2个参数</span></span><br><span class="line"><span class="string">    '''</span>    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">say_hello</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'嗨，你们好，我的名字是%s，我今年%d岁了.'</span> % (self.name, self.age))</span><br><span class="line">        </span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    Animal类的另一个功能方法：显示心情</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">show_mood</span><span class="params">(self, mood)</span>:</span></span><br><span class="line">        print(<span class="string">'%s今天看起来很%s!'</span> % (self.name, mood))</span><br><span class="line">        </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span><span class="params">(Animal)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    新建Dog类，继承Animal类</span></span><br><span class="line"><span class="string">    和上面差不多，Dog类的初始化方法</span></span><br><span class="line"><span class="string">    不同的是，name和age参数在父类中已经初始化过</span></span><br><span class="line"><span class="string">    因此在子类Dog中没必要在重复赋值语句</span></span><br><span class="line"><span class="string">    所以用super()，保证相同的参数只初始化一次</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age, color)</span>:</span>       <span class="comment"># 要注意的是，需要用到的形参还是要一一列出</span></span><br><span class="line">        super(Dog, self).__init__(name, age)    <span class="comment"># 没必要二次赋值的参数用super来继承</span></span><br><span class="line">        self.color = color                      <span class="comment"># 新增的参数需要编写新的赋值语句</span></span><br><span class="line">    </span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    这是一个已经改写的方法</span></span><br><span class="line"><span class="string">    相比较于父类中的say_hello方法，这里打招呼的内容增加了毛色的描述</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">say_hello</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'嗨，你们好，我的名字是%s，我今年%d岁了，我的毛色是%s。'</span> % (self.name, self.age, self.color))</span><br><span class="line">        </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># Dog继承Animal，则my_dog是多态的，即使Dog类型，也是Animal类型</span></span><br><span class="line">    my_dog = Dog(<span class="string">'Coba'</span>, <span class="number">15</span>, <span class="string">'黄色'</span>)</span><br><span class="line">    <span class="comment"># my_dog调用了say_hello方法，由于在子类Dog中这个方法已经改写，所以打印的结果是改写后的内容</span></span><br><span class="line">    my_dog.say_hello()</span><br><span class="line">    <span class="comment"># show_mood方法没有改写，所以直接调用父类Animal中对应的方法</span></span><br><span class="line">    my_dog.show_mood(<span class="string">'开心'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>代码打印的结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">D:\Python\廖雪峰教程\继承和多态&gt;python 1.py</span><br><span class="line">嗨，你们好，我的名字是Coba，我今年15岁了，我的毛色是黄色。</span><br><span class="line">Coba今天看起来很开心!</span><br></pre></td></tr></table></figure></p>
+<p>我自己写的例子里，只有一个父类Animal、一个子类Dog以及一个实例my_dog；父类中的方法，有在子类中改写的，有没有改写的；实例my_dog自然具有多态特征，在调用类中方法的时候，无需考虑方法是在哪里创建的、是否被改写，一切遵循“开闭”原则。</p>
+<p>这里的super只是用来继承父类Animal中的赋值语句，属于很简单的应用；其实super更大的意义在于类的多重继承，这个以后自己理解更透彻了再举例说明，网上一堆class ABCDEFG看的头疼…</p>
+<p>不知道大家看到这个例子有没有对Python的面向对象属性理解更清晰，反正如果我是初学者，我是更希望看到这样的例子的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/02/Python相关/廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()/" data-id="cjqf72yjw0007vsuuzje3c1dl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Python相关/廖雪峰Python3教程疑难理解(3)：装饰器" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/02/Python相关/廖雪峰Python3教程疑难理解(3)：装饰器/" class="article-date">
+  <time datetime="2019-01-02T13:05:29.795Z" itemprop="datePublished">2019-01-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/02/Python相关/廖雪峰Python3教程疑难理解(3)：装饰器/">廖雪峰Python3教程疑难理解(3)：装饰器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>获取更多文章和更新，请关注我的个人主页：<a href="https://leiting6.cn" target="_blank" rel="noopener">https://leiting6.cn</a></p>
+<h2 id="1-对函数添加装饰器的理解"><a href="#1-对函数添加装饰器的理解" class="headerlink" title="1 对函数添加装饰器的理解"></a>1 对函数添加装饰器的理解</h2><p>以廖老师这一节教程后面多层嵌套的代码做例子，中间添加了一些print打印信息帮助理解代码走向，<strong>最后today()调用的地方先注释起来</strong>：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">logger</span><span class="params">(text)</span>:</span></span><br><span class="line">    print(<span class="string">"--- 进入logger() ---"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(func)</span>:</span></span><br><span class="line">        print(<span class="string">"--- 进入decorator() ---"</span>)</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kw)</span>:</span></span><br><span class="line">            print(<span class="string">"--- 进入wrapper() ---"</span>)</span><br><span class="line">            print(<span class="string">'%s %s()'</span> % (text, func.__name__))</span><br><span class="line">            <span class="keyword">return</span> func(*args, **kw)</span><br><span class="line">        <span class="keyword">return</span> wrapper</span><br><span class="line">    <span class="keyword">return</span> decorator</span><br><span class="line"></span><br><span class="line"><span class="meta">@logger('下面执行: ')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">today</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"--- 进入today() ---"</span>)</span><br><span class="line">    print(<span class="string">'&gt;&gt; 2015-3-25'</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"today()函数的名字是: "</span> + today.__name__)</span><br><span class="line"><span class="comment">#today()</span></span><br></pre></td></tr></table></figure></p>
+<p>保存上述代码为.py文件并在命令行中执行它，可以看到结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">D:\Python\test&gt;python 7.py</span><br><span class="line">--- 进入logger() ---</span><br><span class="line">--- 进入decorator() ---</span><br><span class="line">today()函数的名字是: wrapper</span><br></pre></td></tr></table></figure></p>
+<p><strong>稍作分析一下：</strong></p>
+<ul>
+<li><p>装饰器@logger放在today()定义处，即相当于执行了：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">today = logger(<span class="string">'下面执行: '</span>)(today)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>首先执行（但不完全等价于执行）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logger(&apos;下面执行: &apos;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>对照代码和打印信息，可以看到，程序进入logger()函数，传入字符串”下面执行: “，并在函数末尾返回decorator()函数。</p>
+<ul>
+<li>然后执行（但不完全等价于执行）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">today = decorator(today)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>依旧对照代码和打印信息可以看到，程序进入decorator()函数，传入上面的字符串以及today()函数共同作为参数，最后返回wrapper()函数赋值给today，此时，today函数已经改变，因为today的<strong>name</strong>属性值已经变成了wrapper了。</p>
+<p><strong>接下来去掉代码最后一样的注释，执行一下，结果为：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">D:\Python\test&gt;python 7.py</span><br><span class="line">--- 进入logger() ---</span><br><span class="line">--- 进入decorator() ---</span><br><span class="line">today()函数的名字是: wrapper</span><br><span class="line">--- 进入wrapper() ---</span><br><span class="line">下面执行:  today()</span><br><span class="line">--- 进入today() ---</span><br><span class="line">&gt;&gt; 2015-3-25</span><br></pre></td></tr></table></figure></p>
+<p><strong>再来分析一下…</strong></p>
+<ul>
+<li><p>之前学习过返回函数我们知道，只将wrapper()函数赋值到today，wrapper()函数是不会执行的，只有调用了赋值后的today()函数，它才会执行；</p>
+</li>
+<li><p>比起加了注释，这一次更进一步，程序进入到wrapper()函数，先执行wrapper()函数本身的内容，就是现实下面即将执行的函数的名字，需要注意的是，这里直接调用形参func的.<strong>name</strong>属性值，而func还是最初传入的today()函数，所以它的函数名还是today；</p>
+</li>
+<li><p><strong>执行完了wrapper()函数本身的功能之后，再执行原始函数，即today()函数</strong>（看了很多遍廖老师的教程，其实也没找到代码中有调用原始函数的痕迹，暂且这么理解了，应该没错，当然这也是教程中的原话），打印出当前的日期，程序结束。</p>
+</li>
+</ul>
+<h2 id="2-name属性改变"><a href="#2-name属性改变" class="headerlink" title="2 name属性改变"></a>2 <strong>name</strong>属性改变</h2><p>从打印信息看得出来，today()函数添加装饰器之后，其<strong>name</strong>属性已经发生变化，从today变成了wrapper，怎么让他变回去呢？其实也很简单，手动改变一下重新赋值就好，这里需要引入functools模块。稍改一下代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> functools</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">logger</span><span class="params">(text)</span>:</span></span><br><span class="line">    print(<span class="string">"--- 进入logger() ---"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(func)</span>:</span></span><br><span class="line">        print(<span class="string">"--- 进入decorator() ---"</span>)</span><br><span class="line"><span class="meta">        @functools.wraps(func)</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kw)</span>:</span></span><br><span class="line">            print(<span class="string">"--- 进入wrapper() ---"</span>)</span><br><span class="line">            print(<span class="string">'%s %s()'</span> % (text, func.__name__))</span><br><span class="line">            <span class="keyword">return</span> func(*args, **kw)</span><br><span class="line">        <span class="keyword">return</span> wrapper</span><br><span class="line">    <span class="keyword">return</span> decorator</span><br><span class="line"></span><br><span class="line"><span class="meta">@logger('下面执行: ')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">today</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"--- 进入today() ---"</span>)</span><br><span class="line">    print(<span class="string">'&gt;&gt; 2015-3-25'</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"today()函数的名字是: "</span> + today.__name__)</span><br><span class="line">today()</span><br></pre></td></tr></table></figure></p>
+<p>执行之后看结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">D:\Python\test&gt;python 7.py</span><br><span class="line">--- 进入logger() ---</span><br><span class="line">--- 进入decorator() ---</span><br><span class="line">today()函数的名字是: today</span><br><span class="line">--- 进入wrapper() ---</span><br><span class="line">下面执行:  today()</span><br><span class="line">--- 进入today() ---</span><br><span class="line">&gt;&gt; 2015-3-25</span><br></pre></td></tr></table></figure></p>
+<p>today()函数的名字已经不会改变了，这样如果程序有其他地方需要依赖其函数签名来做其他事情的时候就不会出错。其实wraps本身也是一个装饰器，这里在wrapper()函数定义时调用，目的是将原函数对象的指定属性复制给包装函数对象, 默认有module，name，doc,或者通过参数选择。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/02/Python相关/廖雪峰Python3教程疑难理解(3)：装饰器/" data-id="cjqf72yjs0004vsuubxgs23dc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Python相关/廖雪峰Python3教程疑难理解(2)：返回函数、闭包" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/02/Python相关/廖雪峰Python3教程疑难理解(2)：返回函数、闭包/" class="article-date">
+  <time datetime="2019-01-02T13:05:29.758Z" itemprop="datePublished">2019-01-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/02/Python相关/廖雪峰Python3教程疑难理解(2)：返回函数、闭包/">廖雪峰Python3教程疑难理解(2)：返回函数、闭包</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>获取更多文章和更新，请关注我的个人主页：<a href="https://leiting6.cn" target="_blank" rel="noopener">https://leiting6.cn</a></p>
+<h2 id="1-教程中返回函数的例子"><a href="#1-教程中返回函数的例子" class="headerlink" title="1 教程中返回函数的例子"></a>1 教程中返回函数的例子</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lazy_sum</span><span class="params">(*args)</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">()</span>:</span></span><br><span class="line">		ax = <span class="number">0</span></span><br><span class="line">		<span class="keyword">for</span> n <span class="keyword">in</span> args:</span><br><span class="line">			ax = ax + n</span><br><span class="line">	<span class="keyword">return</span> ax</span><br><span class="line"><span class="keyword">return</span> sum</span><br></pre></td></tr></table></figure>
+<p>当我们调用lazy_sum()时， 返回的并不是求和结果， 而是求和函数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;f = lazy_sum(<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>)</span><br><span class="line">&gt;&gt;&gt;f</span><br><span class="line"> &lt;function lazy_sum.&lt;locals&gt;.sum at <span class="number">0x101c6ed90</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p>调用函数f时， 才真正计算求和的结果：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;f()</span><br><span class="line"><span class="number">25</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="2-添加打印信息，帮助理解"><a href="#2-添加打印信息，帮助理解" class="headerlink" title="2 添加打印信息，帮助理解"></a>2 添加打印信息，帮助理解</h2><p><strong>需要注意的是，我给出的代码都是可在Windows的CMD命令行使用python xxx.py命令运行的完整代码，廖老师的则是在idle或者在CMD中进入python环境之后敲出的，稍有不同，想运行我给出代码的同学，最好还是新建一个.py文件，然后在CMD中运行它，效果更好。</strong></p>
+<p>简单的Python程序，还是喜欢用文本编辑器调试，没有IDE设置断点和单步调试的功能，则可以添加一下打印信息来帮助了解程序的运行路径。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lazy_sum</span><span class="params">(*args)</span>:</span></span><br><span class="line">    print(<span class="string">"在sum()之前"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">()</span>:</span></span><br><span class="line">        print(<span class="string">"在sum()中"</span>)</span><br><span class="line">        s = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> args:</span><br><span class="line">            print(n)</span><br><span class="line">            s+=n</span><br><span class="line">        <span class="keyword">return</span> s</span><br><span class="line">    <span class="keyword">return</span> sum</span><br><span class="line">        </span><br><span class="line">print(<span class="string">"赋值f=lazy_sum()"</span>)</span><br><span class="line">f = lazy_sum(<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"><span class="comment">#print("调用f()结果为: " + str(f()))</span></span><br></pre></td></tr></table></figure>
+<p>先保持最后一行打印为注释状态，运行以上代码，可以看到结果为：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">D:\Python\test&gt;python <span class="number">2.</span>py</span><br><span class="line">赋值f=lazy_sum()</span><br><span class="line">在sum()之前</span><br></pre></td></tr></table></figure></p>
+<p><strong>根据打印的信息可以看到，整段代码并没有进入到sum()里面，赋值操作仅仅将lazy_sum()返回的sum()函数赋值给了f，但是sum()函数并没有执行，这时候sum()函数就如同在lazy_sum()中定义的一个变量一样，在其末尾作为返回值赋给了f。</strong></p>
+<p>接下来将注释部分去掉，再执行一遍，结果为：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">D:\Python\test&gt;python 2.py</span><br><span class="line">赋值f=lazy_sum()</span><br><span class="line">在sum()之前</span><br><span class="line">在sum()中</span><br><span class="line">当前n的值为:1</span><br><span class="line">当前n的值为:2</span><br><span class="line">当前n的值为:4</span><br><span class="line">当前n的值为:5</span><br><span class="line">调用f()结果为: 12</span><br></pre></td></tr></table></figure>
+<p><strong>同样根据打印的信息可以看出，最后一句print中调用了f()函数，此时sum()函数才第一次被执行，进入到了sum()里面，并且打印出了每次循环的n的值和最后求和的结果。</strong></p>
+<h2 id="3-教程中闭包的例子"><a href="#3-教程中闭包的例子" class="headerlink" title="3 教程中闭包的例子"></a>3 教程中闭包的例子</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">()</span>:</span></span><br><span class="line">	fs = []</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">4</span>):</span><br><span class="line">		<span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">()</span>:</span></span><br><span class="line">			<span class="keyword">return</span> i*i</span><br><span class="line">		fs.append(f)</span><br><span class="line">	<span class="keyword">return</span> fs</span><br><span class="line">f1, f2, f3 = count()</span><br><span class="line"></span><br><span class="line">print(f1(), f2(), f3())</span><br></pre></td></tr></table></figure>
+<p>保存上述代码为.py文件并执行，可以得到结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D:\Python\test&gt;python 3.py</span><br><span class="line">9 9 9</span><br></pre></td></tr></table></figure>
+<h2 id="4-添加注释，帮助理解"><a href="#4-添加注释，帮助理解" class="headerlink" title="4 添加注释，帮助理解"></a>4 添加注释，帮助理解</h2><p>一开始我也觉得很奇怪，为什么打印出来是9 9 9而不是1 4 9呢？这时候，我们还是需要借助一些print来帮助理解程序的执行路径和走向。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"进入count"</span>)</span><br><span class="line">    fs = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">4</span>):</span><br><span class="line">        print(<span class="string">"进入循环"</span>)</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">()</span>:</span></span><br><span class="line">            print(<span class="string">"进入f 此时i=%d"</span> % i)</span><br><span class="line">            <span class="keyword">return</span> i*i</span><br><span class="line">        fs.append(f)</span><br><span class="line">    print(<span class="string">"返回fs"</span>)</span><br><span class="line">    <span class="keyword">return</span> fs</span><br><span class="line">f1, f2, f3 = count()</span><br><span class="line">print(<span class="string">"赋值完成"</span>)</span><br><span class="line"></span><br><span class="line">print(f1(), f2(), f3())</span><br></pre></td></tr></table></figure>
+<p>执行上述代码，结果为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">D:\Python\test&gt;python 3.py</span><br><span class="line">进入count</span><br><span class="line">进入循环</span><br><span class="line">进入循环</span><br><span class="line">进入循环</span><br><span class="line">返回fs</span><br><span class="line">赋值完成</span><br><span class="line">进入f 此时i=3</span><br><span class="line">进入f 此时i=3</span><br><span class="line">进入f 此时i=3</span><br><span class="line">9 9 9</span><br></pre></td></tr></table></figure>
+<p>根据打印的信息我们可以得到程序行走的流程是：</p>
+<ul>
+<li>1) 首先在f1,f2,f3赋值的时候，只进入了一次count()函数，然后三次进入for循环、每次循环结束时将生成的f()函数加入fs[]列表中，最终返回fs[]，赋值给f1,f2,f3，并提示赋值完成</li>
+<li>2) 程序末尾打印f1(),f2(),f3()的值的时候，才是真正执行f()函数的时候，此时提示3次进入f，而且i的值都是3，自然返回i * i的值，也都是9</li>
+<li><strong>都是9的原因是：赋值阶段，作为累加器的i就已经累加到数值3了，后续过程中，再也没有进入到循环（从打印信息中也可以看到），因此i的值也没有重置；到最后执行f()的时候，i都是以当前值3来计算并返回的，返回3个9的原因可以总结为：i的值在执行f()的时候没有重置</strong></li>
+</ul>
+<p>为了能实现返回1,4,9，除了廖老师在教程中加一层循环的方式，还可以通过添加另外一个global变量j的方法来实现，具体代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">j=<span class="number">0</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"进入count"</span>)</span><br><span class="line">    fs = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">4</span>):</span><br><span class="line">        print(<span class="string">"进入循环"</span>)</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">()</span>:</span></span><br><span class="line">            <span class="keyword">global</span> j</span><br><span class="line">            j = j + <span class="number">1</span></span><br><span class="line">            print(<span class="string">"进入f 此时j=%d"</span> % j)</span><br><span class="line">            <span class="keyword">return</span> j*j</span><br><span class="line">        fs.append(f)</span><br><span class="line">    print(<span class="string">"返回fs"</span>)</span><br><span class="line">    <span class="keyword">return</span> fs</span><br><span class="line">f1, f2, f3 = count()</span><br><span class="line">print(<span class="string">"赋值完成"</span>)</span><br><span class="line"></span><br><span class="line">print(f1(), f2(), f3())</span><br></pre></td></tr></table></figure></p>
+<p>执行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">D:\Python\test&gt;python 3.py</span><br><span class="line">进入count</span><br><span class="line">进入循环</span><br><span class="line">进入循环</span><br><span class="line">进入循环</span><br><span class="line">返回fs</span><br><span class="line">赋值完成</span><br><span class="line">进入f 此时j=1</span><br><span class="line">进入f 此时j=2</span><br><span class="line">进入f 此时j=3</span><br><span class="line">1 4 9</span><br></pre></td></tr></table></figure>
+<p><strong>我自己写的这段代码的思路也就是，使用计数器i来完成for循环生成fs[]列表，再使用函数外定义的计数器j在f()函数中每次自加1来生成递增的平方数值并返回，因为，显而易见地，一个计数器是完成不了这个任务的。</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/02/Python相关/廖雪峰Python3教程疑难理解(2)：返回函数、闭包/" data-id="cjqf72yjv0006vsuuq1wuqcm5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Python相关/廖雪峰Python3教程疑难理解(1)：自己的学习笔记" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/02/Python相关/廖雪峰Python3教程疑难理解(1)：自己的学习笔记/" class="article-date">
+  <time datetime="2019-01-02T13:05:29.732Z" itemprop="datePublished">2019-01-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/02/Python相关/廖雪峰Python3教程疑难理解(1)：自己的学习笔记/">廖雪峰Python3教程疑难理解(1)：自己的学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>获取更多文章和更新，请关注我的个人主页：<a href="https://leiting6.cn" target="_blank" rel="noopener">https://leiting6.cn</a></p>
+<h2 id="0"><a href="#0" class="headerlink" title="0"></a>0</h2><p>补发一下廖雪峰Python3教程PDF版，<a href="http://ftp.leiting6.cn/python/%E5%BB%96%E9%9B%AA%E5%B3%B0Python3%E6%95%99%E7%A8%8B.pdf" title="点击下载" target="_blank" rel="noopener">点击下载</a><br>这也是网友用python爬虫从廖老师网站上扒下来的，生成了PDF并且带目录，比较方便</p>
+<h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><p>记得知乎上有个人发了篇疑问帖，说为什么看不懂廖雪峰Python3教程？廖老师也很实在的在下面回了一句：我也不知道你为什么看不懂…<br>可能作为多年老猿，已经忘记初学者（更不少是和我一样非计算机科班出身、资质平平的初学者）在没什么基础的情况下学习一门编程语言的感觉了，所以有些地方的表述有点生涩、举的例子跳跃太大等等。</p>
+<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><p>自己入门Python第一篇看的，是《Python编程：从入门到实践》这本书，自己当时也兴致勃勃得写了一个学习笔记，<a href="http://leiting6.cn/python-from-beginning-to-practice/" title="点击跳转" target="_blank" rel="noopener">点击跳转</a>。但是没有跟完，因为绝大部分都非常好理解，因此在这之后很大一部分时间都在和朋友吹嘘Python的语法简单，一星期速成，直到开始看廖雪峰python3教程。</p>
+<h2 id="3"><a href="#3" class="headerlink" title="3"></a>3</h2><p>之前有一些C语言的基础，毕竟电子专业出身，大学写了两年单片机，也算是有一些编程基础，但是真从C语言过度到一门面向对象的高级语言，还是各种不适。加上与知乎上那位朋友相似的疑问，即确实有一些点是一时很难理解需要时间细嚼慢咽的，当然中间也少不了网上搜索和论坛求助。</p>
+<h2 id="4"><a href="#4" class="headerlink" title="4"></a>4</h2><p>所以呢，我打算边学边记，一方面为了自己更好的理解，另一方面也希望有缘人能看到我写的东西，在Python入门的路上得到一些帮助。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/02/Python相关/廖雪峰Python3教程疑难理解(1)：自己的学习笔记/" data-id="cjqf72yjr0003vsuu8md2dei8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/（PDF合集）高速先生-----围殴阻抗/">（PDF合集）高速先生-----围殴阻抗</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/（PDF合集）高速先生-----DDR技术解读/">（PDF合集）高速先生-----DDR技术解读</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列4：宝塔面板和互联网站/">家庭宽带组网&amp;个人服务器搭建系列4：宝塔面板和互联网站</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列3：硬件组成和局域网络/">家庭宽带组网&amp;个人服务器搭建系列3：硬件组成和局域网络</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列2：搭建目标和效果预览/">家庭宽带组网&amp;个人服务器搭建系列2：搭建目标和效果预览</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

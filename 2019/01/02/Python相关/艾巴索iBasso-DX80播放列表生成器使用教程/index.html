@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>艾巴索iBasso-DX80播放列表生成器使用教程 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn 脚本下载：dx80_playlist_generator_v1.0.py  提取密码:qn8qu  这段时间淘了台艾巴索DX80，配合IE80，效果还是可以。无奈这播放器使用播放列表还是有点麻烦，官方群倒是有个教程，得用2个软件来生成、修改、导入，挺麻烦的。作为一名非专业程序猿，这哪能忍？果断写个脚本，一步搞定！  为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="艾巴索iBasso-DX80播放列表生成器使用教程">
+<meta property="og:url" content="http://yoursite.com/2019/01/02/Python相关/艾巴索iBasso-DX80播放列表生成器使用教程/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn 脚本下载：dx80_playlist_generator_v1.0.py  提取密码:qn8qu  这段时间淘了台艾巴索DX80，配合IE80，效果还是可以。无奈这播放器使用播放列表还是有点麻烦，官方群倒是有个教程，得用2个软件来生成、修改、导入，挺麻烦的。作为一名非专业程序猿，这哪能忍？果断写个脚本，一步搞定！  为">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6767874-c3cb2b3dcc549447.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6767874-97aa59f9af6b0448.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6767874-7dc5bd53fc22ec8f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6767874-9f84b087127928ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-01-02T11:59:10.189Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="艾巴索iBasso-DX80播放列表生成器使用教程">
+<meta name="twitter:description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn 脚本下载：dx80_playlist_generator_v1.0.py  提取密码:qn8qu  这段时间淘了台艾巴索DX80，配合IE80，效果还是可以。无奈这播放器使用播放列表还是有点麻烦，官方群倒是有个教程，得用2个软件来生成、修改、导入，挺麻烦的。作为一名非专业程序猿，这哪能忍？果断写个脚本，一步搞定！  为">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/6767874-c3cb2b3dcc549447.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Python相关/艾巴索iBasso-DX80播放列表生成器使用教程" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/02/Python相关/艾巴索iBasso-DX80播放列表生成器使用教程/" class="article-date">
+  <time datetime="2019-01-02T13:05:29.873Z" itemprop="datePublished">2019-01-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      艾巴索iBasso-DX80播放列表生成器使用教程
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>获取更多文章和更新，请关注我的个人主页：<a href="https://leiting6.cn" target="_blank" rel="noopener">https://leiting6.cn</a></p>
+<p>脚本下载：<br><a href="https://kod.leiting6.cn/index.php?share/file&amp;user=1&amp;sid=72jAzshb" target="_blank" rel="noopener">dx80_playlist_generator_v1.0.py</a>  提取密码:qn8qu</p>
+<blockquote>
+<p>这段时间淘了台艾巴索DX80，配合IE80，效果还是可以。无奈这播放器使用播放列表还是有点麻烦，官方群倒是有个教程，得用2个软件来生成、修改、导入，挺麻烦的。作为一名非专业程序猿，这哪能忍？果断写个脚本，一步搞定！</p>
+</blockquote>
+<h2 id="为啥要用播放列表？"><a href="#为啥要用播放列表？" class="headerlink" title="为啥要用播放列表？"></a>为啥要用播放列表？</h2><p>可能不是每个人都有创建播放列表的习惯，但是对于像我一样习惯用歌手名字来整理歌曲的，总不能进入一个目录之后就总听这一个人的歌吧？可能在路上就想听动感一点的歌，在家安静的时候就像听一些情歌，等等等等，这时候，一个播放列表就很实用了。<br><img src="http://upload-images.jianshu.io/upload_images/6767874-c3cb2b3dcc549447.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<h2 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h2><p><strong>使用教程很简单，简单来说分下面几步:</strong></p>
+<ul>
+<li>电脑上安装python3.6</li>
+<li>将脚本放到DX80存储卡根目录</li>
+<li>将想列入播放列表的歌曲拖入脚本生成列表文件</li>
+<li>拔掉USB在DX80上导入列表</li>
+</ul>
+<p><strong>下面详细讲一下…</strong></p>
+<p>首先电脑上要安装Python3.6版本，<a href="https://www.python.org/ftp/python/3.6.3/python-3.6.3-amd64.exe" title="点击下载" target="_blank" rel="noopener">点击下载</a>。<br>注意安装的时候勾选“add to path”，其他地方一直下一步就好了。</p>
+<p>然后将后缀为py的脚本文件放到DX80存储卡的根目录，注意要打开2个窗口，如截图。<br><img src="http://upload-images.jianshu.io/upload_images/6767874-97aa59f9af6b0448.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>接着，在右边窗口中选中你想要加入播放列表的歌曲，按住鼠标左键，拖拽到左边窗口的.py脚本文件上，操作如截图。<br><img src="http://upload-images.jianshu.io/upload_images/6767874-7dc5bd53fc22ec8f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"><br>不出意外，系统会弹出窗口，提示一些信息，表示已经生成了列表并打印出列表内容，按任意键退出。<br><img src="http://upload-images.jianshu.io/upload_images/6767874-9f84b087127928ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"><br>这时候，可以看到DX80存储卡根目录已经生成了一个list.m3u8文件，我们重命名一下，比如叫“中国风.m3u8”，然后拔下USB，在DX80上操作进入SD卡根目录，导入“中国风.m3u8”，这样播放列表就创建成功了。</p>
+<h2 id="常见问题Q-amp-A"><a href="#常见问题Q-amp-A" class="headerlink" title="常见问题Q&amp;A"></a>常见问题Q&amp;A</h2><ul>
+<li><strong>脚本文件放置的目录有要求吗？</strong><br>没错，.py文件必须放到DX80存储卡根目录下。</li>
+<li><strong>list.m3u8的创建机制是怎样的？</strong><br>创建机制是：如果根目录下没有list.m3u8文件，则创建list.m3u8文件；如果已经存在，则在原来的基础上追加内容。比如说，如果你跟我一样喜欢以歌手名字来整理歌曲，出了周杰伦，还有董贞、胡彦斌等其他人都有中国风歌曲，不用着急，一个个目录里面选中你想要的歌曲，分3次拖到.py脚本文件上，第2次、第3次的内容会自动追加上去。</li>
+<li><strong>想要创建新的播放列表怎么办？</strong><br>将list.m3u8重命名就好，下一次脚本将新建一个全新的list.m3u8文件</li>
+<li><strong>是否支持多SD卡？</strong><br>暂时不支持多SD卡操作，感觉用到的人不多，不是刚需，v1.0版本的是基于你的DX80只插了一张SD的情景下编写的。</li>
+</ul>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>我试用了几次，效果还不错，欢迎反馈bug和提出建议。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/02/Python相关/艾巴索iBasso-DX80播放列表生成器使用教程/" data-id="cjqf72yjz0009vsuu84obbv4a" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/01/02/应用相关/AutoHotKey技巧1：介绍、安装、使用和建议/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          AutoHotKey技巧1：介绍、安装、使用和建议
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/01/02/Python相关/廖雪峰Python3教程疑难理解(5)：使用@property装饰器/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">廖雪峰Python3教程疑难理解(5)：使用@property装饰器</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/（PDF合集）高速先生-----围殴阻抗/">（PDF合集）高速先生-----围殴阻抗</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/（PDF合集）高速先生-----DDR技术解读/">（PDF合集）高速先生-----DDR技术解读</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列4：宝塔面板和互联网站/">家庭宽带组网&amp;个人服务器搭建系列4：宝塔面板和互联网站</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列3：硬件组成和局域网络/">家庭宽带组网&amp;个人服务器搭建系列3：硬件组成和局域网络</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列2：搭建目标和效果预览/">家庭宽带组网&amp;个人服务器搭建系列2：搭建目标和效果预览</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>廖雪峰Python3教程疑难理解(2)：返回函数、闭包 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn 1 教程中返回函数的例子1234567def lazy_sum(*args):	def sum():		ax = 0		for n in args:			ax = ax + n	return axreturn sum 当我们调用lazy_sum()时， 返回的并不是求和结果， 而是求和函数：123&amp;gt;&amp;gt;&amp;gt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="廖雪峰Python3教程疑难理解(2)：返回函数、闭包">
+<meta property="og:url" content="http://yoursite.com/2019/01/02/Python相关/廖雪峰Python3教程疑难理解(2)：返回函数、闭包/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn 1 教程中返回函数的例子1234567def lazy_sum(*args):	def sum():		ax = 0		for n in args:			ax = ax + n	return axreturn sum 当我们调用lazy_sum()时， 返回的并不是求和结果， 而是求和函数：123&amp;gt;&amp;gt;&amp;gt">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-02T11:59:41.871Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="廖雪峰Python3教程疑难理解(2)：返回函数、闭包">
+<meta name="twitter:description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn 1 教程中返回函数的例子1234567def lazy_sum(*args):	def sum():		ax = 0		for n in args:			ax = ax + n	return axreturn sum 当我们调用lazy_sum()时， 返回的并不是求和结果， 而是求和函数：123&amp;gt;&amp;gt;&amp;gt">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Python相关/廖雪峰Python3教程疑难理解(2)：返回函数、闭包" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/02/Python相关/廖雪峰Python3教程疑难理解(2)：返回函数、闭包/" class="article-date">
+  <time datetime="2019-01-02T13:05:29.758Z" itemprop="datePublished">2019-01-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      廖雪峰Python3教程疑难理解(2)：返回函数、闭包
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>获取更多文章和更新，请关注我的个人主页：<a href="https://leiting6.cn" target="_blank" rel="noopener">https://leiting6.cn</a></p>
+<h2 id="1-教程中返回函数的例子"><a href="#1-教程中返回函数的例子" class="headerlink" title="1 教程中返回函数的例子"></a>1 教程中返回函数的例子</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lazy_sum</span><span class="params">(*args)</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">()</span>:</span></span><br><span class="line">		ax = <span class="number">0</span></span><br><span class="line">		<span class="keyword">for</span> n <span class="keyword">in</span> args:</span><br><span class="line">			ax = ax + n</span><br><span class="line">	<span class="keyword">return</span> ax</span><br><span class="line"><span class="keyword">return</span> sum</span><br></pre></td></tr></table></figure>
+<p>当我们调用lazy_sum()时， 返回的并不是求和结果， 而是求和函数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;f = lazy_sum(<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>)</span><br><span class="line">&gt;&gt;&gt;f</span><br><span class="line"> &lt;function lazy_sum.&lt;locals&gt;.sum at <span class="number">0x101c6ed90</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p>调用函数f时， 才真正计算求和的结果：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;f()</span><br><span class="line"><span class="number">25</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="2-添加打印信息，帮助理解"><a href="#2-添加打印信息，帮助理解" class="headerlink" title="2 添加打印信息，帮助理解"></a>2 添加打印信息，帮助理解</h2><p><strong>需要注意的是，我给出的代码都是可在Windows的CMD命令行使用python xxx.py命令运行的完整代码，廖老师的则是在idle或者在CMD中进入python环境之后敲出的，稍有不同，想运行我给出代码的同学，最好还是新建一个.py文件，然后在CMD中运行它，效果更好。</strong></p>
+<p>简单的Python程序，还是喜欢用文本编辑器调试，没有IDE设置断点和单步调试的功能，则可以添加一下打印信息来帮助了解程序的运行路径。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lazy_sum</span><span class="params">(*args)</span>:</span></span><br><span class="line">    print(<span class="string">"在sum()之前"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">()</span>:</span></span><br><span class="line">        print(<span class="string">"在sum()中"</span>)</span><br><span class="line">        s = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> args:</span><br><span class="line">            print(n)</span><br><span class="line">            s+=n</span><br><span class="line">        <span class="keyword">return</span> s</span><br><span class="line">    <span class="keyword">return</span> sum</span><br><span class="line">        </span><br><span class="line">print(<span class="string">"赋值f=lazy_sum()"</span>)</span><br><span class="line">f = lazy_sum(<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"><span class="comment">#print("调用f()结果为: " + str(f()))</span></span><br></pre></td></tr></table></figure>
+<p>先保持最后一行打印为注释状态，运行以上代码，可以看到结果为：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">D:\Python\test&gt;python <span class="number">2.</span>py</span><br><span class="line">赋值f=lazy_sum()</span><br><span class="line">在sum()之前</span><br></pre></td></tr></table></figure></p>
+<p><strong>根据打印的信息可以看到，整段代码并没有进入到sum()里面，赋值操作仅仅将lazy_sum()返回的sum()函数赋值给了f，但是sum()函数并没有执行，这时候sum()函数就如同在lazy_sum()中定义的一个变量一样，在其末尾作为返回值赋给了f。</strong></p>
+<p>接下来将注释部分去掉，再执行一遍，结果为：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">D:\Python\test&gt;python 2.py</span><br><span class="line">赋值f=lazy_sum()</span><br><span class="line">在sum()之前</span><br><span class="line">在sum()中</span><br><span class="line">当前n的值为:1</span><br><span class="line">当前n的值为:2</span><br><span class="line">当前n的值为:4</span><br><span class="line">当前n的值为:5</span><br><span class="line">调用f()结果为: 12</span><br></pre></td></tr></table></figure>
+<p><strong>同样根据打印的信息可以看出，最后一句print中调用了f()函数，此时sum()函数才第一次被执行，进入到了sum()里面，并且打印出了每次循环的n的值和最后求和的结果。</strong></p>
+<h2 id="3-教程中闭包的例子"><a href="#3-教程中闭包的例子" class="headerlink" title="3 教程中闭包的例子"></a>3 教程中闭包的例子</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">()</span>:</span></span><br><span class="line">	fs = []</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">4</span>):</span><br><span class="line">		<span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">()</span>:</span></span><br><span class="line">			<span class="keyword">return</span> i*i</span><br><span class="line">		fs.append(f)</span><br><span class="line">	<span class="keyword">return</span> fs</span><br><span class="line">f1, f2, f3 = count()</span><br><span class="line"></span><br><span class="line">print(f1(), f2(), f3())</span><br></pre></td></tr></table></figure>
+<p>保存上述代码为.py文件并执行，可以得到结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D:\Python\test&gt;python 3.py</span><br><span class="line">9 9 9</span><br></pre></td></tr></table></figure>
+<h2 id="4-添加注释，帮助理解"><a href="#4-添加注释，帮助理解" class="headerlink" title="4 添加注释，帮助理解"></a>4 添加注释，帮助理解</h2><p>一开始我也觉得很奇怪，为什么打印出来是9 9 9而不是1 4 9呢？这时候，我们还是需要借助一些print来帮助理解程序的执行路径和走向。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"进入count"</span>)</span><br><span class="line">    fs = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">4</span>):</span><br><span class="line">        print(<span class="string">"进入循环"</span>)</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">()</span>:</span></span><br><span class="line">            print(<span class="string">"进入f 此时i=%d"</span> % i)</span><br><span class="line">            <span class="keyword">return</span> i*i</span><br><span class="line">        fs.append(f)</span><br><span class="line">    print(<span class="string">"返回fs"</span>)</span><br><span class="line">    <span class="keyword">return</span> fs</span><br><span class="line">f1, f2, f3 = count()</span><br><span class="line">print(<span class="string">"赋值完成"</span>)</span><br><span class="line"></span><br><span class="line">print(f1(), f2(), f3())</span><br></pre></td></tr></table></figure>
+<p>执行上述代码，结果为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">D:\Python\test&gt;python 3.py</span><br><span class="line">进入count</span><br><span class="line">进入循环</span><br><span class="line">进入循环</span><br><span class="line">进入循环</span><br><span class="line">返回fs</span><br><span class="line">赋值完成</span><br><span class="line">进入f 此时i=3</span><br><span class="line">进入f 此时i=3</span><br><span class="line">进入f 此时i=3</span><br><span class="line">9 9 9</span><br></pre></td></tr></table></figure>
+<p>根据打印的信息我们可以得到程序行走的流程是：</p>
+<ul>
+<li>1) 首先在f1,f2,f3赋值的时候，只进入了一次count()函数，然后三次进入for循环、每次循环结束时将生成的f()函数加入fs[]列表中，最终返回fs[]，赋值给f1,f2,f3，并提示赋值完成</li>
+<li>2) 程序末尾打印f1(),f2(),f3()的值的时候，才是真正执行f()函数的时候，此时提示3次进入f，而且i的值都是3，自然返回i * i的值，也都是9</li>
+<li><strong>都是9的原因是：赋值阶段，作为累加器的i就已经累加到数值3了，后续过程中，再也没有进入到循环（从打印信息中也可以看到），因此i的值也没有重置；到最后执行f()的时候，i都是以当前值3来计算并返回的，返回3个9的原因可以总结为：i的值在执行f()的时候没有重置</strong></li>
+</ul>
+<p>为了能实现返回1,4,9，除了廖老师在教程中加一层循环的方式，还可以通过添加另外一个global变量j的方法来实现，具体代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">j=<span class="number">0</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"进入count"</span>)</span><br><span class="line">    fs = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">4</span>):</span><br><span class="line">        print(<span class="string">"进入循环"</span>)</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">()</span>:</span></span><br><span class="line">            <span class="keyword">global</span> j</span><br><span class="line">            j = j + <span class="number">1</span></span><br><span class="line">            print(<span class="string">"进入f 此时j=%d"</span> % j)</span><br><span class="line">            <span class="keyword">return</span> j*j</span><br><span class="line">        fs.append(f)</span><br><span class="line">    print(<span class="string">"返回fs"</span>)</span><br><span class="line">    <span class="keyword">return</span> fs</span><br><span class="line">f1, f2, f3 = count()</span><br><span class="line">print(<span class="string">"赋值完成"</span>)</span><br><span class="line"></span><br><span class="line">print(f1(), f2(), f3())</span><br></pre></td></tr></table></figure></p>
+<p>执行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">D:\Python\test&gt;python 3.py</span><br><span class="line">进入count</span><br><span class="line">进入循环</span><br><span class="line">进入循环</span><br><span class="line">进入循环</span><br><span class="line">返回fs</span><br><span class="line">赋值完成</span><br><span class="line">进入f 此时j=1</span><br><span class="line">进入f 此时j=2</span><br><span class="line">进入f 此时j=3</span><br><span class="line">1 4 9</span><br></pre></td></tr></table></figure>
+<p><strong>我自己写的这段代码的思路也就是，使用计数器i来完成for循环生成fs[]列表，再使用函数外定义的计数器j在f()函数中每次自加1来生成递增的平方数值并返回，因为，显而易见地，一个计数器是完成不了这个任务的。</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/02/Python相关/廖雪峰Python3教程疑难理解(2)：返回函数、闭包/" data-id="cjqf72yjv0006vsuuq1wuqcm5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/01/02/Python相关/廖雪峰Python3教程疑难理解(3)：装饰器/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          廖雪峰Python3教程疑难理解(3)：装饰器
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/01/02/Python相关/廖雪峰Python3教程疑难理解(1)：自己的学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">廖雪峰Python3教程疑难理解(1)：自己的学习笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/（PDF合集）高速先生-----围殴阻抗/">（PDF合集）高速先生-----围殴阻抗</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/（PDF合集）高速先生-----DDR技术解读/">（PDF合集）高速先生-----DDR技术解读</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列4：宝塔面板和互联网站/">家庭宽带组网&amp;个人服务器搭建系列4：宝塔面板和互联网站</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列3：硬件组成和局域网络/">家庭宽带组网&amp;个人服务器搭建系列3：硬件组成和局域网络</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列2：搭建目标和效果预览/">家庭宽带组网&amp;个人服务器搭建系列2：搭建目标和效果预览</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

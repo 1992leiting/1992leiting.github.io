@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>PyQt5入门系列4：模块化手动编写的代码块 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn 为什么需要模块化？模块化编程是每门编程语言都需要使用到的技能，好处呢就是方便管理，便于理清思路。具体到本系列教程中简易计算器的设计，模块化的必要性又在哪呢？ 根据前面3篇文章的介绍，不出意外的话同学们也都能实现一个简单的加法器的功能了。我在自学PyQt5过程中，相当长一段时间里也都是按照这样的流程来编写代码的，甚至已经">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PyQt5入门系列4：模块化手动编写的代码块">
+<meta property="og:url" content="http://yoursite.com/2019/01/02/Python相关/PyQt5入门系列4：模块化手动编写的代码块/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn 为什么需要模块化？模块化编程是每门编程语言都需要使用到的技能，好处呢就是方便管理，便于理清思路。具体到本系列教程中简易计算器的设计，模块化的必要性又在哪呢？ 根据前面3篇文章的介绍，不出意外的话同学们也都能实现一个简单的加法器的功能了。我在自学PyQt5过程中，相当长一段时间里也都是按照这样的流程来编写代码的，甚至已经">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-1790e8f47c266d1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-9b53eec8aa3437cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-42479fb87f4a748d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-01-02T11:58:53.941Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PyQt5入门系列4：模块化手动编写的代码块">
+<meta name="twitter:description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn 为什么需要模块化？模块化编程是每门编程语言都需要使用到的技能，好处呢就是方便管理，便于理清思路。具体到本系列教程中简易计算器的设计，模块化的必要性又在哪呢？ 根据前面3篇文章的介绍，不出意外的话同学们也都能实现一个简单的加法器的功能了。我在自学PyQt5过程中，相当长一段时间里也都是按照这样的流程来编写代码的，甚至已经">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/6767874-1790e8f47c266d1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Python相关/PyQt5入门系列4：模块化手动编写的代码块" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/02/Python相关/PyQt5入门系列4：模块化手动编写的代码块/" class="article-date">
+  <time datetime="2019-01-02T13:05:29.727Z" itemprop="datePublished">2019-01-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PyQt5入门系列4：模块化手动编写的代码块
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>获取更多文章和更新，请关注我的个人主页：<a href="https://leiting6.cn" target="_blank" rel="noopener">https://leiting6.cn</a></p>
+<h3 id="为什么需要模块化？"><a href="#为什么需要模块化？" class="headerlink" title="为什么需要模块化？"></a>为什么需要模块化？</h3><p>模块化编程是每门编程语言都需要使用到的技能，好处呢就是方便管理，便于理清思路。具体到本系列教程中简易计算器的设计，模块化的必要性又在哪呢？</p>
+<p>根据前面3篇文章的介绍，不出意外的话同学们也都能实现一个简单的加法器的功能了。我在自学PyQt5过程中，相当长一段时间里也都是按照这样的流程来编写代码的，甚至已经完成了几个小工具的设计。然而我自己也时常意识到自己会陷入一种窘境：只要想在QtCreator稍微改动一下UI界面，再利用pyuic5生成.py文件，就要重新再贴一遍自己添加的代码块，有首部import的、有中间自定义方法的、还有末尾的类外执行的…实在太麻烦了。</p>
+<p>大家可能还记得，在介绍使用QtCreator的时候我也说过，QtCreator设计出来的是一个类，而类是面向对象语言的重要概念之一，python也不例外。类能干嘛呢？能用来实例化对象、能继承、能改写。至此，同学们估计也已经意识到了，为什么我们要用模块 — 没错，我们要把pyuic5生成的.py文件作为模块，而自己手动编写的代码放到主程序中，调用模块，继承、改写它！</p>
+<h3 id="模块化操作"><a href="#模块化操作" class="headerlink" title="模块化操作"></a>模块化操作</h3><h5 id="修改UI界面，重新生成-py文件"><a href="#修改UI界面，重新生成-py文件" class="headerlink" title="修改UI界面，重新生成.py文件"></a>修改UI界面，重新生成.py文件</h5><p>首先我们象征性的修改一下UI界面，假装是因为设计需要。如图，不增删控件的前提下，拖拽一下控件的位置、更改一下MainWindow的大小，效果如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6767874-1790e8f47c266d1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>然后再重新生成一下.py文件，为了不覆盖之前的main.py，我们这次重新取一个名字，让他看起来更像一个模块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyuic5 -o ui_mainwindow.py mainwindow.ui</span><br></pre></td></tr></table></figure>
+<p>加入以后还要加入其它的模块，可以取名字为ui_subwindow、ui_subwidget等等。</p>
+<p>打开ui_mainwindow.py发现和之前生成的main.py差不多。这一次我们就不改动它了，再同一个文件夹再新建一个空白的py文件，命名为calc.py。calc.py就是模块化之后的主程序文件。</p>
+<h5 id="为calc-py添加代码，显示程序界面"><a href="#为calc-py添加代码，显示程序界面" class="headerlink" title="为calc.py添加代码，显示程序界面"></a>为calc.py添加代码，显示程序界面</h5><p>在calc.py中添加一下代码：</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PyQt5 <span class="keyword">import</span> QtCore, QtGui, QtWidgets</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> ui_mainwindow <span class="keyword">import</span> Ui_MainWindow <span class="keyword">as</span> UIM</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    app = QtWidgets.QApplication(sys.argv)  </span><br><span class="line">    MainWindow = QtWidgets.QMainWindow()    </span><br><span class="line">    ui = UIM()                    </span><br><span class="line">    ui.setupUi(MainWindow)                                        </span><br><span class="line">    MainWindow.show()                       </span><br><span class="line">    sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
+<p>这段代码比较眼熟。没错，想要显示窗口，流程是没有变的，只是在calc.py中我们引入了ui_mainwindow包中的Ui_MainWindow类，重新命名为UIM，在下面的代码中，同样将UIM类实例化为ui，然后执行setupUi()方法，显示主窗口，等待退出。看不明白的需要补一下python基础知识。</p>
+<p>保存后在命令行中执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python cacl.py</span><br></pre></td></tr></table></figure>
+<p>可以看到：<br><img src="https://upload-images.jianshu.io/upload_images/6767874-9b53eec8aa3437cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h5 id="改写Ui-MainWindow类"><a href="#改写Ui-MainWindow类" class="headerlink" title="改写Ui_MainWindow类"></a>改写Ui_MainWindow类</h5><p>好了，接下来需要添加之前已经作过说明的后台逻辑代码。为了能模块化管理这个小工程，而且不改动ui_mainwindow.py，上面我们已经在calc.py中引入了Ui_MainWindow类。根据之前的经验，原初的Ui_MainWindowbi并不能实现加法操作，我们还需要改写它。所以，在calc.py中，新建一个类继承并改写Ui_MainWindow，calc.py全部代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PyQt5 <span class="keyword">import</span> QtCore, QtGui, QtWidgets</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> ui_mainwindow <span class="keyword">import</span> Ui_MainWindow <span class="keyword">as</span> UIM</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NewUiMainWindow</span><span class="params">(UIM)</span>:</span>       </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setupFunction</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.pushButton_calc.clicked.connect(self.get_sum)</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_sum</span><span class="params">(self)</span>:</span></span><br><span class="line">        adder1 = self.lineEdit_Adder1.text()    <span class="comment"># 获取第一个文本框中的内容存入adder1</span></span><br><span class="line">        adder2 = self.lineEdit_Adder2.text()    <span class="comment"># 获取第二个文本框中的内容存入adder2</span></span><br><span class="line">        sum = int(adder1) + int(adder2)         <span class="comment"># 将adder1和adder2强制转换为整形，计算出两数之和存入sum</span></span><br><span class="line">        self.lineEdit_sum.setText(str(sum))     <span class="comment"># 将sum强制转换为字符串，填入lineEdit_sum</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    app = QtWidgets.QApplication(sys.argv)  </span><br><span class="line">    MainWindow = QtWidgets.QMainWindow()    </span><br><span class="line">    ui = NewUiMainWindow() </span><br><span class="line">    ui.setupUi(MainWindow)</span><br><span class="line">    ui.setupFunction()</span><br><span class="line">    MainWindow.show()                       </span><br><span class="line">    sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
+<p>执行calc.py简单测试一下功能，正常：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6767874-42479fb87f4a748d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>模块化之后，如果我们改动了.ui文件，尽管放心大胆地重新生成模块文件，只要不改动控件的名称，主程序都可以照常运行，是不是方便了很多？确实模块化的管理才是最科学的。</p>
+<h3 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h3><p>这个系列的教程到此就结束了，后面会不定期补一些使用PyQt5的小技巧等等。欢迎大家留言，一起交流，一起进步。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/02/Python相关/PyQt5入门系列4：模块化手动编写的代码块/" data-id="cjqf72yjp0002vsuu74ql49g9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/01/02/Python相关/廖雪峰Python3教程疑难理解(1)：自己的学习笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          廖雪峰Python3教程疑难理解(1)：自己的学习笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/01/02/Python相关/PyQt5入门系列3：为UI界面编写后台逻辑/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">PyQt5入门系列3：为UI界面编写后台逻辑</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/（PDF合集）高速先生-----围殴阻抗/">（PDF合集）高速先生-----围殴阻抗</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/（PDF合集）高速先生-----DDR技术解读/">（PDF合集）高速先生-----DDR技术解读</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列4：宝塔面板和互联网站/">家庭宽带组网&amp;个人服务器搭建系列4：宝塔面板和互联网站</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列3：硬件组成和局域网络/">家庭宽带组网&amp;个人服务器搭建系列3：硬件组成和局域网络</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/硬件相关/家庭宽带组网&个人服务器搭建系列2：搭建目标和效果预览/">家庭宽带组网&amp;个人服务器搭建系列2：搭建目标和效果预览</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
