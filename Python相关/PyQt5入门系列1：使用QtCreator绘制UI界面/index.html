@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>PyQt5入门系列1：使用QtCreator绘制UI界面 | 雷霆的博客 | 扬帆，启航！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn 写在前面关于PyQt入门的教程网上并不缺少，说实话，真稀缺的还是比较进阶的教程。不过我自己也是自学Python到现在，并且使用PyQt写了几个小工具，感觉挺不错，所以从上手入门开始写。我的教程里面可能并不会非常系统和全面，只是觉得作为新手学习一门新的语言和工具，成就感是一件非常重要的事情！快速入门，从照猫画虎到举一反三">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PyQt5入门系列1：使用QtCreator绘制UI界面">
+<meta property="og:url" content="http://yoursite.com/Python相关/PyQt5入门系列1：使用QtCreator绘制UI界面/index.html">
+<meta property="og:site_name" content="雷霆的博客">
+<meta property="og:description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn 写在前面关于PyQt入门的教程网上并不缺少，说实话，真稀缺的还是比较进阶的教程。不过我自己也是自学Python到现在，并且使用PyQt写了几个小工具，感觉挺不错，所以从上手入门开始写。我的教程里面可能并不会非常系统和全面，只是觉得作为新手学习一门新的语言和工具，成就感是一件非常重要的事情！快速入门，从照猫画虎到举一反三">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-dd4e5eccdc8f59a4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-c7794e2e3d1ffcf8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-348a9709742b1f1c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-84ac02b0b9a6980a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-01-02T11:58:01.320Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PyQt5入门系列1：使用QtCreator绘制UI界面">
+<meta name="twitter:description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn 写在前面关于PyQt入门的教程网上并不缺少，说实话，真稀缺的还是比较进阶的教程。不过我自己也是自学Python到现在，并且使用PyQt写了几个小工具，感觉挺不错，所以从上手入门开始写。我的教程里面可能并不会非常系统和全面，只是觉得作为新手学习一门新的语言和工具，成就感是一件非常重要的事情！快速入门，从照猫画虎到举一反三">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/6767874-dd4e5eccdc8f59a4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="http://qiniu.leiting6.cn/vital/screenshot_20190115 20-39-45.png?e=1547560628&token=Uqsg_l3NXniNafKiJ6qpe1wg0iFKVdn4MLRgHKAT:DFwYWvyYW48CzbBScl4ToEzW064=" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Ting Lei</h5>
+          <a href="mailto:leiting.up@gmail.coms" title="leiting.up@gmail.coms" class="mail">leiting.up@gmail.coms</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/1992leiting" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">PyQt5入门系列1：使用QtCreator绘制UI界面</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">PyQt5入门系列1：使用QtCreator绘制UI界面</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-02T13:05:29.596Z" itemprop="datePublished" class="page-time">
+  2019-01-02
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#写在前面"><span class="post-toc-number">1.</span> <span class="post-toc-text">写在前面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于QTCreator"><span class="post-toc-number">2.</span> <span class="post-toc-text">关于QTCreator</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#下载QTCreator"><span class="post-toc-number">3.</span> <span class="post-toc-text">下载QTCreator</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用QTCreator"><span class="post-toc-number">4.</span> <span class="post-toc-text">使用QTCreator</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#认识QtCreator"><span class="post-toc-number">4.0.1.</span> <span class="post-toc-text">认识QtCreator</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#拖入控件，设置属性"><span class="post-toc-number">4.0.2.</span> <span class="post-toc-text">拖入控件，设置属性</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Python相关/PyQt5入门系列1：使用QtCreator绘制UI界面" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">PyQt5入门系列1：使用QtCreator绘制UI界面</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-02 21:05:29" datetime="2019-01-02T13:05:29.596Z" itemprop="datePublished">2019-01-02</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>获取更多文章和更新，请关注我的个人主页：<a href="https://leiting6.cn" target="_blank" rel="noopener">https://leiting6.cn</a></p>
+<h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>关于PyQt入门的教程网上并不缺少，说实话，真稀缺的还是比较进阶的教程。不过我自己也是自学Python到现在，并且使用PyQt写了几个小工具，感觉挺不错，所以从上手入门开始写。我的教程里面可能并不会非常系统和全面，只是觉得作为新手学习一门新的语言和工具，成就感是一件非常重要的事情！快速入门，从照猫画虎到举一反三再到自己独立编写出工具，是最能激发热情的。在此过程中，必定会学会查阅官方文档和网络文章来充实细枝末节的知识，认知体系也就自然系统、全面了。</p>
+<h3 id="关于QTCreator"><a href="#关于QTCreator" class="headerlink" title="关于QTCreator"></a>关于QTCreator</h3><p>QtCreator是跨平台的QT IDE，提供图形化的UI绘制工具。目前QTCreator内部只支持C++语言编写后台逻辑，但是既然QT已经为Pyhton做了比较全面的移植，所以后面肯定会说到怎么能利用Python来给图形界面编写后台功能。</p>
+<h3 id="下载QTCreator"><a href="#下载QTCreator" class="headerlink" title="下载QTCreator"></a>下载QTCreator</h3><p>首先，你的系统中必须准备好Python环境，并且安装对应版本的PyQt5库，再然后安装对应版本的QtCreator。</p>
+<p><a href="https://www.python.org/downloads/windows/" target="_blank" rel="noopener">点击跳转到Python官方下载地址</a></p>
+<p><a href="https://sourceforge.net/projects/pyqt/files/PyQt5/" target="_blank" rel="noopener">点击跳转到各个版本PyQt5安装包下载地址</a></p>
+<p><a href="http://download.qt.io/official_releases/qtcreator/" target="_blank" rel="noopener">点击跳转到QTCreator官方下载地址</a></p>
+<p>QT官方提供各个版本的QTCreator下载，到目前为止最新版本为4.5.2，下载的时候注意选择适合自己操作系统和Python版本的装包。比如我使用的是Win10 64bit系统，安装的是Python3.4 32bit，所以我下载的是<a href="http://download.qt.io/official_releases/qtcreator/4.5/4.5.2/qt-creator-opensource-windows-x86-4.5.2.exe" target="_blank" rel="noopener">qt-creator-opensource-windows-x86-4.5.2.exe</a>。</p>
+<p>之所以还在用Python3.4是因为py2exe支持的比较好，可以比较完美的将Python工程转换为exe可执行文件。</p>
+<h3 id="使用QTCreator"><a href="#使用QTCreator" class="headerlink" title="使用QTCreator"></a>使用QTCreator</h3><h5 id="认识QtCreator"><a href="#认识QtCreator" class="headerlink" title="认识QtCreator"></a>认识QtCreator</h5><p>安装QTCreator之后打开软件，我们会发现这个IDE的界面包含的组件并没有很多。这是因为QTCreator不是完整的QT IDE，它更关注于快速地完成项目设计和开发。</p>
+<p>QTCreator的主界面内容我就不一一介绍了，这里从创建工程开始讲。</p>
+<p>文件 -&gt; 新建文件或者项目 -&gt;  QT ，然后我们可以看到如下界面：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/6767874-dd4e5eccdc8f59a4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.jpg" title="">
+                </div>
+                <div class="image-caption">1.jpg</div>
+            </figure>
+<p>这里不要着急选择Python，因为那并不是我们所需要的。选择QT，然后选择Qt设计师界面类。我们需要创建一个类。面向对象语言中，类是个很重要的概念，C++中会用到，Python中同样会用到。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/6767874-c7794e2e3d1ffcf8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.jpg" title="">
+                </div>
+                <div class="image-caption">2.jpg</div>
+            </figure>
+<p>这一步我们可以选择：</p>
+<ul>
+<li><p>创建Dialog（对话框），包括带按钮、不带按钮的</p>
+</li>
+<li><p>创建Main Window（主窗口）</p>
+</li>
+<li><p>创建Widget（小窗口）</p>
+</li>
+</ul>
+<p>除此之外，还可以创建各种窗口部件类；至于各个部件是什么，不着急，等我们进了设计界面自然能看到。开始我们先选择创建一个Main Window吧，在Main Window里面有需要的话可以放置各种部件，以及创建新的Wighet。</p>
+<p>一直点击下一步，选择存储位置，然后点击完成，进入设计界面。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/6767874-348a9709742b1f1c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.jpg" title="">
+                </div>
+                <div class="image-caption">3.jpg</div>
+            </figure>
+<p>稍微研究一下就可以发现：</p>
+<ul>
+<li><p>QtCreator软件最中间就是我们创建的Main Window的UI界面，起初是空白的，只有一个外框可以调整大小；调整大小的时候观察对象属性中的geometry属性中的分辨率大小也会随之改变，这个分辨率很明显就是Main Window的分辨率了；在对象属性中，我们可以更改这个主窗口的名称（objectName属性），这里保持默认的MainWindow；还可以改变主窗口的标题（windowTitle），我的想法是先做一个最简单的加法器，所以改为“加法器”；</p>
+</li>
+<li><p>左侧工具栏中有很多控件，很多也是我们平时使用软件过程中经常见到的，比如按钮（pushButton），下拉框（comboBox），单行文本框（lineEdit），多行文本框（textEdit）等等；不知道做什么的可以通过搜索引擎来寻找一下信息，更直白的方法是拖入到Main Window中看看具体是什么样子。</p>
+</li>
+</ul>
+<h5 id="拖入控件，设置属性"><a href="#拖入控件，设置属性" class="headerlink" title="拖入控件，设置属性"></a>拖入控件，设置属性</h5><p>一个简单的加法器，包含一个程序界面标题、2个输入数字的单行文本框、一个加号、一个等于号、和一个显示结果的单行文本框，而且我想要显示结果的文本框是只读的。大概思索一下会是怎样一个布局，这时候就可以动手来改变一下主窗口的形状并拖放控件了。</p>
+<p>具体怎么操作就不赘述了，我设计完成之后是下面这个样子：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/6767874-84ac02b0b9a6980a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" title="">
+                </div>
+                <div class="image-caption">image.png</div>
+            </figure>
+<p>下面是所有用到的组件的属性：</p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>objectName属性</th>
+<th>text属性</th>
+<th>其他属性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mainWindow</td>
+<td>MainWindow</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>label</td>
+<td>label_MainTitle</td>
+<td>“简易加法器”</td>
+<td>alignment-&gt;水平的-&gt;alignHCenter</td>
+<td></td>
+</tr>
+<tr>
+<td>lineEdit</td>
+<td>lineEdit_Adder1</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>label</td>
+<td>label_plus</td>
+<td>“+”</td>
+<td>alignment-&gt;水平的-&gt;alignHCenter</td>
+<td></td>
+</tr>
+<tr>
+<td>lineEdit</td>
+<td>lineEdit_Adder2</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>label</td>
+<td>label_equals</td>
+<td>“=”</td>
+<td>alignment-&gt;水平的-&gt;alignHCenter</td>
+<td></td>
+</tr>
+<tr>
+<td>lineEdit</td>
+<td>lineEdit_sum</td>
+<td>—</td>
+<td>readOnly</td>
+<td></td>
+</tr>
+<tr>
+<td>pushButton</td>
+<td>pushButton_calc</td>
+<td>“计算”</td>
+<td>—</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>表格中，组件都是从工具栏中拖拽进来的；objectName是这个组件的名字，只所以要起名字，是不想组件多了之后都叫label1、label2、label3，导致难以分辨，这个名字是我们后面写QT后台逻辑必须用到的；text属性决定了标签、按钮显示什么内容；当然还有些其他的属性可以实现其他的功能和特性。</p>
+<p>怎么布局好看、实用，还是需要自己摸索，当然QtCreator本身也是有各种layout方式可以自动帮你排版的，具体的可以点击左侧工具栏中的layout尝试一下。到此利用QtCreator进行一个简单程序的UI设计就完成了，记得保存。进入创建工程时选择的文件夹，可以发现一个.ui文件。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-01-02T11:58:01.320Z" itemprop="dateUpdated">2019-01-02 19:58:01</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/Python相关/PyQt5入门系列1：使用QtCreator绘制UI界面/" target="_blank" rel="external">http://yoursite.com/Python相关/PyQt5入门系列1：使用QtCreator绘制UI界面/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Ting Lei">
+            Ting Lei
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/Python相关/PyQt5入门系列1：使用QtCreator绘制UI界面/&title=《PyQt5入门系列1：使用QtCreator绘制UI界面》 — 雷霆的博客&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/Python相关/PyQt5入门系列1：使用QtCreator绘制UI界面/&title=《PyQt5入门系列1：使用QtCreator绘制UI界面》 — 雷霆的博客&source=Python小学生，爱折腾，电子产品爱好者" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Python相关/PyQt5入门系列1：使用QtCreator绘制UI界面/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《PyQt5入门系列1：使用QtCreator绘制UI界面》 — 雷霆的博客&url=http://yoursite.com/Python相关/PyQt5入门系列1：使用QtCreator绘制UI界面/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/Python相关/PyQt5入门系列1：使用QtCreator绘制UI界面/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/Python相关/PyQt5入门系列2：利用pyuic5将ui文件转换为py文件/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">PyQt5入门系列2：利用pyuic5将ui文件转换为py文件</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/Linux相关/CentOS6安装使用httpd/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">CentOS6安装使用httpd</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Ting Lei &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/Python相关/PyQt5入门系列1：使用QtCreator绘制UI界面/&title=《PyQt5入门系列1：使用QtCreator绘制UI界面》 — 雷霆的博客&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/Python相关/PyQt5入门系列1：使用QtCreator绘制UI界面/&title=《PyQt5入门系列1：使用QtCreator绘制UI界面》 — 雷霆的博客&source=Python小学生，爱折腾，电子产品爱好者" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Python相关/PyQt5入门系列1：使用QtCreator绘制UI界面/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《PyQt5入门系列1：使用QtCreator绘制UI界面》 — 雷霆的博客&url=http://yoursite.com/Python相关/PyQt5入门系列1：使用QtCreator绘制UI界面/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/Python相关/PyQt5入门系列1：使用QtCreator绘制UI界面/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/Python相关/PyQt5入门系列1：使用QtCreator绘制UI界面/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

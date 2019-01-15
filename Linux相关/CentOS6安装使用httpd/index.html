@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>CentOS6安装使用httpd | 雷霆的博客 | 扬帆，启航！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="获取更多文章和更新，请关注我的个人主页：leiting6.cn 1 安装httpd在终端输入命令httpd，如果提示命令没有找到，则说明没有安装httpd。使用：1yum install -y httpd 安装httpd，如果出现No package httpd available，可以尝试：1yum --disableexcludes=all install -y httpd 来安装httpd。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS6安装使用httpd">
+<meta property="og:url" content="http://yoursite.com/Linux相关/CentOS6安装使用httpd/index.html">
+<meta property="og:site_name" content="雷霆的博客">
+<meta property="og:description" content="获取更多文章和更新，请关注我的个人主页：leiting6.cn 1 安装httpd在终端输入命令httpd，如果提示命令没有找到，则说明没有安装httpd。使用：1yum install -y httpd 安装httpd，如果出现No package httpd available，可以尝试：1yum --disableexcludes=all install -y httpd 来安装httpd。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-02T11:57:41.814Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CentOS6安装使用httpd">
+<meta name="twitter:description" content="获取更多文章和更新，请关注我的个人主页：leiting6.cn 1 安装httpd在终端输入命令httpd，如果提示命令没有找到，则说明没有安装httpd。使用：1yum install -y httpd 安装httpd，如果出现No package httpd available，可以尝试：1yum --disableexcludes=all install -y httpd 来安装httpd。">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="http://qiniu.leiting6.cn/vital/screenshot_20190115 20-39-45.png?e=1547560628&token=Uqsg_l3NXniNafKiJ6qpe1wg0iFKVdn4MLRgHKAT:DFwYWvyYW48CzbBScl4ToEzW064=" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Ting Lei</h5>
+          <a href="mailto:leiting.up@gmail.coms" title="leiting.up@gmail.coms" class="mail">leiting.up@gmail.coms</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/1992leiting" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">CentOS6安装使用httpd</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">CentOS6安装使用httpd</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-02T13:05:29.518Z" itemprop="datePublished" class="page-time">
+  2019-01-02
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-安装httpd"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 安装httpd</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-修改配置文件"><span class="post-toc-number">2.</span> <span class="post-toc-text">2 修改配置文件</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Linux相关/CentOS6安装使用httpd" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">CentOS6安装使用httpd</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-02 21:05:29" datetime="2019-01-02T13:05:29.518Z" itemprop="datePublished">2019-01-02</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>获取更多文章和更新，请关注我的个人主页：<a href="http://leiting6.cn" target="_blank" rel="noopener">leiting6.cn</a></p>
+<h2 id="1-安装httpd"><a href="#1-安装httpd" class="headerlink" title="1 安装httpd"></a>1 安装httpd</h2><p>在终端输入命令httpd，如果提示命令没有找到，则说明没有安装httpd。使用：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> -y httpd</span><br></pre></td></tr></table></figure></p>
+<p>安装httpd，如果出现No package httpd available，可以尝试：<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum --<span class="keyword">disableexcludes=all </span><span class="keyword">install </span>-y httpd</span><br></pre></td></tr></table></figure></p>
+<p>来安装httpd。如果出现其他错误，就利用搜索引擎看看有没有解决办法吧。</p>
+<h2 id="2-修改配置文件"><a href="#2-修改配置文件" class="headerlink" title="2 修改配置文件"></a>2 修改配置文件</h2><p>首先：<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> <span class="string">/etc/httpd</span></span><br><span class="line"><span class="keyword">ls</span></span><br></pre></td></tr></table></figure></p>
+<p>可以看到，有这个目录有2个文件，一个README，一个welcome.conf</p>
+<p>README的内容简单看一下，主要来关注welcome.conf的内容：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">vi</span> welcome.<span class="keyword">conf</span></span><br></pre></td></tr></table></figure></p>
+<p>可以看到：<br><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># This configuration file enables the default "Welcome"</span></span><br><span class="line"><span class="comment"># page if there is no default index page present for</span></span><br><span class="line"><span class="comment"># the root URL.  To disable the Welcome page, comment</span></span><br><span class="line"><span class="comment"># out all the lines below.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="section">&lt;LocationMatch "^/+$"&gt;</span></span><br><span class="line">    <span class="attribute"><span class="nomarkup">Options</span></span> -Indexes</span><br><span class="line">    <span class="attribute"><span class="nomarkup">ErrorDocument</span></span> 403 /error/noindex.html</span><br><span class="line"><span class="section">&lt;/LocationMatch&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>很明白，意思是说，如果你没有配置httpd的话，默认显示Welcome页面；如果你不想使用Welcome页面，就讲下面所有行都注释掉。所以，直接使用vi编辑器把下面的都注释掉：<br><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta"># This configuration file enables the default "Welcome"</span></span><br><span class="line"><span class="meta"># page if there is no default index page present for</span></span><br><span class="line"><span class="meta"># the root URL.  To disable the Welcome page, comment</span></span><br><span class="line"><span class="meta"># out all the lines below.</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#&lt;LocationMatch "^/+$"&gt;</span></span><br><span class="line"><span class="meta">#    Options -Indexes</span></span><br><span class="line"><span class="meta">#    ErrorDocument 403 /error/noindex.html</span></span><br><span class="line"><span class="meta">#&lt;/LocationMatch&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>然后：<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> <span class="string">/etc/httpd/conf</span></span><br><span class="line"><span class="keyword">ls</span></span><br></pre></td></tr></table></figure></p>
+<p>可以看到这个目录下有一个httpd.conf文件，这个就是httpd的配置文件，直接使用vi编辑器编辑它：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">vi</span> httpd.<span class="keyword">conf</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>我修改了如下几个地方：</strong></p>
+<ul>
+<li>listen 80修改为listen 2004（通过ip:2004端口来访问httpd页面）</li>
+<li>DocumentRoot “/var/www/html”改成DocumentRoot “/www/wwwroot/leiting6.cn/tools” （访问httpd将显示该文件下的内容）</li>
+<li><directory "="" var="" www="" html"=""> …改成<directory "="" www="" wwwroot="" leiting6.cn="" tools"="">  （设置根目录一些权限）</directory></directory></li>
+</ul>
+<p>如果出现：</p>
+<p>httpd: Could not reliably determine the server’s fully qualified domain name, using localhost.locald</p>
+<p>将httpd.conf中的：</p>
+<p>ServerName localhost:80改成ServerName localhost:2004</p>
+<p>最后，重启httpd服务：<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">service httpd restart</span></span><br></pre></td></tr></table></figure></p>
+<p>这样，访问我的域名:2004，就能打开访问tools文件夹下面的内容了。这只是httpd的一个最简单的应用，可以把一些常用文件放在tools文件夹下，方便查看和下载；更高级的应用，还是需要研究一下httpd.conf配置文件才行。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-01-02T11:57:41.814Z" itemprop="dateUpdated">2019-01-02 19:57:41</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/Linux相关/CentOS6安装使用httpd/" target="_blank" rel="external">http://yoursite.com/Linux相关/CentOS6安装使用httpd/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Ting Lei">
+            Ting Lei
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/Linux相关/CentOS6安装使用httpd/&title=《CentOS6安装使用httpd》 — 雷霆的博客&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/Linux相关/CentOS6安装使用httpd/&title=《CentOS6安装使用httpd》 — 雷霆的博客&source=Python小学生，爱折腾，电子产品爱好者" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Linux相关/CentOS6安装使用httpd/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《CentOS6安装使用httpd》 — 雷霆的博客&url=http://yoursite.com/Linux相关/CentOS6安装使用httpd/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/Linux相关/CentOS6安装使用httpd/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/Python相关/PyQt5入门系列1：使用QtCreator绘制UI界面/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">PyQt5入门系列1：使用QtCreator绘制UI界面</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/C语言相关/C-C++：保存剪贴板中的截图为bmp文件（编译成dll供python调用）/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">C-C++：保存剪贴板中的截图为bmp文件（编译成dll供python调用）</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Ting Lei &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/Linux相关/CentOS6安装使用httpd/&title=《CentOS6安装使用httpd》 — 雷霆的博客&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/Linux相关/CentOS6安装使用httpd/&title=《CentOS6安装使用httpd》 — 雷霆的博客&source=Python小学生，爱折腾，电子产品爱好者" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Linux相关/CentOS6安装使用httpd/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《CentOS6安装使用httpd》 — 雷霆的博客&url=http://yoursite.com/Linux相关/CentOS6安装使用httpd/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/Linux相关/CentOS6安装使用httpd/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/Linux相关/CentOS6安装使用httpd/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

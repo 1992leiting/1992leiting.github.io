@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super() | 雷霆的博客 | 扬帆，启航！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn  很多跟我一样只有一点C语言基础的朋友，在学习如Python、Java这样的面向对象的语言的时候，走到继承这一步总会觉得非常生涩难懂。其实廖老师这一节将的非常生动详细，结合网上一些博客文章，也能有一个不错的理解。  面向对象语言的典型特征就是可以创建一个类，并且其他的类可以作为子类继承父类的内容。网上好多例子都是以Pe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()">
+<meta property="og:url" content="http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()/index.html">
+<meta property="og:site_name" content="雷霆的博客">
+<meta property="og:description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn  很多跟我一样只有一点C语言基础的朋友，在学习如Python、Java这样的面向对象的语言的时候，走到继承这一步总会觉得非常生涩难懂。其实廖老师这一节将的非常生动详细，结合网上一些博客文章，也能有一个不错的理解。  面向对象语言的典型特征就是可以创建一个类，并且其他的类可以作为子类继承父类的内容。网上好多例子都是以Pe">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-02T12:00:18.757Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()">
+<meta name="twitter:description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn  很多跟我一样只有一点C语言基础的朋友，在学习如Python、Java这样的面向对象的语言的时候，走到继承这一步总会觉得非常生涩难懂。其实廖老师这一节将的非常生动详细，结合网上一些博客文章，也能有一个不错的理解。  面向对象语言的典型特征就是可以创建一个类，并且其他的类可以作为子类继承父类的内容。网上好多例子都是以Pe">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="http://qiniu.leiting6.cn/vital/screenshot_20190115 20-39-45.png?e=1547560628&token=Uqsg_l3NXniNafKiJ6qpe1wg0iFKVdn4MLRgHKAT:DFwYWvyYW48CzbBScl4ToEzW064=" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Ting Lei</h5>
+          <a href="mailto:leiting.up@gmail.coms" title="leiting.up@gmail.coms" class="mail">leiting.up@gmail.coms</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/1992leiting" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-02T13:05:29.833Z" itemprop="datePublished" class="page-time">
+  2019-01-02
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-Python相关/廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-02 21:05:29" datetime="2019-01-02T13:05:29.833Z" itemprop="datePublished">2019-01-02</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>获取更多文章和更新，请关注我的个人主页：<a href="https://leiting6.cn" target="_blank" rel="noopener">https://leiting6.cn</a></p>
+<blockquote>
+<p>很多跟我一样只有一点C语言基础的朋友，在学习如Python、Java这样的面向对象的语言的时候，走到继承这一步总会觉得非常生涩难懂。其实廖老师这一节将的非常生动详细，结合网上一些博客文章，也能有一个不错的理解。</p>
+</blockquote>
+<p>面向对象语言的典型特征就是可以创建一个类，并且其他的类可以作为子类继承父类的内容。网上好多例子都是以Person、Father、Student、Animal为素材来讲的，甚至于有一些丧心病狂的直接用class A、class B，类里面的一些方法比如学生走路啊、小狗奔跑之类，太过于简单导致抽象，看起来枯燥难懂。</p>
+<p>小小吐槽一下。我自己举的例子，也还是以Animal作为素材，不过尽量在内部方法上把内容做丰富一些，让其实现的功能和参数关联程度高一点，不至于太抽象。代码如下（对代码就不做多少分析了，注释写的比较详细，实际结构很简单）:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    Animal类初始化方法，创建2个基本属性，name和age</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age)</span>:</span>  <span class="comment"># self参数自动传入，name和age需要手动传入</span></span><br><span class="line">        self.name = name            <span class="comment"># 带有self.表明是Animal类自己的参数</span></span><br><span class="line">        self.age = age              <span class="comment"># 赋值操作，将外部传入的数值赋值给Animal类的参数</span></span><br><span class="line">        </span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    Animal类中的一个功能方法：打招呼</span></span><br><span class="line"><span class="string">    该功能函数用到了上面初始化过程中创建的2个参数</span></span><br><span class="line"><span class="string">    '''</span>    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">say_hello</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'嗨，你们好，我的名字是%s，我今年%d岁了.'</span> % (self.name, self.age))</span><br><span class="line">        </span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    Animal类的另一个功能方法：显示心情</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">show_mood</span><span class="params">(self, mood)</span>:</span></span><br><span class="line">        print(<span class="string">'%s今天看起来很%s!'</span> % (self.name, mood))</span><br><span class="line">        </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span><span class="params">(Animal)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    新建Dog类，继承Animal类</span></span><br><span class="line"><span class="string">    和上面差不多，Dog类的初始化方法</span></span><br><span class="line"><span class="string">    不同的是，name和age参数在父类中已经初始化过</span></span><br><span class="line"><span class="string">    因此在子类Dog中没必要在重复赋值语句</span></span><br><span class="line"><span class="string">    所以用super()，保证相同的参数只初始化一次</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age, color)</span>:</span>       <span class="comment"># 要注意的是，需要用到的形参还是要一一列出</span></span><br><span class="line">        super(Dog, self).__init__(name, age)    <span class="comment"># 没必要二次赋值的参数用super来继承</span></span><br><span class="line">        self.color = color                      <span class="comment"># 新增的参数需要编写新的赋值语句</span></span><br><span class="line">    </span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    这是一个已经改写的方法</span></span><br><span class="line"><span class="string">    相比较于父类中的say_hello方法，这里打招呼的内容增加了毛色的描述</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">say_hello</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'嗨，你们好，我的名字是%s，我今年%d岁了，我的毛色是%s。'</span> % (self.name, self.age, self.color))</span><br><span class="line">        </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># Dog继承Animal，则my_dog是多态的，即使Dog类型，也是Animal类型</span></span><br><span class="line">    my_dog = Dog(<span class="string">'Coba'</span>, <span class="number">15</span>, <span class="string">'黄色'</span>)</span><br><span class="line">    <span class="comment"># my_dog调用了say_hello方法，由于在子类Dog中这个方法已经改写，所以打印的结果是改写后的内容</span></span><br><span class="line">    my_dog.say_hello()</span><br><span class="line">    <span class="comment"># show_mood方法没有改写，所以直接调用父类Animal中对应的方法</span></span><br><span class="line">    my_dog.show_mood(<span class="string">'开心'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>代码打印的结果：<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">D:<span class="symbol">\P</span>ython<span class="symbol">\廖</span>雪峰教程<span class="symbol">\继</span>承和多态&gt;python 1.py</span><br><span class="line">嗨，你们好，我的名字是Coba，我今年15岁了，我的毛色是黄色。</span><br><span class="line">Coba今天看起来很开心!</span><br></pre></td></tr></table></figure></p>
+<p>我自己写的例子里，只有一个父类Animal、一个子类Dog以及一个实例my_dog；父类中的方法，有在子类中改写的，有没有改写的；实例my_dog自然具有多态特征，在调用类中方法的时候，无需考虑方法是在哪里创建的、是否被改写，一切遵循“开闭”原则。</p>
+<p>这里的super只是用来继承父类Animal中的赋值语句，属于很简单的应用；其实super更大的意义在于类的多重继承，这个以后自己理解更透彻了再举例说明，网上一堆class ABCDEFG看的头疼…</p>
+<p>不知道大家看到这个例子有没有对Python的面向对象属性理解更清晰，反正如果我是初学者，我是更希望看到这样的例子的。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-01-02T12:00:18.757Z" itemprop="dateUpdated">2019-01-02 20:00:18</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/Python相关/廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()/" target="_blank" rel="external">http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Ting Lei">
+            Ting Lei
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()/&title=《廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()》 — 雷霆的博客&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()/&title=《廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()》 — 雷霆的博客&source=Python小学生，爱折腾，电子产品爱好者" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()》 — 雷霆的博客&url=http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/Python相关/廖雪峰Python3教程疑难理解(5)：使用@property装饰器/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">廖雪峰Python3教程疑难理解(5)：使用@property装饰器</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/Python相关/廖雪峰Python3教程疑难理解(3)：装饰器/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">廖雪峰Python3教程疑难理解(3)：装饰器</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Ting Lei &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()/&title=《廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()》 — 雷霆的博客&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()/&title=《廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()》 — 雷霆的博客&source=Python小学生，爱折腾，电子产品爱好者" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()》 — 雷霆的博客&url=http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

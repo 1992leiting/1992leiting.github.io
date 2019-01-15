@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>AutoHotKey技巧3：保存截图为bmp文件 | 雷霆的博客 | 扬帆，启航！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="在我的另外一篇文章《C/C++：保存剪贴板截图为bmp文件（编译成dll供python调用）》中，讲到了怎么利用windows API来读取剪贴板中的内容并保存成bmp文件（如果剪贴板中是图片）。这里还是借用这篇文章中生成的exe文件，配合autohotkey脚本，来便捷地将剪贴板中的图片保存为bmp文件。 exe文件下载链接：点击跳转 脚本内容12345678910111213141516171">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AutoHotKey技巧3：保存截图为bmp文件">
+<meta property="og:url" content="http://yoursite.com/应用相关/AutoHotKey技巧3：保存截图为bmp文件/index.html">
+<meta property="og:site_name" content="雷霆的博客">
+<meta property="og:description" content="在我的另外一篇文章《C/C++：保存剪贴板截图为bmp文件（编译成dll供python调用）》中，讲到了怎么利用windows API来读取剪贴板中的内容并保存成bmp文件（如果剪贴板中是图片）。这里还是借用这篇文章中生成的exe文件，配合autohotkey脚本，来便捷地将剪贴板中的图片保存为bmp文件。 exe文件下载链接：点击跳转 脚本内容12345678910111213141516171">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-ae76b0a27535f796.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-01-02T12:02:17.231Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AutoHotKey技巧3：保存截图为bmp文件">
+<meta name="twitter:description" content="在我的另外一篇文章《C/C++：保存剪贴板截图为bmp文件（编译成dll供python调用）》中，讲到了怎么利用windows API来读取剪贴板中的内容并保存成bmp文件（如果剪贴板中是图片）。这里还是借用这篇文章中生成的exe文件，配合autohotkey脚本，来便捷地将剪贴板中的图片保存为bmp文件。 exe文件下载链接：点击跳转 脚本内容12345678910111213141516171">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/6767874-ae76b0a27535f796.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="http://qiniu.leiting6.cn/vital/screenshot_20190115 20-39-45.png?e=1547560628&token=Uqsg_l3NXniNafKiJ6qpe1wg0iFKVdn4MLRgHKAT:DFwYWvyYW48CzbBScl4ToEzW064=" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Ting Lei</h5>
+          <a href="mailto:leiting.up@gmail.coms" title="leiting.up@gmail.coms" class="mail">leiting.up@gmail.coms</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/1992leiting" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">AutoHotKey技巧3：保存截图为bmp文件</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">AutoHotKey技巧3：保存截图为bmp文件</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-02T13:05:29.891Z" itemprop="datePublished" class="page-time">
+  2019-01-02
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#脚本内容"><span class="post-toc-number">1.</span> <span class="post-toc-text">脚本内容</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#效果"><span class="post-toc-number">3.</span> <span class="post-toc-text">效果</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#拓展"><span class="post-toc-number">4.</span> <span class="post-toc-text">拓展</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-应用相关/AutoHotKey技巧3：保存截图为bmp文件" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">AutoHotKey技巧3：保存截图为bmp文件</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-02 21:05:29" datetime="2019-01-02T13:05:29.891Z" itemprop="datePublished">2019-01-02</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>在我的另外一篇文章<a href="https://leiting6.cn/c-c%EF%BC%9A%E4%BF%9D%E5%AD%98%E5%89%AA%E8%B4%B4%E6%9D%BF%E6%88%AA%E5%9B%BE%E4%B8%BAbmp%E6%96%87%E4%BB%B6%EF%BC%88%E7%BC%96%E8%AF%91%E6%88%90dll%E4%BE%9Bpython%E8%B0%83%E7%94%A8%EF%BC%89/" target="_blank" rel="noopener">《C/C++：保存剪贴板截图为bmp文件（编译成dll供python调用）》</a>中，讲到了怎么利用windows API来读取剪贴板中的内容并保存成bmp文件（如果剪贴板中是图片）。这里还是借用这篇文章中生成的exe文件，配合autohotkey脚本，来便捷地将剪贴板中的图片保存为bmp文件。</p>
+<p>exe文件下载链接：<a href="https://kod.leiting6.cn/index.php?share/folder&amp;user=1&amp;sid=rGiXqIwf#%2F%E5%85%B6%E4%BB%96%2FSaveBmpFile%2F" target="_blank" rel="noopener">点击跳转</a></p>
+<h3 id="脚本内容"><a href="#脚本内容" class="headerlink" title="脚本内容"></a>脚本内容</h3><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">SaveBmp()</span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">    InputBox,</span> file_name, 输入, 请输入图片完整路径例,,,,,,,, D:\%<span class="built_in">A_now</span>%.bmp  <span class="comment">;利用inputbox弹出对话框</span></span><br><span class="line">                                                                            <span class="comment">;指引用户指定bmp文件完整存储路径</span></span><br><span class="line">                                                                            <span class="comment">;A_now为当前时间</span></span><br><span class="line">    if <span class="built_in">ErrorLevel</span> = <span class="number">1</span>       <span class="comment">;根据inputbox的errorlevel来判断</span></span><br><span class="line">    &#123;                       <span class="comment">;用户是点了确定还是点了取消（关闭），有或者是操作超时</span></span><br><span class="line">        MsgBox 取消保存！</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    if <span class="built_in">ErrorLevel</span> = <span class="number">2</span></span><br><span class="line">    &#123;</span><br><span class="line">        MsgBox 操作超时！</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    if <span class="built_in">ErrorLevel</span> = <span class="number">0</span>       <span class="comment">;如果点了确定，则进行保存截图操作</span></span><br><span class="line">    &#123;</span><br><span class="line">        RunWait SaveBmpFile <span class="string">"%file_name%"</span>,, Hide    <span class="comment">;利用runwait执行SaveBmpFile.exe</span></span><br><span class="line">        if <span class="built_in">ErrorLevel</span> = ERROR                       <span class="comment">;runwait会自动设置errorlevel，如果是ERROR，则说明exe出现异常错误</span></span><br><span class="line">            MsgBox 执行SaveBmpFile时发生未知错误！</span><br><span class="line">        else if <span class="built_in">ErrorLevel</span> = <span class="number">0</span>                      <span class="comment">;如果exe执行完成，会有返回值，根据返回值弹出提示</span></span><br><span class="line">            MsgBox %file_name%保存成功！</span><br><span class="line">        else if <span class="built_in">ErrorLevel</span> = <span class="number">11</span></span><br><span class="line">            MsgBox 保存出错，剪贴板内容不是图片！</span><br><span class="line">        else if <span class="built_in">ErrorLevel</span> = <span class="number">12</span></span><br><span class="line">            MsgBox 保存出错，打开剪贴板失败！</span><br><span class="line">        else if <span class="built_in">ErrorLevel</span> = <span class="number">13</span></span><br><span class="line">            MsgBox 保存出错，请检查文件夹权限等！</span><br><span class="line">        else if <span class="built_in">ErrorLevel</span> = <span class="number">14</span></span><br><span class="line">            MsgBox 保存出错，文件路径非法！</span><br><span class="line">        else</span><br><span class="line">            MsgBox 未知错误！</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="symbol">^!c::</span> SaveBmp()  <span class="comment">;Ctrl+Alt+C快捷键进行截图</span></span><br></pre></td></tr></table></figure>
+<p>注释已经对关键语句进行了解释，希望刚接触ahk的同学通过<a href="https://ahkcn.github.io/docs/AutoHotkey.htm" target="_blank" rel="noopener">autohotkey中文论坛</a>了解一下其中用到的函数，这里主要有<strong>InputBox</strong>和<strong>RunWait</strong>，重点是理解<strong>这2个函数的ErrorLevel设定</strong>，这样才能根据执行结果让程序顺利流入各个分支，增强健壮性。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>安装AutoHotKey，新建文本贴入上述代码并保存成xxx.ahk，将SaveBmpFile.exe和ahk脚本放在同一文件夹，双击脚本文件，这样就已经在后台运行了。</p>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p>按下组合键，会弹出输入框，提示输入图片存储的完整路径，默认为D盘更目录下以当前时间命名，需要其他位置或者命名格式可以自行更改。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/6767874-ae76b0a27535f796.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" title="">
+                </div>
+                <div class="image-caption">image.png</div>
+            </figure>
+<h3 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h3><p>可能使用过程中，大家也能发现，想要保存文件需要先手动截图。但是这都不是事儿啊！可以在弹出InputBox之前模拟按下PrtSC按键（截全屏）或者Alt+PrtSc（截当前活动窗口），这就需要大家发挥想象力了，我这里只提供核心功能。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-01-02T12:02:17.231Z" itemprop="dateUpdated">2019-01-02 20:02:17</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/应用相关/AutoHotKey技巧3：保存截图为bmp文件/" target="_blank" rel="external">http://yoursite.com/应用相关/AutoHotKey技巧3：保存截图为bmp文件/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Ting Lei">
+            Ting Lei
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/应用相关/AutoHotKey技巧3：保存截图为bmp文件/&title=《AutoHotKey技巧3：保存截图为bmp文件》 — 雷霆的博客&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/应用相关/AutoHotKey技巧3：保存截图为bmp文件/&title=《AutoHotKey技巧3：保存截图为bmp文件》 — 雷霆的博客&source=Python小学生，爱折腾，电子产品爱好者" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/应用相关/AutoHotKey技巧3：保存截图为bmp文件/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《AutoHotKey技巧3：保存截图为bmp文件》 — 雷霆的博客&url=http://yoursite.com/应用相关/AutoHotKey技巧3：保存截图为bmp文件/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/应用相关/AutoHotKey技巧3：保存截图为bmp文件/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/应用相关/AutoHotKey技巧4：分屏GUI版出炉！Windows下的分屏软件---WinSpliter/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">AutoHotKey技巧4：分屏GUI版出炉！Windows下的分屏软件---WinSpliter</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/Python相关/艾巴索iBasso-DX80播放列表生成器使用教程/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">艾巴索iBasso-DX80播放列表生成器使用教程</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Ting Lei &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/应用相关/AutoHotKey技巧3：保存截图为bmp文件/&title=《AutoHotKey技巧3：保存截图为bmp文件》 — 雷霆的博客&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/应用相关/AutoHotKey技巧3：保存截图为bmp文件/&title=《AutoHotKey技巧3：保存截图为bmp文件》 — 雷霆的博客&source=Python小学生，爱折腾，电子产品爱好者" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/应用相关/AutoHotKey技巧3：保存截图为bmp文件/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《AutoHotKey技巧3：保存截图为bmp文件》 — 雷霆的博客&url=http://yoursite.com/应用相关/AutoHotKey技巧3：保存截图为bmp文件/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/应用相关/AutoHotKey技巧3：保存截图为bmp文件/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/应用相关/AutoHotKey技巧3：保存截图为bmp文件/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

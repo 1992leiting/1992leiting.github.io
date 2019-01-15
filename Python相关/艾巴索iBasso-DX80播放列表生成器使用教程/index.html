@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>艾巴索iBasso-DX80播放列表生成器使用教程 | 雷霆的博客 | 扬帆，启航！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn 脚本下载：dx80_playlist_generator_v1.0.py  提取密码:qn8qu  这段时间淘了台艾巴索DX80，配合IE80，效果还是可以。无奈这播放器使用播放列表还是有点麻烦，官方群倒是有个教程，得用2个软件来生成、修改、导入，挺麻烦的。作为一名非专业程序猿，这哪能忍？果断写个脚本，一步搞定！  为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="艾巴索iBasso-DX80播放列表生成器使用教程">
+<meta property="og:url" content="http://yoursite.com/Python相关/艾巴索iBasso-DX80播放列表生成器使用教程/index.html">
+<meta property="og:site_name" content="雷霆的博客">
+<meta property="og:description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn 脚本下载：dx80_playlist_generator_v1.0.py  提取密码:qn8qu  这段时间淘了台艾巴索DX80，配合IE80，效果还是可以。无奈这播放器使用播放列表还是有点麻烦，官方群倒是有个教程，得用2个软件来生成、修改、导入，挺麻烦的。作为一名非专业程序猿，这哪能忍？果断写个脚本，一步搞定！  为">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6767874-c3cb2b3dcc549447.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6767874-97aa59f9af6b0448.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6767874-7dc5bd53fc22ec8f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6767874-9f84b087127928ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-01-02T11:59:10.189Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="艾巴索iBasso-DX80播放列表生成器使用教程">
+<meta name="twitter:description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn 脚本下载：dx80_playlist_generator_v1.0.py  提取密码:qn8qu  这段时间淘了台艾巴索DX80，配合IE80，效果还是可以。无奈这播放器使用播放列表还是有点麻烦，官方群倒是有个教程，得用2个软件来生成、修改、导入，挺麻烦的。作为一名非专业程序猿，这哪能忍？果断写个脚本，一步搞定！  为">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/6767874-c3cb2b3dcc549447.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="http://qiniu.leiting6.cn/vital/screenshot_20190115 20-39-45.png?e=1547560628&token=Uqsg_l3NXniNafKiJ6qpe1wg0iFKVdn4MLRgHKAT:DFwYWvyYW48CzbBScl4ToEzW064=" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Ting Lei</h5>
+          <a href="mailto:leiting.up@gmail.coms" title="leiting.up@gmail.coms" class="mail">leiting.up@gmail.coms</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/1992leiting" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">艾巴索iBasso-DX80播放列表生成器使用教程</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">艾巴索iBasso-DX80播放列表生成器使用教程</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-02T13:05:29.873Z" itemprop="datePublished" class="page-time">
+  2019-01-02
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#为啥要用播放列表？"><span class="post-toc-number">1.</span> <span class="post-toc-text">为啥要用播放列表？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用教程"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用教程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常见问题Q-amp-A"><span class="post-toc-number">3.</span> <span class="post-toc-text">常见问题Q&amp;A</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#最后"><span class="post-toc-number">4.</span> <span class="post-toc-text">最后</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Python相关/艾巴索iBasso-DX80播放列表生成器使用教程" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">艾巴索iBasso-DX80播放列表生成器使用教程</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-02 21:05:29" datetime="2019-01-02T13:05:29.873Z" itemprop="datePublished">2019-01-02</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>获取更多文章和更新，请关注我的个人主页：<a href="https://leiting6.cn" target="_blank" rel="noopener">https://leiting6.cn</a></p>
+<p>脚本下载：<br><a href="https://kod.leiting6.cn/index.php?share/file&amp;user=1&amp;sid=72jAzshb" target="_blank" rel="noopener">dx80_playlist_generator_v1.0.py</a>  提取密码:qn8qu</p>
+<blockquote>
+<p>这段时间淘了台艾巴索DX80，配合IE80，效果还是可以。无奈这播放器使用播放列表还是有点麻烦，官方群倒是有个教程，得用2个软件来生成、修改、导入，挺麻烦的。作为一名非专业程序猿，这哪能忍？果断写个脚本，一步搞定！</p>
+</blockquote>
+<h2 id="为啥要用播放列表？"><a href="#为啥要用播放列表？" class="headerlink" title="为啥要用播放列表？"></a>为啥要用播放列表？</h2><p>可能不是每个人都有创建播放列表的习惯，但是对于像我一样习惯用歌手名字来整理歌曲的，总不能进入一个目录之后就总听这一个人的歌吧？可能在路上就想听动感一点的歌，在家安静的时候就像听一些情歌，等等等等，这时候，一个播放列表就很实用了。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/6767874-c3cb2b3dcc549447.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure></p>
+<h2 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h2><p><strong>使用教程很简单，简单来说分下面几步:</strong></p>
+<ul>
+<li>电脑上安装python3.6</li>
+<li>将脚本放到DX80存储卡根目录</li>
+<li>将想列入播放列表的歌曲拖入脚本生成列表文件</li>
+<li>拔掉USB在DX80上导入列表</li>
+</ul>
+<p><strong>下面详细讲一下…</strong></p>
+<p>首先电脑上要安装Python3.6版本，<a href="https://www.python.org/ftp/python/3.6.3/python-3.6.3-amd64.exe" title="点击下载" target="_blank" rel="noopener">点击下载</a>。<br>注意安装的时候勾选“add to path”，其他地方一直下一步就好了。</p>
+<p>然后将后缀为py的脚本文件放到DX80存储卡的根目录，注意要打开2个窗口，如截图。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/6767874-97aa59f9af6b0448.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure></p>
+<p>接着，在右边窗口中选中你想要加入播放列表的歌曲，按住鼠标左键，拖拽到左边窗口的.py脚本文件上，操作如截图。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/6767874-7dc5bd53fc22ec8f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure><br>不出意外，系统会弹出窗口，提示一些信息，表示已经生成了列表并打印出列表内容，按任意键退出。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/6767874-9f84b087127928ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure><br>这时候，可以看到DX80存储卡根目录已经生成了一个list.m3u8文件，我们重命名一下，比如叫“中国风.m3u8”，然后拔下USB，在DX80上操作进入SD卡根目录，导入“中国风.m3u8”，这样播放列表就创建成功了。</p>
+<h2 id="常见问题Q-amp-A"><a href="#常见问题Q-amp-A" class="headerlink" title="常见问题Q&amp;A"></a>常见问题Q&amp;A</h2><ul>
+<li><strong>脚本文件放置的目录有要求吗？</strong><br>没错，.py文件必须放到DX80存储卡根目录下。</li>
+<li><strong>list.m3u8的创建机制是怎样的？</strong><br>创建机制是：如果根目录下没有list.m3u8文件，则创建list.m3u8文件；如果已经存在，则在原来的基础上追加内容。比如说，如果你跟我一样喜欢以歌手名字来整理歌曲，出了周杰伦，还有董贞、胡彦斌等其他人都有中国风歌曲，不用着急，一个个目录里面选中你想要的歌曲，分3次拖到.py脚本文件上，第2次、第3次的内容会自动追加上去。</li>
+<li><strong>想要创建新的播放列表怎么办？</strong><br>将list.m3u8重命名就好，下一次脚本将新建一个全新的list.m3u8文件</li>
+<li><strong>是否支持多SD卡？</strong><br>暂时不支持多SD卡操作，感觉用到的人不多，不是刚需，v1.0版本的是基于你的DX80只插了一张SD的情景下编写的。</li>
+</ul>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>我试用了几次，效果还不错，欢迎反馈bug和提出建议。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-01-02T11:59:10.189Z" itemprop="dateUpdated">2019-01-02 19:59:10</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/Python相关/艾巴索iBasso-DX80播放列表生成器使用教程/" target="_blank" rel="external">http://yoursite.com/Python相关/艾巴索iBasso-DX80播放列表生成器使用教程/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Ting Lei">
+            Ting Lei
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/Python相关/艾巴索iBasso-DX80播放列表生成器使用教程/&title=《艾巴索iBasso-DX80播放列表生成器使用教程》 — 雷霆的博客&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/Python相关/艾巴索iBasso-DX80播放列表生成器使用教程/&title=《艾巴索iBasso-DX80播放列表生成器使用教程》 — 雷霆的博客&source=Python小学生，爱折腾，电子产品爱好者" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Python相关/艾巴索iBasso-DX80播放列表生成器使用教程/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《艾巴索iBasso-DX80播放列表生成器使用教程》 — 雷霆的博客&url=http://yoursite.com/Python相关/艾巴索iBasso-DX80播放列表生成器使用教程/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/Python相关/艾巴索iBasso-DX80播放列表生成器使用教程/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/应用相关/AutoHotKey技巧3：保存截图为bmp文件/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">AutoHotKey技巧3：保存截图为bmp文件</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/Python相关/廖雪峰Python3教程疑难理解(5)：使用@property装饰器/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">廖雪峰Python3教程疑难理解(5)：使用@property装饰器</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Ting Lei &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/Python相关/艾巴索iBasso-DX80播放列表生成器使用教程/&title=《艾巴索iBasso-DX80播放列表生成器使用教程》 — 雷霆的博客&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/Python相关/艾巴索iBasso-DX80播放列表生成器使用教程/&title=《艾巴索iBasso-DX80播放列表生成器使用教程》 — 雷霆的博客&source=Python小学生，爱折腾，电子产品爱好者" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Python相关/艾巴索iBasso-DX80播放列表生成器使用教程/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《艾巴索iBasso-DX80播放列表生成器使用教程》 — 雷霆的博客&url=http://yoursite.com/Python相关/艾巴索iBasso-DX80播放列表生成器使用教程/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/Python相关/艾巴索iBasso-DX80播放列表生成器使用教程/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/Python相关/艾巴索iBasso-DX80播放列表生成器使用教程/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
