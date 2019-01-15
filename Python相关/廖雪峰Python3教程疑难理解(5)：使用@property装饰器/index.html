@@ -21,17 +21,17 @@
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn  看了很多遍廖雪峰老师的教程，网上也查了很多文章，最终发现，@property的作用就是：把类的方法转化为类的属性（只读）、取代传统的get/set/del方法 — 起码到现在为止我的理解是这样的。具体细节，下面一一道来。  1 转化类方法为类只读属性废话不多说，首先上代码：1234567891011121314151">
+    <meta name="description" content="获取更多文章和更新，请关注我的个人主页：www.leiting6.cn  看了很多遍廖雪峰老师的教程，网上也查了很多文章，最终发现，@property的作用就是：把类的方法转化为类的属性（只读）、取代传统的get/set/del方法 — 起码到现在为止我的理解是这样的。具体细节，下面一一道来。  1 转化类方法为类只读属性废话不多说，首先上代码：12345678910111213141516171">
 <meta property="og:type" content="article">
 <meta property="og:title" content="廖雪峰Python3教程疑难理解(5)：使用@property装饰器">
 <meta property="og:url" content="http://yoursite.com/Python相关/廖雪峰Python3教程疑难理解(5)：使用@property装饰器/index.html">
 <meta property="og:site_name" content="雷霆的博客">
-<meta property="og:description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn  看了很多遍廖雪峰老师的教程，网上也查了很多文章，最终发现，@property的作用就是：把类的方法转化为类的属性（只读）、取代传统的get/set/del方法 — 起码到现在为止我的理解是这样的。具体细节，下面一一道来。  1 转化类方法为类只读属性废话不多说，首先上代码：1234567891011121314151">
+<meta property="og:description" content="获取更多文章和更新，请关注我的个人主页：www.leiting6.cn  看了很多遍廖雪峰老师的教程，网上也查了很多文章，最终发现，@property的作用就是：把类的方法转化为类的属性（只读）、取代传统的get/set/del方法 — 起码到现在为止我的理解是这样的。具体细节，下面一一道来。  1 转化类方法为类只读属性废话不多说，首先上代码：12345678910111213141516171">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-02T12:00:30.351Z">
+<meta property="og:updated_time" content="2019-01-15T15:27:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="廖雪峰Python3教程疑难理解(5)：使用@property装饰器">
-<meta name="twitter:description" content="获取更多文章和更新，请关注我的个人主页：https://leiting6.cn  看了很多遍廖雪峰老师的教程，网上也查了很多文章，最终发现，@property的作用就是：把类的方法转化为类的属性（只读）、取代传统的get/set/del方法 — 起码到现在为止我的理解是这样的。具体细节，下面一一道来。  1 转化类方法为类只读属性废话不多说，首先上代码：1234567891011121314151">
+<meta name="twitter:description" content="获取更多文章和更新，请关注我的个人主页：www.leiting6.cn  看了很多遍廖雪峰老师的教程，网上也查了很多文章，最终发现，@property的作用就是：把类的方法转化为类的属性（只读）、取代传统的get/set/del方法 — 起码到现在为止我的理解是这样的。具体细节，下面一一道来。  1 转化类方法为类只读属性废话不多说，首先上代码：12345678910111213141516171">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
@@ -74,7 +74,7 @@
             <li class="waves-block waves-effect">
               <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
-                Archives
+                归档
               </a>
             </li>
         
@@ -128,8 +128,8 @@
         <h1 class="title">廖雪峰Python3教程疑难理解(5)：使用@property装饰器</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-01-02T13:05:29.867Z" itemprop="datePublished" class="page-time">
-  2019-01-02
+                <time datetime="2017-11-17T08:42:20.000Z" itemprop="datePublished" class="page-time">
+  2017-11-17
 </time>
 
 
@@ -158,7 +158,7 @@
     <div class="post-card">
         <h1 class="post-card-title">廖雪峰Python3教程疑难理解(5)：使用@property装饰器</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-01-02 21:05:29" datetime="2019-01-02T13:05:29.867Z" itemprop="datePublished">2019-01-02</time>
+            <time class="post-time" title="2017-11-17 16:42:20" datetime="2017-11-17T08:42:20.000Z" itemprop="datePublished">2017-11-17</time>
 
             
 
@@ -171,7 +171,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>获取更多文章和更新，请关注我的个人主页：<a href="https://leiting6.cn" target="_blank" rel="noopener">https://leiting6.cn</a></p>
+            <p>获取更多文章和更新，请关注我的个人主页：<a href="www.leiting6.cn/">www.leiting6.cn</a></p>
 <blockquote>
 <p>看了很多遍廖雪峰老师的教程，网上也查了很多文章，最终发现，@property的作用就是：把类的方法转化为类的属性（只读）、取代传统的get/set/del方法 — 起码到现在为止我的理解是这样的。具体细节，下面一一道来。</p>
 </blockquote>
@@ -202,7 +202,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-01-02T12:00:30.351Z" itemprop="dateUpdated">2019-01-02 20:00:30</time>
+    最后更新时间：<time datetime="2019-01-15T15:27:01.000Z" itemprop="dateUpdated">2019-01-15 23:27:01</time>
 </span><br>
 
 
@@ -280,18 +280,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/Python相关/艾巴索iBasso-DX80播放列表生成器使用教程/" id="post-prev" class="post-nav-link">
+      <a href="/Linux相关/CentOS6安装使用httpd/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">艾巴索iBasso-DX80播放列表生成器使用教程</h4>
+        <h4 class="title">CentOS6安装使用httpd</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/Python相关/廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()/" id="post-next" class="post-nav-link">
+      <a href="/应用相关/Mac上使用Parallel-Desktop安装Windows7和Ubuntu16-04LTS虚拟机教程/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">廖雪峰Python3教程疑难理解(4)：继承、多态、改写，顺便用一下super()</h4>
+        <h4 class="title">Mac上使用Parallel-Desktop安装Windows7和Ubuntu16-04LTS虚拟机教程</h4>
       </a>
     </div>
   
