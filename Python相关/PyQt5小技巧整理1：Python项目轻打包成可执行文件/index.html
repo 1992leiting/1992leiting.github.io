@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>PyQt5С��������1��Python��Ŀ�����ɿ�ִ���ļ� | 雷霆的博客 | 扬帆，启航！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="��ȡ�������º͸��£����ע�ҵĸ�����ҳ��www.leiting6.cn ���ô����������Python��Ŀ����ɿ�ִ���ļ����������Ѿ��������ʻ����ˣ�ĿǰӦ�ñȽ϶�ĳ�������Windows��Mac�����¡���ұȽϳ��õĴ���������¡� 1. pye2exe for Windowsͣ����2014�꣬Ŀǰֻ֧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PyQt5С��������1��Python��Ŀ�����ɿ�ִ���ļ�">
+<meta property="og:url" content="http://yoursite.com/Python相关/PyQt5小技巧整理1：Python项目轻打包成可执行文件/index.html">
+<meta property="og:site_name" content="雷霆的博客">
+<meta property="og:description" content="��ȡ�������º͸��£����ע�ҵĸ�����ҳ��www.leiting6.cn ���ô����������Python��Ŀ����ɿ�ִ���ļ����������Ѿ��������ʻ����ˣ�ĿǰӦ�ñȽ϶�ĳ�������Windows��Mac�����¡���ұȽϳ��õĴ���������¡� 1. pye2exe for Windowsͣ����2014�꣬Ŀǰֻ֧">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-20ae136882b8a006.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-f3780b537f8e20c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-718068051162ec3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-8a164e6c8222cde8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-01-19T07:13:25.828Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PyQt5С��������1��Python��Ŀ�����ɿ�ִ���ļ�">
+<meta name="twitter:description" content="��ȡ�������º͸��£����ע�ҵĸ�����ҳ��www.leiting6.cn ���ô����������Python��Ŀ����ɿ�ִ���ļ����������Ѿ��������ʻ����ˣ�ĿǰӦ�ñȽ϶�ĳ�������Windows��Mac�����¡���ұȽϳ��õĴ���������¡� 1. pye2exe for Windowsͣ����2014�꣬Ŀǰֻ֧">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/6767874-20ae136882b8a006.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="http://qiniu.leiting6.cn/vital/screenshot_20190115 20-39-45.png?e=1547560628&token=Uqsg_l3NXniNafKiJ6qpe1wg0iFKVdn4MLRgHKAT:DFwYWvyYW48CzbBScl4ToEzW064=" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Ting Lei</h5>
+          <a href="mailto:leiting.up@gmail.coms" title="leiting.up@gmail.coms" class="mail">leiting.up@gmail.coms</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.jianshu.com/u/e096f464b471">
+                <i class="icon icon-lg icon-tags"></i>
+                简书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/1992leiting" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">PyQt5С��������1��Python��Ŀ�����ɿ�ִ���ļ�</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">PyQt5С��������1��Python��Ŀ�����ɿ�ִ���ļ�</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-19T07:13:27.000Z" itemprop="datePublished" class="page-time">
+  2019-01-19
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#���o������"><span class="post-toc-number">1.</span> <span class="post-toc-text">���ô������</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-pye2exe-for-Windows"><span class="post-toc-number">1.0.0.1.</span> <span class="post-toc-text">1. pye2exe for Windows</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-pyinstaller-for-Windows-and-Mac"><span class="post-toc-number">1.0.0.2.</span> <span class="post-toc-text">2. pyinstaller for Windows and Mac</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-py2app-for-Mac"><span class="post-toc-number">1.0.0.3.</span> <span class="post-toc-text">3. py2app for Mac</span></a></li></ol></li></ol><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#��ν������������͡�������"><span class="post-toc-number">2.</span> <span class="post-toc-text">��ν������������͡�������</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#�������"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">�������</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#����"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">����</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#�׶�"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">�׶�</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#����-1"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">����</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#����-2"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">����</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#����-3"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">����</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#�׶�-1"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">�׶�</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#����-4"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">����</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#��������"><span class="post-toc-number">3.</span> <span class="post-toc-text">��������</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#��������-1"><span class="post-toc-number">4.</span> <span class="post-toc-text">��������</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Windows��"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">Windows��</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-��װPython����"><span class="post-toc-number">4.1.1.</span> <span class="post-toc-text">1. ��װPython����</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-����"><span class="post-toc-number">4.1.2.</span> <span class="post-toc-text">5. ����</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Mac��"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">Mac��</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-��װPython����-1"><span class="post-toc-number">4.2.1.</span> <span class="post-toc-text">1. ��װPython����</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-����-1"><span class="post-toc-number">4.2.2.</span> <span class="post-toc-text">5. ����</span></a></li></ol></li></ol></li>
+        </nav>
+    </aside>
+
+
+<article id="post-Python相关/PyQt5小技巧整理1：Python项目轻打包成可执行文件" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">PyQt5С��������1��Python��Ŀ�����ɿ�ִ���ļ�</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-19 15:13:27" datetime="2019-01-19T07:13:27.000Z" itemprop="datePublished">2019-01-19</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>��ȡ�������º͸��£����ע�ҵĸ�����ҳ��<a href="www.leiting6.cn">www.leiting6.cn</a></p>
+<h1 id="���o������"><a href="#���o������" class="headerlink" title="���ô������"></a>���ô������</h1><p>����Python��Ŀ����ɿ�ִ���ļ����������Ѿ��������ʻ����ˣ�ĿǰӦ�ñȽ϶�ĳ�������Windows��Mac�����¡���ұȽϳ��õĴ���������¡�</p>
+<h4 id="1-pye2exe-for-Windows"><a href="#1-pye2exe-for-Windows" class="headerlink" title="1. pye2exe for Windows"></a>1. <a href="https://pypi.org/project/py2exe/" target="_blank" rel="noopener">pye2exe</a> for Windows</h4><p>ͣ����2014�꣬Ŀǰֻ֧��py2.x��py3.0-3.4��֮ǰ���Լ���д�ļ���PyQt5����һֱ��py2exe����ģ������ԱȽ�С�������⼸�δ�������������ָ����Ĵ��󣬶���Ӧ�õ���ĳЩ���������Ѿ�Ҫ��py3.5+��Python�����ˣ�����ֻ��������</p>
+<h4 id="2-pyinstaller-for-Windows-and-Mac"><a href="#2-pyinstaller-for-Windows-and-Mac" class="headerlink" title="2. pyinstaller for Windows and Mac"></a>2. <a href="https://pypi.org/project/PyInstaller/" target="_blank" rel="noopener">pyinstaller</a> for Windows and Mac</h4><p>һֱ�ڸ��£�֧��py2.7��py3.4-3.7������ǿ��Windows��Macƽ̨������ʹ�á�</p>
+<h4 id="3-py2app-for-Mac"><a href="#3-py2app-for-Mac" class="headerlink" title="3. py2app for Mac"></a>3. <a href="https://pypi.org/project/py2app/" target="_blank" rel="noopener">py2app</a> for Mac</h4><p>Mac������ʹ�ý϶�Ĵ�����ߣ����ܱȽ���ȫ������ͨ��setup.py���Դ�������������á�</p>
+<h1 id="��ν������������͡�������"><a href="#��ν������������͡�������" class="headerlink" title="��ν������������͡�������"></a>��ν������������͡�������</h1><h2 id="�������"><a href="#�������" class="headerlink" title="�������"></a>�������</h2><h3 id="����"><a href="#����" class="headerlink" title="����"></a>����</h3><p>�����������Python�ű��������ɵ�ǰ����ϵͳ�����µĿ�ִ���ļ�������������Ҫ�ĵ������⣬һ��������ֶ�̬���ӿ��������������������ͼ����ȥ����PyQt5��д��һ��adb���ߣ�����PyQt5���⣬��ʹ����configparer�⣨һ�����ڶ�дini�����ļ��ĵ������⣩���Լ�����Python�Դ�����������С������ʵ���ܲ������ӣ�ֻ����ҪPyQt5�����GUI���ƣ������ȴ��50+M���ļ�������ѡ�еĲ���Ϊ��PyQt5ֱ����ص���������С�ܺ��Ѿ��ﵽ20+M�������Python��Ŀ��������ı׶ˣ������������Ȥ�����ѿ�������һ�£�����һ��py�ű���ֻд�������ر�򵥵���䣬������import�κ�ģ�飬Ȼ�����������ִ�����������exe����app������Ʒ�������С��Ρ�<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/6767874-20ae136882b8a006.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" title="">
+                </div>
+                <div class="image-caption">image.png</div>
+            </figure></p>
+<h3 id="�׶�"><a href="#�׶�" class="headerlink" title="�׶�"></a>�׶�</h3><ul>
+<li>���������󣬱Ƚ�ռ�ÿռ䣬�����㴫��</li>
+<li>ÿ��Դ����¶���Ҫ���´���������˵��������Ҳ����Ҳ��Ƚϴ�<h3 id="����-1"><a href="#����-1" class="headerlink" title="����"></a>����</h3></li>
+<li>����������Ҫ�������������Python������������������ģ�飬���������������Ͽ���ֱ������ʹ��</li>
+</ul>
+<h2 id="����-2"><a href="#����-2" class="headerlink" title="����"></a>����</h2><h3 id="����-3"><a href="#����-3" class="headerlink" title="����"></a>����</h3><p>����˵���ˣ����Ǵ���һ��������ڣ�һ������Python�ű�����Ȼ�������Ը�⣬���Է�һ����ݷ�ʽ�����棬������Windows�ϣ�py�ű��ļ��������Ļ��򿪻���cmd���ڣ����Ҳ��̶ܹ������������߿�ʼ�˵�����Mac�ϣ�����ָ��ͼ�꣬����Ҳ���÷���LaunchPad����Ի�������һ��exe����app���ã��ţ������������ˣ������ԣ����Ҫ��ű�Դ�ļ������ڴ��̵�ĳ��λ�ò��������ƶ�������Python����������Ҳ�Ǳ��밲װ�ġ�</p>
+<h3 id="�׶�-1"><a href="#�׶�-1" class="headerlink" title="�׶�"></a>�׶�</h3><ul>
+<li>����ϵͳ���밲װ������Python����</li>
+<li>ʹ��ĳ������ð�װ�������������ĵ�������</li>
+<li>�ű�Դ�ļ�������ڴ����У����������ƶ�</li>
+<li>������Ŀ���£����ܵ���֮����Python�汾�͵�������İ汾�Լ���װ�µ�������</li>
+<li>��Ŀ�������б�Ҫ��֪�û���Ҫ��װ��Python�汾���Լ���汾<h3 id="����-4"><a href="#����-4" class="headerlink" title="����"></a>����</h3></li>
+<li>�����Ŀ���²��漰Python�����͵�������ĸĶ�������ֻ���½ű��ļ������������´��</li>
+<li>���������������������û����д��Ҳʮ�����ײ���</li>
+<li>�����ڼ����¹��ܱ�д�򵥣�ֻ��Ҫ�����и��Ĺ��Ľű��ļ����ɣ����û�����������Ҫ���µ�����£�</li>
+</ul>
+<h1 id="��������"><a href="#��������" class="headerlink" title="��������"></a>��������</h1><p>������������������п�ȡ֮���ģ��������Ŀ��������ͻ������ͣ����������漰�ش�ı䣬ֻ���޲��ű����߼�����֮ǰ�Ļ�������ɾ�Ĺ��ܣ������һ��Ǹ��Ƽ��������Ͼ���������˵�����֮����������Ҳʮ�ּ򵥣�ֻ��Ҫ������дһ��update.py�������иĶ��Ľű��ļ����ɡ�<br>���ڿ����߶����أ��Ҿ�����Ҫע��Ĳ��֣���һ��ʼ��Ҫ����Ŀ���ù滮��ȷ��ʹ�õĻ��������������������ʹ���鷳�����������дPyQt5֮����Ŀ������һ��Ҫ��<br><strong>����ʹ��PyQt5��Python�Դ��Ĺ��ܣ�����</strong><br><strong>����ʹ��PyQt5��Python�Դ��Ĺ��ܣ�����</strong><br><strong>����ʹ��PyQt5��Python�Դ��Ĺ��ܣ�����</strong><br>��ΪPyQt5�������ǵĹ��ܷǳ��㣬�����������ᵽ�Ĵ���ini�����ļ��Ĺ��ܣ���ʵPyQt5Ҳ���еģ�������ȫ�����ٰ�װһ���������⣻��������ϵͳ������Ĳ��������ݿ�Ĳ����ȵȣ�PyQt5����֧�ֵġ�</p>
+<h1 id="��������-1"><a href="#��������-1" class="headerlink" title="��������"></a>��������</h1><p>�����Ҫ����һ��Windows�º�Mac�¶�Python��Ŀ���������Ĳ��裬����Linux…�㶼��Linux��ʹ�û����ˣ�Ҳ������������̳��ˡ��������������github�Ϸ�����<a href="https://github.com/1992leiting/QiniuHelper" target="_blank" rel="noopener">��ţ������</a>��ĿΪ���ӡ�</p>
+<h2 id="Windows��"><a href="#Windows��" class="headerlink" title="Windows��"></a>Windows��</h2><h3 id="1-��װPython����"><a href="#1-��װPython����" class="headerlink" title="1. ��װPython����"></a>1. ��װPython����</h3><p>�����Ŀ��ʹ�õ�Python3.6���Եģ�<a href="https://www.python.org/ftp/python/3.6.8/python-3.6.8.exe" target="_blank" rel="noopener">�����תPython��������</a>����װ��ʱ��ǵù���Add PATH������Python��Ŀ¼�ͻ�ӵ�������������ȥ��<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/6767874-f3780b537f8e20c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" title="">
+                </div>
+                <div class="image-caption">image.png</div>
+            </figure><br>�������⣬��װ��ɺ��cmd������<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">![image.png](https://upload-images.jianshu.io/upload_images/6767874-bb865928874b7823.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line">����```pip3```��Ҳ�ܿ���pip��������������Python��װ�����Ĺ��ߡ�</span><br><span class="line">![image.png](https://upload-images.jianshu.io/upload_images/6767874-2cb1596fcdc9ae53.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line">���cmd����ʶ��```python```�����```pip3```��������ٴ����а�װ��ѡ��repair��</span><br><span class="line"></span><br><span class="line">### 2. ��װ��������</span><br><span class="line">��Ҫ��װ3���������⣬�ֱ��ǣ�PyQt5ͼ�ο⣬configparser���PIL��ʹ���õ�pyinstaller��</span><br></pre></td></tr></table></figure></p>
+<p>pip3 install pyqt5<br>pi3 install configparser<br>pip3 install pillow<br>pip3 install pyinstaller<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">����PyQt5��װ��ʱ��ȽϾã����ĵȴ���</span><br><span class="line"></span><br><span class="line">### <span class="number">3.</span> ��������</span><br><span class="line">������Ŀ����ļ�����ѹ�������ļ��У�����������cd����ǰĿ¼����ȻҲ������ûѡ���κ��ļ�������°�סshift����Ҽ�����հ״���ѡ���ڴ˴���powershell�����룺```python QiniuHelper.py```����������</span><br><span class="line">![image.png](https:<span class="comment">//upload-images.jianshu.io/upload_images/6767874-2855b9974904859a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span></span><br><span class="line">�򵥲���һ�£�ûʲô����Ļ���˵�������Ѿ������ˡ�</span><br><span class="line"></span><br><span class="line">### <span class="number">4.</span> ���д��</span><br><span class="line">����ɧ�������ˣ��úڰ壩��ͬѧ�ǿ��á�����ĿĿ¼���½�һ��run.py�������һ������ű��ŵ���ĿԴ����ȥ��������ֻ��Ҫ���д��룺</span><br><span class="line">```python</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.<span class="keyword">system</span>(<span class="string">'start pythonw QiniuHelper.py'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>���Ż�����cmd�����У�cd����ĿĿ¼��ִ���������<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">pyinstaller</span> <span class="selector-tag">-F</span> <span class="selector-tag">-w</span> <span class="selector-tag">-i</span> <span class="selector-tag">icon</span><span class="selector-class">.ico</span> <span class="selector-tag">run</span><span class="selector-class">.py</span></span><br></pre></td></tr></table></figure></p>
+<p>���У�</p>
+<ul>
+<li>pyinstaller��ִ�д��������ղ�ͨ��pip��װ��</li>
+<li>-F��ʾ����ɵ���exe�ļ������������ŵ�exe��</li>
+<li>-w��ʾִ��ʱ����ʾcmd����</li>
+<li>-i icon.ico ��ʾʹ��icon.ico��Ϊͼ��</li>
+<li>run.py��ʾ��Ҫ�����py�ű�����<br>��һ�ᣬ�ͻ�����ĿĿ¼������һ��build�ļ��к�dist�ļ��У���dist�ļ�������һ��run.exe�ļ�����С4-5M�����ǰ������Ƶ���ĿĿ¼��˫�����С�Duang���������⣬�������ͻ�ɹ��������ˡ�<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/6767874-718068051162ec3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" title="">
+                </div>
+                <div class="image-caption">image.png</div>
+            </figure>
+</li>
+</ul>
+<h3 id="5-����"><a href="#5-����" class="headerlink" title="5. ����"></a>5. ����</h3><p>�����һ��run.py�ʹ��������bat�ļ��ŵ���Ŀ��ȥ���û�һ�����ɾͺá�</p>
+<h2 id="Mac��"><a href="#Mac��" class="headerlink" title="Mac��"></a>Mac��</h2><h3 id="1-��װPython����-1"><a href="#1-��װPython����-1" class="headerlink" title="1. ��װPython����"></a>1. ��װPython����</h3><p>ͬ������Python��������<a href="https://www.python.org/ftp/python/3.6.8/python-3.6.8-macosx10.6.pkg" target="_blank" rel="noopener">������Mac��Python3.6��װ��</a>����װ���̱Ƚϼ򵥣�һ·���������ˡ���װ��ɺ󣬴�Mac���ն˹��ߣ�����<figure class="highlight plain"><figcaption><span>OSһ�㶼�Դ�Python2.7����Python3.x�����¿�����������Python2.7�Ľ������򿪿϶��ǻ������ġ�</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">�����Ҳ��Ƽ����ֻ���ֻ��Ϊ��ʹ��һ��������Ҫ�õ�Python������ͬѧ��װanaconda������������������������������ܣ��ò��ϣ��������</span><br><span class="line">![image.png](https://upload-images.jianshu.io/upload_images/6767874-75b435aa27afd734.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line">![image.png](https://upload-images.jianshu.io/upload_images/6767874-689c0860591177db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line"></span><br><span class="line">### 2. ��װ��������</span><br><span class="line">ͬ����Ҫ��װ3���������⣬�ֱ��ǣ�PyQt5ͼ�ο⣬configparser���PIL��ʹ���õ�py2app����Ϊpy2app��</span><br></pre></td></tr></table></figure></p>
+<p>pip3 install pyqt5<br>pi3 install configparser<br>pip3 install pillow<br>pip3 install pyinstaller<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">����PyQt5��װ��ʱ��ȽϾã����ĵȴ���</span><br><span class="line"></span><br><span class="line">### <span class="number">3.</span> ��������</span><br><span class="line">��Mac���նˣ�cd����ĿĿ¼�����룺</span><br></pre></td></tr></table></figure></p>
+<p>python3 QiniuHelper.py<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">�������˳���򿪣���˵�����Խ��д�������ˡ�</span><br><span class="line"></span><br><span class="line">### <span class="number">4.</span> ���д��</span><br><span class="line">û��Windows���ʱ��ɧ������������py2app�򿪻��pyinstaller�����΢����һ�㡣</span><br><span class="line">���ȣ��ǰ�װ��py2app֮���ն˿���ʹ��py2applet�����ˣ�</span><br></pre></td></tr></table></figure></p>
+<p>py2applet –make-setup QiniuHelper.py<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">��һ�����֮�������һ��<span class="built_in">setup</span>�ļ���Ȼ��</span><br></pre></td></tr></table></figure></p>
+<p>python3 setup.py py2app -A –iconfile icon.icns<br><code>`</code><br>���У�</p>
+<ul>
+<li>py2app������õĹ���</li>
+<li>-A����ʾ�����һ��������ڳ��򣬲��������������ʽ</li>
+<li>–iconfile icon.icns��Ϊ���ɵĳ���ָ��һ��ͼ�꣬Mac�±���ʹ��icns��ʽ��ͼ���ļ���png/icon��ʽ�޷�ʹ��<br>���ˣ������ļ�����Ҳ����һ��build�ļ��к�һ��dist�ļ��У�dist�ļ�������һ��QiniuHelper.app���������Ǹ�����Ŀ�ļ������icon.png/icon.icns/on.png/off.png���Ҽ�QiniuHelper.app�򿪰������ݣ��ѸղŸ��Ƶ��ļ�����Contents/Resource�ļ����С���ʱ����˫��QiniuHelper.app�����ܿ�����������ˡ�<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/6767874-8a164e6c8222cde8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" title="">
+                </div>
+                <div class="image-caption">image.png</div>
+            </figure>
+��Ϊ���ɵ�app�ǿ����ƶ����κεط��ģ����Ծ��ܰ�������Ӧ�ó�����ȥ�ɣ������Ϳ�����LaunchPad�п������������Թ̶���Dock�����ˡ�</li>
+</ul>
+<h3 id="5-����-1"><a href="#5-����-1" class="headerlink" title="5. ����"></a>5. ����</h3><p>������Ҳ���һ�����ɵĽű��ŵ�Դ���У��û�ֱ�ӵ���ű�һ�����ɾͺá�</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-01-19T07:13:25.828Z" itemprop="dateUpdated">2019-01-19 15:13:25</time>
+</span><br>
+
+
+        
+        欢迎在这里给我留言！
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Ting Lei">
+            Ting Lei
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/Python相关/PyQt5小技巧整理1：Python项目轻打包成可执行文件/&title=《PyQt5С��������1��Python��Ŀ�����ɿ�ִ���ļ�》 — 雷霆的博客&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/Python相关/PyQt5小技巧整理1：Python项目轻打包成可执行文件/&title=《PyQt5С��������1��Python��Ŀ�����ɿ�ִ���ļ�》 — 雷霆的博客&source=Python小学生，爱折腾，电子产品爱好者" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Python相关/PyQt5小技巧整理1：Python项目轻打包成可执行文件/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《PyQt5С��������1��Python��Ŀ�����ɿ�ִ���ļ�》 — 雷霆的博客&url=http://yoursite.com/Python相关/PyQt5小技巧整理1：Python项目轻打包成可执行文件/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/Python相关/PyQt5小技巧整理1：Python项目轻打包成可执行文件/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/硬件相关/家庭宽带组网&个人服务器搭建系列4：宝塔面板和互联网站/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">家庭宽带组网&amp;个人服务器搭建系列4：宝塔面板和互联网站</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  .comments {
+    margin-top: 40px;
+    padding: 30px;
+    background: #fff;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .2);
+    border-radius: 4px;
+  }
+
+  #pop_ad,
+  #feedAv {
+    margin-top: -250px !important;
+    transform: scale(0);
+  }
+</style>
+<section class="comments" id="comments">
+  
+  <div id="SOHUCS" sid=""></div>
+  
+  <script>
+    (function () {
+      var appid = 'cytyXFCUD'
+      var conf = 'prod_ca0f448b1268a1cc0fdc78fe97dbfc1b'
+      var width = window.innerWidth || document.documentElement.clientWidth
+      if (width < 960) {
+        window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>')
+      } else {
+        var loadJs = function (d, a) {
+          var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+          var b = document.createElement('script')
+          b.setAttribute('src', d)
+          if (typeof a === 'function') {
+            if (window.attachEvent) {
+              b.onreadystatechange = function () {
+                var e = b.readyState
+                if (e === 'loaded' || e === 'complete') {
+                  b.onreadystatechange = null
+                  a()
+                }
+              }
+            } else { b.onload = a }
+          } c.appendChild(b)
+        }
+        loadJs('https://changyan.sohu.com/upload/changyan.js', function () { window.changyan.api.config({ appid: appid, conf: conf }) })
+      }
+    })()
+  </script>
+</section>
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Ting Lei &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/Python相关/PyQt5小技巧整理1：Python项目轻打包成可执行文件/&title=《PyQt5С��������1��Python��Ŀ�����ɿ�ִ���ļ�》 — 雷霆的博客&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/Python相关/PyQt5小技巧整理1：Python项目轻打包成可执行文件/&title=《PyQt5С��������1��Python��Ŀ�����ɿ�ִ���ļ�》 — 雷霆的博客&source=Python小学生，爱折腾，电子产品爱好者" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Python相关/PyQt5小技巧整理1：Python项目轻打包成可执行文件/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《PyQt5С��������1��Python��Ŀ�����ɿ�ִ���ļ�》 — 雷霆的博客&url=http://yoursite.com/Python相关/PyQt5小技巧整理1：Python项目轻打包成可执行文件/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/Python相关/PyQt5小技巧整理1：Python项目轻打包成可执行文件/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/Python相关/PyQt5小技巧整理1：Python项目轻打包成可执行文件/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
