@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Pycharm��θ��´��뵽Github�� | 雷霆的博客 | 扬帆，启航！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="�Լ�ƽʱ�������д����롢������С�����������֣�����ʹ��GithubҲ����ͷһ�Ρ��������˺ܶ����Pycharm�ѱ��ش�����µ�Github�ֿ�����£������㳭�ҡ��ҳ��㣬��ô�������������λ����Լ����������������˵��ŵ�������ͬ�������ͬѧһЩ�ο���  ��ô��Pych">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pycharm��θ��´��뵽Github��">
+<meta property="og:url" content="http://yoursite.com/Python相关/Pycharm如何更新代码到Github？/index.html">
+<meta property="og:site_name" content="雷霆的博客">
+<meta property="og:description" content="�Լ�ƽʱ�������д����롢������С�����������֣�����ʹ��GithubҲ����ͷһ�Ρ��������˺ܶ����Pycharm�ѱ��ش�����µ�Github�ֿ�����£������㳭�ҡ��ҳ��㣬��ô�������������λ����Լ����������������˵��ŵ�������ͬ�������ͬѧһЩ�ο���  ��ô��Pych">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-a6e1e19942354d9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-9fc99375b885bc72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-f81c772e8497393c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-d7495faddbc508a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-b2ee2cff03ef598a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-78307473dd551471.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-cc30d75be235bb45.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-3a8ce6c69071ef80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-a1f1f04490533a2e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-01-26T09:00:49.890Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pycharm��θ��´��뵽Github��">
+<meta name="twitter:description" content="�Լ�ƽʱ�������д����롢������С�����������֣�����ʹ��GithubҲ����ͷһ�Ρ��������˺ܶ����Pycharm�ѱ��ش�����µ�Github�ֿ�����£������㳭�ҡ��ҳ��㣬��ô�������������λ����Լ����������������˵��ŵ�������ͬ�������ͬѧһЩ�ο���  ��ô��Pych">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/6767874-a6e1e19942354d9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="http://qiniu.leiting6.cn/vital/screenshot_20190115 20-39-45.png?e=1547560628&token=Uqsg_l3NXniNafKiJ6qpe1wg0iFKVdn4MLRgHKAT:DFwYWvyYW48CzbBScl4ToEzW064=" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Ting Lei</h5>
+          <a href="mailto:leiting.up@gmail.coms" title="leiting.up@gmail.coms" class="mail">leiting.up@gmail.coms</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.jianshu.com/u/e096f464b471">
+                <i class="icon icon-lg icon-tags"></i>
+                简书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/1992leiting" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Pycharm��θ��´��뵽Github��</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Pycharm��θ��´��뵽Github��</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-26T09:00:04.000Z" itemprop="datePublished" class="page-time">
+  2019-01-26
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-�޸J���"><span class="post-toc-number">1.</span> <span class="post-toc-text">1. �޸Ĵ���</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-commit"><span class="post-toc-number">2.</span> <span class="post-toc-text">2. commit</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-push"><span class="post-toc-number">3.</span> <span class="post-toc-text">3. push</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Python相关/Pycharm如何更新代码到Github？" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Pycharm��θ��´��뵽Github��</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-26 17:00:04" datetime="2019-01-26T09:00:04.000Z" itemprop="datePublished">2019-01-26</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>�Լ�ƽʱ�������д����롢������С�����������֣�����ʹ��GithubҲ����ͷһ�Ρ��������˺ܶ����Pycharm�ѱ��ش�����µ�Github�ֿ�����£������㳭�ҡ��ҳ��㣬��ô�������������λ����Լ����������������˵��ŵ�������ͬ�������ͬѧһЩ�ο���</p>
+</blockquote>
+<p>��ô��Pycharm�е�½Github�˺š������ֿ⡢����Ŀ���𵽲ֿ�Ͳ�˵�ˣ����ϵĽ̶̳����ȽϿ��ף����ｲ���ǣ�<strong>��������и��£���ô��Pycharm���������ͬ����Github�ϣ�������commit message��</strong>��ʵ�ܼ򵥣����������޸Ĵ��롢Commit��push��</p>
+<h1 id="1-�޸J���"><a href="#1-�޸J���" class="headerlink" title="1. �޸Ĵ���"></a>1. �޸Ĵ���</h1><p>���֮ǰ�Ѿ��ɹ���������Ŀ��Github�ֿ��У����Կ���Pycharm�������Ŀ���е��ļ���������ɫ����ɫ�����Ѿ�ͬ�����ļ�����ɫ�Ǳ��ش��ڵ���û��ͬ�����ֿ���ļ���<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/6767874-a6e1e19942354d9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" title="">
+                </div>
+                <div class="image-caption">image.png</div>
+            </figure></p>
+<p>��ʱ������޸�һ�����еĴ��룬�����ҵ���ţ��������Ŀ���������ļ�QiniuHelper.py����ᷢ�֣�����ļ�����Ŀ���е���ɫ�������ɫ����ɫ��ʾ�ļ��и�����δͬ�����ֿ��С�<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/6767874-9fc99375b885bc72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" title="">
+                </div>
+                <div class="image-caption">image.png</div>
+            </figure></p>
+<h1 id="2-commit"><a href="#2-commit" class="headerlink" title="2. commit"></a>2. commit</h1><p>����˵�����VCS-&gt;commit��<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/6767874-f81c772e8497393c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" title="">
+                </div>
+                <div class="image-caption">image.png</div>
+            </figure></p>
+<p>��commit changes���ڵ��ļ����У�����ѡ�е��ļ���ʾ�˴�����commit���Լӹ۲�ͻᷢ�֣���Щ�ļ�Ҫô����֮ǰû���𵽲ֿ��еģ�Ҫô��������и��ĵġ�<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/6767874-d7495faddbc508a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" title="">
+                </div>
+                <div class="image-caption">image.png</div>
+            </figure></p>
+<p>ȡ��������ѡ��ֻѡ����ɫ��QiniuHelper.py������commit message��������˴θ��µ�˵����Ϣ������·���commit��ť���Եȼ��룬Pycharm�ͻᵯ����ʾ����1���ļ��Ѿ�commit��<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/6767874-b2ee2cff03ef598a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" title="">
+                </div>
+                <div class="image-caption">image.png</div>
+            </figure></p>
+<h1 id="3-push"><a href="#3-push" class="headerlink" title="3. push"></a>3. push</h1><p>����˵�����VCS-&gt;Git-&gt;push��<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/6767874-78307473dd551471.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" title="">
+                </div>
+                <div class="image-caption">image.png</div>
+            </figure><br>�ڵ�����push commit������ѡ����Ҫ�������Ŀ���ƺͷ�֧�����push���ɡ�<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/6767874-cc30d75be235bb45.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" title="">
+                </div>
+                <div class="image-caption">image.png</div>
+            </figure></p>
+<p>�ȴ�һ��ʱ�䣬Pycharm�ᵯ����ʾ��˵���ļ��Ѿ�push�ɹ���<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/6767874-3a8ce6c69071ef80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" title="">
+                </div>
+                <div class="image-caption">image.png</div>
+            </figure></p>
+<p>��ʱ��½��ҳGithub�����������Ŀ���Ϳ��Կ�������ļ��ڼ�����ǰ�и��£������ܿ���commit message��<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/6767874-a1f1f04490533a2e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" title="">
+                </div>
+                <div class="image-caption">image.png</div>
+            </figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-01-26T09:00:49.890Z" itemprop="dateUpdated">2019-01-26 17:00:49</time>
+</span><br>
+
+
+        
+        欢迎在这里给我留言！
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Ting Lei">
+            Ting Lei
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/Python相关/Pycharm如何更新代码到Github？/&title=《Pycharm��θ��´��뵽Github��》 — 雷霆的博客&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/Python相关/Pycharm如何更新代码到Github？/&title=《Pycharm��θ��´��뵽Github��》 — 雷霆的博客&source=Python小学生，爱折腾，电子产品爱好者" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Python相关/Pycharm如何更新代码到Github？/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Pycharm��θ��´��뵽Github��》 — 雷霆的博客&url=http://yoursite.com/Python相关/Pycharm如何更新代码到Github？/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/Python相关/Pycharm如何更新代码到Github？/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/Python相关/PyQt5小技巧整理1：Python项目轻打包成可执行文件/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">PyQt5小技巧整理1：Python项目轻打包成可执行文件</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  .comments {
+    margin-top: 40px;
+    padding: 30px;
+    background: #fff;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .2);
+    border-radius: 4px;
+  }
+
+  #pop_ad,
+  #feedAv {
+    margin-top: -250px !important;
+    transform: scale(0);
+  }
+</style>
+<section class="comments" id="comments">
+  
+  <div id="SOHUCS" sid=""></div>
+  
+  <script>
+    (function () {
+      var appid = 'cytyXFCUD'
+      var conf = 'prod_ca0f448b1268a1cc0fdc78fe97dbfc1b'
+      var width = window.innerWidth || document.documentElement.clientWidth
+      if (width < 960) {
+        window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>')
+      } else {
+        var loadJs = function (d, a) {
+          var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+          var b = document.createElement('script')
+          b.setAttribute('src', d)
+          if (typeof a === 'function') {
+            if (window.attachEvent) {
+              b.onreadystatechange = function () {
+                var e = b.readyState
+                if (e === 'loaded' || e === 'complete') {
+                  b.onreadystatechange = null
+                  a()
+                }
+              }
+            } else { b.onload = a }
+          } c.appendChild(b)
+        }
+        loadJs('https://changyan.sohu.com/upload/changyan.js', function () { window.changyan.api.config({ appid: appid, conf: conf }) })
+      }
+    })()
+  </script>
+</section>
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Ting Lei &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/Python相关/Pycharm如何更新代码到Github？/&title=《Pycharm��θ��´��뵽Github��》 — 雷霆的博客&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/Python相关/Pycharm如何更新代码到Github？/&title=《Pycharm��θ��´��뵽Github��》 — 雷霆的博客&source=Python小学生，爱折腾，电子产品爱好者" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Python相关/Pycharm如何更新代码到Github？/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Pycharm��θ��´��뵽Github��》 — 雷霆的博客&url=http://yoursite.com/Python相关/Pycharm如何更新代码到Github？/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/Python相关/Pycharm如何更新代码到Github？/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/Python相关/Pycharm如何更新代码到Github？/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
