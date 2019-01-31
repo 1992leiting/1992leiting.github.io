@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>PyQt5小技巧整理2：剪贴板的介绍和遇到的坑 | 雷霆的博客 | 扬帆，启航！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="完成一个项目可以学到很多东西，最近利用PyQt5写的一个七牛云管理器也让自己长进了一些。今天这篇博文讲一下使用PyQt5中的剪贴板时遇到的坑。不得不补充一句，PyQt5是跨平台的，剪贴板功能也是跨平台的，写好了在Win/Mac/Linux上都能用。  Qclipboard在哪首先，PyQt5中剪贴板模块的位置为：1PyQt5 -&amp;gt; QtWidget -&amp;gt; QApplication -">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PyQt5小技巧整理2：剪贴板的介绍和遇到的坑">
+<meta property="og:url" content="http://yoursite.com/Python相关/PyQt5小技巧整理2：剪贴板的介绍和遇到的坑/index.html">
+<meta property="og:site_name" content="雷霆的博客">
+<meta property="og:description" content="完成一个项目可以学到很多东西，最近利用PyQt5写的一个七牛云管理器也让自己长进了一些。今天这篇博文讲一下使用PyQt5中的剪贴板时遇到的坑。不得不补充一句，PyQt5是跨平台的，剪贴板功能也是跨平台的，写好了在Win/Mac/Linux上都能用。  Qclipboard在哪首先，PyQt5中剪贴板模块的位置为：1PyQt5 -&amp;gt; QtWidget -&amp;gt; QApplication -">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-d307ef74df42569b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-f5bc6785201b2877.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-60b23f1fad751027.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-c54fb820b3bdd12e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6767874-c829ac80b8eae486.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-01-31T03:37:43.316Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PyQt5小技巧整理2：剪贴板的介绍和遇到的坑">
+<meta name="twitter:description" content="完成一个项目可以学到很多东西，最近利用PyQt5写的一个七牛云管理器也让自己长进了一些。今天这篇博文讲一下使用PyQt5中的剪贴板时遇到的坑。不得不补充一句，PyQt5是跨平台的，剪贴板功能也是跨平台的，写好了在Win/Mac/Linux上都能用。  Qclipboard在哪首先，PyQt5中剪贴板模块的位置为：1PyQt5 -&amp;gt; QtWidget -&amp;gt; QApplication -">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/6767874-d307ef74df42569b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="http://qiniu.leiting6.cn/vital/screenshot_20190115 20-39-45.png?e=1547560628&token=Uqsg_l3NXniNafKiJ6qpe1wg0iFKVdn4MLRgHKAT:DFwYWvyYW48CzbBScl4ToEzW064=" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Ting Lei</h5>
+          <a href="mailto:leiting.up@gmail.coms" title="leiting.up@gmail.coms" class="mail">leiting.up@gmail.coms</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.jianshu.com/u/e096f464b471">
+                <i class="icon icon-lg icon-tags"></i>
+                简书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/1992leiting" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">PyQt5小技巧整理2：剪贴板的介绍和遇到的坑</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">PyQt5小技巧整理2：剪贴板的介绍和遇到的坑</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-31T03:36:20.000Z" itemprop="datePublished" class="page-time">
+  2019-01-31
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Qclipboard在哪"><span class="post-toc-number">1.</span> <span class="post-toc-text">Qclipboard在哪</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#QClipboard的API"><span class="post-toc-number">2.</span> <span class="post-toc-text">QClipboard的API</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用QClipboard-dataChanged-遇到的坑"><span class="post-toc-number">3.</span> <span class="post-toc-text">使用QClipboard.dataChanged()遇到的坑</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#问题分析和解决"><span class="post-toc-number">4.</span> <span class="post-toc-text">问题分析和解决</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解决办法"><span class="post-toc-number">5.</span> <span class="post-toc-text">解决办法</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Python相关/PyQt5小技巧整理2：剪贴板的介绍和遇到的坑" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">PyQt5小技巧整理2：剪贴板的介绍和遇到的坑</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-31 11:36:20" datetime="2019-01-31T03:36:20.000Z" itemprop="datePublished">2019-01-31</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>完成一个项目可以学到很多东西，最近利用PyQt5写的一个七牛云管理器也让自己长进了一些。今天这篇博文讲一下使用PyQt5中的剪贴板时遇到的坑。不得不补充一句，PyQt5是跨平台的，剪贴板功能也是跨平台的，写好了在Win/Mac/Linux上都能用。</p>
+</blockquote>
+<h1 id="Qclipboard在哪"><a href="#Qclipboard在哪" class="headerlink" title="Qclipboard在哪"></a>Qclipboard在哪</h1><p>首先，PyQt5中剪贴板模块的位置为：<br><figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">P<span class="function"><span class="title">yQt5</span> -&gt;</span> Q<span class="function"><span class="title">tWidget</span> -&gt;</span> QA<span class="function"><span class="title">pplication</span> -&gt;</span> QClipboard</span><br></pre></td></tr></table></figure></p>
+<p>项目中可以这样来实例化：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from PyQt5 import QtWidgets</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainUi</span>(...):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>)</span></span>；</span><br><span class="line">        <span class="keyword">self</span>.cb = QtWidgets.QApplication.clipboard()</span><br><span class="line">        ...</span><br></pre></td></tr></table></figure></p>
+<p>需要注意的是，必须在一个Gui类里面才能访问QClipboard，如果你尝试在类以外实例化它：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/6767874-d307ef74df42569b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" title="">
+                </div>
+                <div class="image-caption">image.png</div>
+            </figure><br>是的，肯定会报错；这个Gui的类可以是PyQt的QMainWindow、QWidgets等。</p>
+<h1 id="QClipboard的API"><a href="#QClipboard的API" class="headerlink" title="QClipboard的API"></a>QClipboard的API</h1><p>查看PyQt5的API，就像我在QyQt5入门系列博文中提到的，要养成翻阅QT官方文档库的习惯，目前PyQt5的官方文档只有英文的，而且是C++语言的应用，但是其实熟悉之后并不影响。<br>QT官方文档地址：<a href="https://doc.qt.io/" target="_blank" rel="noopener">https://doc.qt.io/</a><br>当然，现在Qt for Python的官方文档库也在慢慢完善，不过是Qt的另外一个分支叫PySide2，然而用法基本一致。<br>Qt for Python官方文档地址：<a href="https://doc.qt.io/qtforpython/" target="_blank" rel="noopener">https://doc.qt.io/qtforpython/</a><br>善用搜索找到Qclipboard所在的位置：<a href="http://doc.qt.io/qt-5/qclipboard.html" target="_blank" rel="noopener">http://doc.qt.io/qt-5/qclipboard.html</a><br>我们可以看到，PyQt5对系统剪贴板提供了不少的接口，这里介绍几个可能比较常用的。假如你已经如上面介绍的一样创建了一个MainUi的类，无论这个类继承的是QMainwindow还是QWidget还是其他Gui窗口类型，都是没有问题的。<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from PyQt5 import QtWidgets</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainUi</span>(...):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>)</span></span>；</span><br><span class="line">        <span class="keyword">self</span>.cb = QtWidgets.QApplication.clipboard()</span><br><span class="line">        ...</span><br></pre></td></tr></table></figure></p>
+<p>常用的公共方法和信号如下。<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self<span class="selector-class">.cb</span><span class="selector-class">.clear</span>()</span><br></pre></td></tr></table></figure></p>
+<p>清除剪贴板的内容<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">self<span class="selector-class">.cb</span><span class="selector-class">.text</span>()</span><br><span class="line">self<span class="selector-class">.cb</span><span class="selector-class">.image</span>()</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>若剪贴板内容为文本，则返回文本；若剪贴板中内容不是文本，则会返回一个空字符串；</li>
+<li>若剪贴板内容为图像，则返回图像；若剪贴板中内容不是图像或者是格式不支持的图像，则会返回一个空图像；这个函数我没用，因为我实际应用中需要判断剪贴板中是否是图片，通过读取剪贴板的mimeData来识别，这个后面会讲到。<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mdata = self.cb.mimeData<span class="comment">()</span></span><br><span class="line"><span class="keyword">if</span> mdata.hasImage<span class="comment">()</span>:</span><br><span class="line">    ...</span><br><span class="line">elif mdata.hasText<span class="comment">()</span>:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>获取剪贴板的mimeData，其实返回的是PyQt5定义的QMimeData类型，<a href="http://doc.qt.io/qt-5/qmimedata.html" target="_blank" rel="noopener">点击查看QMimeData官方文档说明</a>。其实mimeData自身也有很多操作，这里提到的hasImage和hasText是判断剪贴板中是否有图片或者是否有文本，然后根据判断结果进行其他操作。<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">self<span class="selector-class">.cb</span><span class="selector-class">.setImage</span>(...)</span><br><span class="line">self<span class="selector-class">.cb</span><span class="selector-class">.setText</span>(...)</span><br></pre></td></tr></table></figure></p>
+<p>向剪贴板中写入图像或者文本。<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self<span class="selector-class">.cb</span><span class="selector-class">.dataChanged</span><span class="selector-class">.connect</span>(...)</span><br></pre></td></tr></table></figure></p>
+<p>这是PyQt5的QClipboard的一个很有用的信号，当剪贴板中的数据发生改变时，会发出这个信号，通过connect链接到其他方法上，这样可以监控剪贴板来做一些事情。本篇博文说的坑，也就是在这个地方遇到的。</p>
+<h1 id="使用QClipboard-dataChanged-遇到的坑"><a href="#使用QClipboard-dataChanged-遇到的坑" class="headerlink" title="使用QClipboard.dataChanged()遇到的坑"></a>使用QClipboard.dataChanged()遇到的坑</h1><p>我的<a href="https://github.com/1992leiting/QiniuHelper" target="_blank" rel="noopener">七牛云助手</a>小项目中，QClipboard.dataChange()是为了实现监控剪贴板是否拷贝了新的图片、如果有就询问是否上传、并自动拷贝上传后的文件链接的功能。其实我觉得想法还不错，不过直到项目上传完了自己日常使用的时候才发现一个问题：<strong>上传文件完成后总不能自动拷贝文件链接。</strong>允许我用流程图来表示一下项目中的这个功能（这里安利一下<a href="https://processon.com" target="_blank" rel="noopener">processon</a>，在线画流程图非常方便）。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/6767874-f5bc6785201b2877.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" title="">
+                </div>
+                <div class="image-caption">image.png</div>
+            </figure><br>代码实现也非常简单。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将剪贴板中的图片保存成本地图片，利用PIL，这里不详写</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">save_tmp_bmp</span><span class="params">(...)</span>:</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将本地图片上传到七牛云，具体过程不详写</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">qiniu_upload</span><span class="params">(...)</span>:</span></span><br><span class="line">    upload... <span class="comment"># 上传文件</span></span><br><span class="line">    link = ... <span class="comment"># 获取文件在七牛云上的链接</span></span><br><span class="line">    ui.cb.setText(link) <span class="comment"># 向剪贴板中写入链接</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainUi</span><span class="params">(...)</span>:</span></span><br><span class="line">    ...</span><br><span class="line">    setupFunction(...):</span><br><span class="line">    <span class="comment"># 实例化QClipboard，开启监控</span></span><br><span class="line">    self.cb = QtWidgets.QApplication.clipboard()</span><br><span class="line">    self.cb.dataChanged.connect(self.monitor_clipboard)</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">monitor_clipboard</span><span class="params">(...)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.cb.mimeData.hasImage(): <span class="comment"># 当剪贴板中有图片</span></span><br><span class="line">            save_tmp_image(<span class="string">'tmp.png'</span>) <span class="comment"># 将剪贴板中的图片保存成本地图片tmp.png</span></span><br><span class="line">            qiniu_upload(<span class="string">'tmp.img'</span>) <span class="comment"># 讲tmp.png上传到七牛云</span></span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">ui = MainUi() <span class="comment"># 创建主窗口，实例名称为ui</span></span><br><span class="line">ui.setupFunction() <span class="comment">#执行setupFunction方法</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>看起来合情合理对不对？然而事实上，不管怎么调试，复制图片没问题、剪贴板监控和触发没问题、上传图片没问题，就是最后复制不了链接。通过添加print来看，setText确实运行了，但是剪贴板中最后一条记录任然是之前复制的图片而不是链接。（关于便捷查看剪贴板中的内容，这里安利2个软件：Windows上用<a href="https://www.baidu.com/link?url=tmwCF5RKUj48zx8kgJwcGIcm1VZIsofa4JwJ77qGpS7T2oKLpKcFXkgDldai8APJ&amp;wd=&amp;eqid=e598bb7200042258000000065c525452" target="_blank" rel="noopener">Ditto</a>，Mac上用<a href="https://itunes.apple.com/cn/app/paste-smart-cloud-clipboard-snippets-manager/id967805235?mt=12" target="_blank" rel="noopener">Paste</a>。这2个软件都是各自平台上非常优秀的剪贴板增强软件，可以很大程度上增加日常的办事效率。）</p>
+<h1 id="问题分析和解决"><a href="#问题分析和解决" class="headerlink" title="问题分析和解决"></a>问题分析和解决</h1><p>经过一番艰苦卓绝的debug，最后发现问题症结所在：<br><strong>在QClipboard.dataChanged.connect()所链接到的方法中，不能含有QClipboard.setText()</strong><br>其实也很好理解，这可能是Qt为了防止出现因为剪贴板内容改变引发的死循环触发：<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">检测到剪贴板内改变<span class="function"> -&gt;</span> setText<span class="function"><span class="params">()</span> -&gt;</span> 检测到剪贴板内改变<span class="function"> -&gt;</span> setText<span class="function"><span class="params">()</span> -&gt;</span> 检测到剪贴板内改变<span class="function"> -&gt;</span> setText()...</span><br></pre></td></tr></table></figure></p>
+<p>不管这个链接的方法多么复杂，在多少个子方法/函数之间跳转，都不可以。这里可以通过一个比较简单的例子来说明一下。且看下面的代码（<a href="http://qiniu.leiting6.cn/vital/1.pyqt5_clipboard.zip?e=1548903879&amp;token=Uqsg_l3NXniNafKiJ6qpe1wg0iFKVdn4MLRgHKAT:Mr1Ai-ZVUdltfwOCwBZ1ap4H03A=" target="_blank" rel="noopener">点击下载完整工程文件</a>）<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="title">from</span> <span class="type">PyQt5</span> <span class="keyword">import</span> QtWidgets</span><br><span class="line"><span class="title">from</span> src.mainwindow <span class="keyword">import</span> Ui_MainWindow <span class="keyword">as</span> MW</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="type">MainUI</span>(<span class="type">MW</span>):</span></span><br><span class="line"><span class="class">    # 初始化方法，实例化clipboard()</span></span><br><span class="line"><span class="class">    def __init__(<span class="title">self</span>):</span></span><br><span class="line"><span class="class">        self.cb = <span class="type">QtWidgets</span>.<span class="type">QApplication</span>.clipboard()</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">    # 功能设置方法</span></span><br><span class="line"><span class="class">    def setupFunction(<span class="title">self</span>):</span></span><br><span class="line"><span class="class">        # 按钮按下时，执行self.set_cb()</span></span><br><span class="line"><span class="class">        self.pushButton.clicked.connect(<span class="title">self</span>.<span class="title">set_cb</span>)</span></span><br><span class="line"><span class="class">        # 当剪贴板内容发生改变时，执行self.cb_changed()</span></span><br><span class="line"><span class="class">        self.cb.dataChanged.connect(<span class="title">self</span>.<span class="title">cb_changed</span>)</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">    # 当剪贴板内容改变时执行</span></span><br><span class="line"><span class="class">    # 如果当前剪贴板内容为图片，则转到执行self.set_cb()</span></span><br><span class="line"><span class="class">    # 如果当前姐铁板内容为其他，则打印信息提示</span></span><br><span class="line"><span class="class">    def cb_changed(<span class="title">self</span>):</span></span><br><span class="line"><span class="class">        print('<span class="type">Entering</span> <span class="title">set_cb</span>...')</span></span><br><span class="line"><span class="class">        mdata = self.cb.mimeData()</span></span><br><span class="line"><span class="class">        if mdata.hasImage():</span></span><br><span class="line"><span class="class">            print('<span class="type">Img</span> <span class="title">in</span> <span class="title">clipboard</span>.')</span></span><br><span class="line"><span class="class">            self.set_cb()</span></span><br><span class="line"><span class="class">        else:</span></span><br><span class="line"><span class="class">            print('<span class="type">Not</span> <span class="title">a</span> <span class="title">img</span> <span class="title">in</span> <span class="title">clipboard</span>!')</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">    # 向剪贴板中写入当前日期</span></span><br><span class="line"><span class="class">    def set_cb(<span class="title">self</span>):</span></span><br><span class="line"><span class="class">        localtime = time.asctime(<span class="title">time</span>.<span class="title">localtime</span>(<span class="title">time</span>.<span class="title">time</span>()))</span></span><br><span class="line"><span class="class">        self.cb.setText(<span class="title">localtime</span>)</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">if __name__ == "__main__":</span></span><br><span class="line"><span class="class">    app = <span class="type">QtWidgets</span>.<span class="type">QApplication</span>(<span class="title">sys</span>.<span class="title">argv</span>)</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">    # 主窗口</span></span><br><span class="line"><span class="class">    <span class="type">MainWindow</span> = <span class="type">QtWidgets</span>.<span class="type">QMainWindow</span>()</span></span><br><span class="line"><span class="class">    ui = <span class="type">MainUI</span>()</span></span><br><span class="line"><span class="class">    ui.setupUi(<span class="type">MainWindow</span>)</span></span><br><span class="line"><span class="class">    ui.setupFunction()</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">    <span class="type">MainWindow</span>.show()</span></span><br><span class="line"><span class="class">    sys.exit(<span class="title">app</span>.<span class="title">exec_</span>())</span></span><br></pre></td></tr></table></figure></p>
+<p>这是个非常简化的应用，注释已经对主要语句做了说明，我也在关键地方增加了print打印，下面是这段代码的流程图。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/6767874-60b23f1fad751027.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" title="">
+                </div>
+                <div class="image-caption">image.png</div>
+            </figure></p>
+<p>运行一下main.py，点击一下中间的按钮，可以看到打印信息。<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Write <span class="built_in">time</span> <span class="built_in">to</span> cb...   <span class="comment"># 点击按钮触发，向剪贴板写入当前时间</span></span><br><span class="line">Clipboard data changed.  <span class="comment"># 写入时间后检测到剪贴板内容变化</span></span><br><span class="line">Not <span class="keyword">a</span> img <span class="keyword">in</span> clipboard!  <span class="comment"># 这时剪贴板中是文本不是图片，什么也不做</span></span><br></pre></td></tr></table></figure></p>
+<p>我们再用Ditto或者Paste查看一下剪贴板内容。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/6767874-c54fb820b3bdd12e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" title="">
+                </div>
+                <div class="image-caption">image.png</div>
+            </figure></p>
+<p>第一条是当前的时间，并且是文本内容，和打印的信息相符合，说明通过点击按钮向剪贴板写入文本信息没有问题。接着，我们重新运行一下main.py，截一张图（键盘的PrtSc或者QQ截图都可以），再看一下打印信息。<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Clipboard data changed.   <span class="comment"># 截图之后自然会检测到剪贴板内容变化</span></span><br><span class="line">Img <span class="keyword">in</span> clipboard.    <span class="comment"># 这时剪贴板中是图片</span></span><br><span class="line">Write <span class="built_in">time</span> <span class="built_in">to</span> cb...    <span class="comment"># 根据代码规则，检测到是图片则触发write_time_to_cb，向剪贴板写入当前时间</span></span><br><span class="line">Clipboard data changed.   <span class="comment"># 写入时间后剪贴板再次检测到数据变化</span></span><br><span class="line">Not <span class="keyword">a</span> img <span class="keyword">in</span> clipboard!  <span class="comment"># 这时剪贴板中不是图片了，什么都不干</span></span><br></pre></td></tr></table></figure></p>
+<p>看打印的信息，好像流程没什么问题，这时我们想一下，正常情况下运行完上述代码之后剪贴板会是什么情况？对，第一条应该是当前时间，第二条是刚才截图，第三条是上一次运行时写入的时间。但是打开剪贴板一看，好像并不是那么回事…<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/6767874-c829ac80b8eae486.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" title="">
+                </div>
+                <div class="image-caption">image.png</div>
+            </figure><br>很明显，截图触发的write_time_to_cb并没有成功向剪贴板中写入时间。这就是我说的问题症结所在：<strong>这一次，setText()在write_time_to_db()中，而write_time_to_db()在dataChanged的链接中，这时候，为了防止死循环触发（当然我的代码中通过判断是否是图片避免了无限触发），最后一次setText并没有生效。</strong></p>
+<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>解决办法简单的来说就是：<strong>放弃使用QClipboard.dataChanged信号，改用PyQt5的定时器QTimer定期扫描剪贴板内容，发生变化则进入下一步。</strong>简单代码如下，对具体实现感兴趣的请自行下载<a href="https://github.com/1992leiting/QiniuHelper" target="_blank" rel="noopener">我的项目</a>查看。<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainUi</span>(...):</span></span><br><span class="line">    setupFunction(...)<span class="symbol">:</span></span><br><span class="line">        <span class="keyword">self</span>.timer_clipboard = QtCore.QTimer()  <span class="comment"># 声明定时器</span></span><br><span class="line">        <span class="keyword">self</span>.timer_clipboard.timeout.connect(<span class="keyword">self</span>.monitor_clipboard) <span class="comment"># 定时器触发monitor_clipboard方法</span></span><br><span class="line">        <span class="keyword">self</span>.timer_clipboard.start(<span class="number">3000</span>)  <span class="comment"># 定时器触发间隔为3秒</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">monitor_clipboard</span><span class="params">(...)</span></span><span class="symbol">:</span></span><br><span class="line">        mdata = <span class="keyword">self</span>.cb.mimeData()  <span class="comment"># 获取剪贴板内容</span></span><br><span class="line">        <span class="keyword">if</span> mdata != <span class="symbol">mdata_tmp:</span>    <span class="comment"># 如果当前剪贴板内容mdata和上次剪贴板内容mdata_tmp不一样</span></span><br><span class="line">            mdata_tmp = mdata   <span class="comment"># 讲当前简体版内容赋值到mdata_tmp中</span></span><br><span class="line">            <span class="keyword">if</span> mdata.hasImage(): <span class="comment"># 当剪贴板中有图片</span></span><br><span class="line">                save_tmp_image(<span class="string">'tmp.png'</span>) <span class="comment"># 将剪贴板中的图片保存成本地图片tmp.png</span></span><br><span class="line">                qiniu_upload(<span class="string">'tmp.img'</span>) <span class="comment"># 讲tmp.png上传到七牛云</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-01-31T03:37:43.316Z" itemprop="dateUpdated">2019-01-31 11:37:43</time>
+</span><br>
+
+
+        
+        欢迎在这里给我留言！
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Ting Lei">
+            Ting Lei
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/Python相关/PyQt5小技巧整理2：剪贴板的介绍和遇到的坑/&title=《PyQt5小技巧整理2：剪贴板的介绍和遇到的坑》 — 雷霆的博客&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/Python相关/PyQt5小技巧整理2：剪贴板的介绍和遇到的坑/&title=《PyQt5小技巧整理2：剪贴板的介绍和遇到的坑》 — 雷霆的博客&source=Python小学生，爱折腾，电子产品爱好者" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Python相关/PyQt5小技巧整理2：剪贴板的介绍和遇到的坑/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《PyQt5小技巧整理2：剪贴板的介绍和遇到的坑》 — 雷霆的博客&url=http://yoursite.com/Python相关/PyQt5小技巧整理2：剪贴板的介绍和遇到的坑/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/Python相关/PyQt5小技巧整理2：剪贴板的介绍和遇到的坑/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/Python相关/Pycharm如何更新代码到Github？/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Pycharm如何更新代码到Github？</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  .comments {
+    margin-top: 40px;
+    padding: 30px;
+    background: #fff;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .2);
+    border-radius: 4px;
+  }
+
+  #pop_ad,
+  #feedAv {
+    margin-top: -250px !important;
+    transform: scale(0);
+  }
+</style>
+<section class="comments" id="comments">
+  
+  <div id="SOHUCS" sid=""></div>
+  
+  <script>
+    (function () {
+      var appid = 'cytyXFCUD'
+      var conf = 'prod_ca0f448b1268a1cc0fdc78fe97dbfc1b'
+      var width = window.innerWidth || document.documentElement.clientWidth
+      if (width < 960) {
+        window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>')
+      } else {
+        var loadJs = function (d, a) {
+          var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+          var b = document.createElement('script')
+          b.setAttribute('src', d)
+          if (typeof a === 'function') {
+            if (window.attachEvent) {
+              b.onreadystatechange = function () {
+                var e = b.readyState
+                if (e === 'loaded' || e === 'complete') {
+                  b.onreadystatechange = null
+                  a()
+                }
+              }
+            } else { b.onload = a }
+          } c.appendChild(b)
+        }
+        loadJs('https://changyan.sohu.com/upload/changyan.js', function () { window.changyan.api.config({ appid: appid, conf: conf }) })
+      }
+    })()
+  </script>
+</section>
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Ting Lei &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/Python相关/PyQt5小技巧整理2：剪贴板的介绍和遇到的坑/&title=《PyQt5小技巧整理2：剪贴板的介绍和遇到的坑》 — 雷霆的博客&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/Python相关/PyQt5小技巧整理2：剪贴板的介绍和遇到的坑/&title=《PyQt5小技巧整理2：剪贴板的介绍和遇到的坑》 — 雷霆的博客&source=Python小学生，爱折腾，电子产品爱好者" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Python相关/PyQt5小技巧整理2：剪贴板的介绍和遇到的坑/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《PyQt5小技巧整理2：剪贴板的介绍和遇到的坑》 — 雷霆的博客&url=http://yoursite.com/Python相关/PyQt5小技巧整理2：剪贴板的介绍和遇到的坑/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/Python相关/PyQt5小技巧整理2：剪贴板的介绍和遇到的坑/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/Python相关/PyQt5小技巧整理2：剪贴板的介绍和遇到的坑/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
